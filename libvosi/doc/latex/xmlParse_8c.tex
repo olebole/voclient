@@ -1,0 +1,616 @@
+\hypertarget{xmlParse_8c}{
+\section{xmlParse.c File Reference}
+\label{xmlParse_8c}\index{xmlParse.c@{xmlParse.c}}
+}
+Public interface procedures for the XML parser.  
+
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$expat.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$assert.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$curl/curl.h$>$}\par
+{\tt \#include $<$curl/easy.h$>$}\par
+{\tt \#include \char`\"{}xmlParseP.h\char`\"{}}\par
+{\tt \#include \char`\"{}xmlParse.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \textbf{elemParents}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{xmlParse_8c_369266c24eacffb87046522897a570d5}{
+\#define \textbf{\_\-GNU\_\-SOURCE}}
+\label{xmlParse_8c_369266c24eacffb87046522897a570d5}
+
+\item 
+\hypertarget{xmlParse_8c_eca034f67218340ecb2261a22c2f3dcd}{
+\#define \textbf{BUFSIZE}~4096}
+\label{xmlParse_8c_eca034f67218340ecb2261a22c2f3dcd}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{xmlParse_8c_e4183cb6da810bf97646fdd9f49a9b92}{
+char $\ast$ \textbf{strcasestr} ()}
+\label{xmlParse_8c_e4183cb6da810bf97646fdd9f49a9b92}
+
+\item 
+handle\_\-t \hyperlink{xmlParse_8c_285e1a64e73aeaf55c5659c83362ce1e}{xml\_\-openXML} (char $\ast$arg)
+\begin{CompactList}\small\item\em Parse an XML document and return a handle to it. \item\end{CompactList}\item 
+void \hyperlink{xmlParse_8c_98488c168a4b9a6874d3565b6785148d}{xml\_\-closeXML} (handle\_\-t xml)
+\begin{CompactList}\small\item\em Destroy the root node and all of it's children. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_b31cfbb81925f1f4f34dfdd831e4178a}{xml\_\-newNode} (handle\_\-t parent, int type)
+\begin{CompactList}\small\item\em Creates a new blank unlinked node. \item\end{CompactList}\item 
+void \hyperlink{xmlParse_8c_0923f90956af2788adbe999bdb96ba14}{xml\_\-attachNode} (handle\_\-t parent, handle\_\-t new)
+\begin{CompactList}\small\item\em Adds a node as a child of parent. \item\end{CompactList}\item 
+void \hyperlink{xmlParse_8c_6fef87e812e3cb000ab16c19d22d9a74}{xml\_\-freeNode} (handle\_\-t node)
+\begin{CompactList}\small\item\em Destroys the node and all of it's children. \item\end{CompactList}\item 
+void \hyperlink{xmlParse_8c_fc610e5c309ced89efddb83ae5a12f1a}{xml\_\-deleteNode} (handle\_\-t element)
+\begin{CompactList}\small\item\em Destroys the node and all of it's children. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_61e339855aadbfed6f61aa85dfc27ce7}{xml\_\-copyElement} (handle\_\-t src\_\-h, handle\_\-t parent\_\-h)
+\begin{CompactList}\small\item\em Adds a node as a child of parent. \item\end{CompactList}\item 
+int \hyperlink{xmlParse_8c_8e1b8010b7cde3b10e6c256243cd8f1c}{xml\_\-getLength} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return the number of sibling Elements of the same type. \item\end{CompactList}\item 
+int \hyperlink{xmlParse_8c_7348fad5c7be72f398031008b9ecb4f0}{xml\_\-getNumberOf} (handle\_\-t elem\_\-h, int type)
+\begin{CompactList}\small\item\em Return the number of sibling Elements of the type. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_6b20fbeb3216e59f81bd757da4121bd7}{xml\_\-findByAttr} (handle\_\-t parent, char $\ast$name, char $\ast$value)
+\begin{CompactList}\small\item\em Get a handle to an \hyperlink{structElement}{Element} with the requested attribute. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_06fccd6745e978e776fbad03e9076bd7}{xml\_\-getNext} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return a handle\_\-t of the next \hyperlink{structElement}{Element} of the same type. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_d952980bf5fbd1b8afa4b6c7e26c3b8f}{xml\_\-getSibling} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return a handle\_\-t of the next \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_a23bcbbde95f81e31fe311e6d7e843e4}{xml\_\-getChild} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return a handle\_\-t of the child \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_d26eb7338e305f3c53023e959fcc3680}{xml\_\-getParent} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return the handle of the parent \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParse_8c_e872314b06cbed0e936bcbf3c8fe29e8}{xml\_\-getChildOfType} (handle\_\-t elem\_\-h, int type)
+\begin{CompactList}\small\item\em Get the handle of the next \hyperlink{structElement}{Element} of the same type. \item\end{CompactList}\item 
+int \hyperlink{xmlParse_8c_bb93b6563b56a8c47fc644a1f3579c79}{xml\_\-valueOf} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return type of the \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+int \hyperlink{xmlParse_8c_7c05bf0924f9112ae7bd7cec6116d401}{xml\_\-typeOf} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Return type of the \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+int \hyperlink{xmlParse_8c_87ba30eba49ce505135445f2af7ad92f}{xml\_\-setValue} (handle\_\-t elem\_\-h, char $\ast$value)
+\begin{CompactList}\small\item\em Set the Value for the ELEMENT. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParse_8c_cf4a0552f2da6858cd3c1c531e649fd2}{xml\_\-getValue} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Get the Value for the ELEMENT. \item\end{CompactList}\item 
+int \hyperlink{xmlParse_8c_b99b3a43bf2ad2eb34bd39aa5b0e1333}{xml\_\-setAttr} (handle\_\-t elem\_\-h, char $\ast$attr, char $\ast$value)
+\begin{CompactList}\small\item\em Set the attribute for the \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParse_8c_e0684253f1bdb5993db7ece80e5ed4ff}{xml\_\-getAttr} (handle\_\-t elem\_\-h, char $\ast$attr)
+\begin{CompactList}\small\item\em Return the attribute for the \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParse_8c_82fd0812c5d865a09eff67d462d18c50}{xml\_\-dumpAllAttr} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Dump all information about the attributes of the \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParse_8c_6fff93b995827a63c96e05e65580d446}{xml\_\-dumpNamesAttr} (handle\_\-t elem\_\-h)
+\begin{CompactList}\small\item\em Dump all names of the attributes of the \hyperlink{structElement}{Element}. \item\end{CompactList}\item 
+void \hyperlink{xmlParse_8c_32f2b211ac0b5b7410d819cffb2c671a}{xml\_\-setWarnings} (int value)
+\begin{CompactList}\small\item\em Set the warning level. \item\end{CompactList}\item 
+void \hyperlink{xmlParse_8c_4fabfe8316e1485d3b14038f858b5b38}{xmlEmsg} (char $\ast$msg)
+\item 
+\hypertarget{xmlParse_8c_0d1062e1311cd617654b859f5f646d0c}{
+void \textbf{xml\_\-dumpXMLpublic} (handle\_\-t elem\_\-h, int level, int indent, FILE $\ast$fd)}
+\label{xmlParse_8c_0d1062e1311cd617654b859f5f646d0c}
+
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structStack}{Stack} $\ast$ \hyperlink{xmlParse_8c_8972288a8eaa6d5249e562915527a958}{element\_\-stack} = NULL
+\item 
+\hypertarget{xmlParse_8c_17c622d0701ccf77013352291113b025}{
+\hyperlink{structElement}{Element} $\ast$ \textbf{xml\_\-struct} = NULL}
+\label{xmlParse_8c_17c622d0701ccf77013352291113b025}
+
+\item 
+\hypertarget{xmlParse_8c_63a3a8e852a2f68f1d9132ba2efa8241}{
+char $\ast$ \textbf{xmlELevel} = \char`\"{}\char`\"{}}
+\label{xmlParse_8c_63a3a8e852a2f68f1d9132ba2efa8241}
+
+\item 
+\hypertarget{xmlParse_8c_8bbdd6e1168fba458e6f3714a4adec23}{
+int \textbf{xmlWarn} = 0}
+\label{xmlParse_8c_8bbdd6e1168fba458e6f3714a4adec23}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Public interface procedures for the XML parser. 
+
+XMLPARSE.C -- Public interface procedures for the XML parser.
+
+\begin{Desc}
+\item[Author:]Mike Fitzpatrick and Eric Timmermann and Ken Mighell \end{Desc}
+\begin{Desc}
+\item[Date:]8/03/09 
+
+8/18/14 KJM: fixed bug in function deWS() \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{xmlParse_8c_0923f90956af2788adbe999bdb96ba14}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-attachNode@{xml\_\-attachNode}}
+\index{xml\_\-attachNode@{xml\_\-attachNode}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-attachNode}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-attachNode (handle\_\-t {\em parent}, \/  handle\_\-t {\em new})}}
+\label{xmlParse_8c_0923f90956af2788adbe999bdb96ba14}
+
+
+Adds a node as a child of parent. 
+
+xml\_\-attachNode -- Adds a node as a child of parent.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em parent}]A handle to the \hyperlink{structElement}{Element} that you want to add a node to \item[{\em new}]A handle to the \hyperlink{structElement}{Element} that you want to add \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParse_8c_98488c168a4b9a6874d3565b6785148d}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-closeXML@{xml\_\-closeXML}}
+\index{xml\_\-closeXML@{xml\_\-closeXML}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-closeXML}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-closeXML (handle\_\-t {\em xml})}}
+\label{xmlParse_8c_98488c168a4b9a6874d3565b6785148d}
+
+
+Destroy the root node and all of it's children. 
+
+xml\_\-closeXML -- Destroy the root node and all of it's children.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em xml}]A handle to the \hyperlink{structElement}{Element} that you want deleted \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing\end{Desc}
+\begin{Desc}
+\item[Warning:]Destroys the node and all of it's children. \end{Desc}
+\hypertarget{xmlParse_8c_61e339855aadbfed6f61aa85dfc27ce7}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-copyElement@{xml\_\-copyElement}}
+\index{xml\_\-copyElement@{xml\_\-copyElement}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-copyElement}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-copyElement (handle\_\-t {\em src\_\-h}, \/  handle\_\-t {\em parent\_\-h})}}
+\label{xmlParse_8c_61e339855aadbfed6f61aa85dfc27ce7}
+
+
+Adds a node as a child of parent. 
+
+xml\_\-copyElement -- Adds a node as a child of parent.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src\_\-h}]A handle to the \hyperlink{structElement}{Element} to copy \item[{\em parent\_\-h}]A handle to the Elements parent \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle\_\-t of the copy of the structure \end{Desc}
+\hypertarget{xmlParse_8c_fc610e5c309ced89efddb83ae5a12f1a}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-deleteNode@{xml\_\-deleteNode}}
+\index{xml\_\-deleteNode@{xml\_\-deleteNode}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-deleteNode}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-deleteNode (handle\_\-t {\em element})}}
+\label{xmlParse_8c_fc610e5c309ced89efddb83ae5a12f1a}
+
+
+Destroys the node and all of it's children. 
+
+xml\_\-deleteNode -- Destroys the node and all of it's children.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em element}]A handle to the \hyperlink{structElement}{Element} that you want deleted \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParse_8c_82fd0812c5d865a09eff67d462d18c50}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-dumpAllAttr@{xml\_\-dumpAllAttr}}
+\index{xml\_\-dumpAllAttr@{xml\_\-dumpAllAttr}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-dumpAllAttr}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-dumpAllAttr (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_82fd0812c5d865a09eff67d462d18c50}
+
+
+Dump all information about the attributes of the \hyperlink{structElement}{Element}. 
+
+xml\_\-dumpAllAttr -- Dump all information about the attributes of the \hyperlink{structElement}{Element}
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string with names and value pairs of all the attributes of the \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParse_8c_6fff93b995827a63c96e05e65580d446}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-dumpNamesAttr@{xml\_\-dumpNamesAttr}}
+\index{xml\_\-dumpNamesAttr@{xml\_\-dumpNamesAttr}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-dumpNamesAttr}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-dumpNamesAttr (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_6fff93b995827a63c96e05e65580d446}
+
+
+Dump all names of the attributes of the \hyperlink{structElement}{Element}. 
+
+xml\_\-dumpNamesAttr -- Dump all names of the attributes of the \hyperlink{structElement}{Element}
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A space-separated string with names of all the attributes of the \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParse_8c_6b20fbeb3216e59f81bd757da4121bd7}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-findByAttr@{xml\_\-findByAttr}}
+\index{xml\_\-findByAttr@{xml\_\-findByAttr}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-findByAttr}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-findByAttr (handle\_\-t {\em parent}, \/  char $\ast$ {\em name}, \/  char $\ast$ {\em value})}}
+\label{xmlParse_8c_6b20fbeb3216e59f81bd757da4121bd7}
+
+
+Get a handle to an \hyperlink{structElement}{Element} with the requested attribute. 
+
+xml\_\-findByAttr -- Get a handle to an \hyperlink{structElement}{Element} with the requested attribute.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em parent}]A handle\_\-t the parent \hyperlink{structElement}{Element} \item[{\em name}]A string holding the Value type \item[{\em value}]A string holding the Value value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The handle to the element \end{Desc}
+\hypertarget{xmlParse_8c_6fef87e812e3cb000ab16c19d22d9a74}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-freeNode@{xml\_\-freeNode}}
+\index{xml\_\-freeNode@{xml\_\-freeNode}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-freeNode}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-freeNode (handle\_\-t {\em node})}}
+\label{xmlParse_8c_6fef87e812e3cb000ab16c19d22d9a74}
+
+
+Destroys the node and all of it's children. 
+
+xml\_\-freeNode -- Destroys the node and all of it's children.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em node}]A handle to the \hyperlink{structElement}{Element} that you want deleted \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParse_8c_e0684253f1bdb5993db7ece80e5ed4ff}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getAttr@{xml\_\-getAttr}}
+\index{xml\_\-getAttr@{xml\_\-getAttr}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getAttr}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-getAttr (handle\_\-t {\em elem\_\-h}, \/  char $\ast$ {\em attr})}}
+\label{xmlParse_8c_e0684253f1bdb5993db7ece80e5ed4ff}
+
+
+Return the attribute for the \hyperlink{structElement}{Element}. 
+
+xml\_\-getAttr -- Return the attribute for the \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \item[{\em attr}]A string holding the attribute name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string of the value or the attr \end{Desc}
+\hypertarget{xmlParse_8c_a23bcbbde95f81e31fe311e6d7e843e4}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getChild@{xml\_\-getChild}}
+\index{xml\_\-getChild@{xml\_\-getChild}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getChild}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getChild (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_a23bcbbde95f81e31fe311e6d7e843e4}
+
+
+Return a handle\_\-t of the child \hyperlink{structElement}{Element}. 
+
+xml\_\-getChild -- Return a handle\_\-t of the child \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle of the child \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParse_8c_e872314b06cbed0e936bcbf3c8fe29e8}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getChildOfType@{xml\_\-getChildOfType}}
+\index{xml\_\-getChildOfType@{xml\_\-getChildOfType}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getChildOfType}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getChildOfType (handle\_\-t {\em elem\_\-h}, \/  int {\em type})}}
+\label{xmlParse_8c_e872314b06cbed0e936bcbf3c8fe29e8}
+
+
+Get the handle of the next \hyperlink{structElement}{Element} of the same type. 
+
+xml\_\-getChildOfType -- Get the handle of the next \hyperlink{structElement}{Element} of the same type.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \item[{\em type}]An integer of the \hyperlink{structElement}{Element} type for find \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle of the \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParse_8c_8e1b8010b7cde3b10e6c256243cd8f1c}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getLength@{xml\_\-getLength}}
+\index{xml\_\-getLength@{xml\_\-getLength}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getLength}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-getLength (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_8e1b8010b7cde3b10e6c256243cd8f1c}
+
+
+Return the number of sibling Elements of the same type. 
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Utility methods xml\_\-getLength -- Return the number of sibling Elements of the same type.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The status of the set \end{Desc}
+\hypertarget{xmlParse_8c_06fccd6745e978e776fbad03e9076bd7}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getNext@{xml\_\-getNext}}
+\index{xml\_\-getNext@{xml\_\-getNext}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getNext}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getNext (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_06fccd6745e978e776fbad03e9076bd7}
+
+
+Return a handle\_\-t of the next \hyperlink{structElement}{Element} of the same type. 
+
+xml\_\-getNext -- Return a handle\_\-t of the next \hyperlink{structElement}{Element} of the same type.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle of the next \hyperlink{structElement}{Element} of the same type \end{Desc}
+\hypertarget{xmlParse_8c_7348fad5c7be72f398031008b9ecb4f0}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getNumberOf@{xml\_\-getNumberOf}}
+\index{xml\_\-getNumberOf@{xml\_\-getNumberOf}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getNumberOf}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-getNumberOf (handle\_\-t {\em elem\_\-h}, \/  int {\em type})}}
+\label{xmlParse_8c_7348fad5c7be72f398031008b9ecb4f0}
+
+
+Return the number of sibling Elements of the type. 
+
+xml\_\-getNumberOf -- Return the number of sibling Elements of the type.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \item[{\em type}]An int of the type of element you wish to count \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The status of the set \end{Desc}
+\hypertarget{xmlParse_8c_d26eb7338e305f3c53023e959fcc3680}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getParent@{xml\_\-getParent}}
+\index{xml\_\-getParent@{xml\_\-getParent}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getParent}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getParent (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_d26eb7338e305f3c53023e959fcc3680}
+
+
+Return the handle of the parent \hyperlink{structElement}{Element}. 
+
+xml\_\-getParent -- Return the handle of the parent \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle of the paretn \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParse_8c_d952980bf5fbd1b8afa4b6c7e26c3b8f}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getSibling@{xml\_\-getSibling}}
+\index{xml\_\-getSibling@{xml\_\-getSibling}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getSibling}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getSibling (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_d952980bf5fbd1b8afa4b6c7e26c3b8f}
+
+
+Return a handle\_\-t of the next \hyperlink{structElement}{Element}. 
+
+xml\_\-getSibling -- Return a handle\_\-t of the next signling \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle of the next \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParse_8c_cf4a0552f2da6858cd3c1c531e649fd2}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-getValue@{xml\_\-getValue}}
+\index{xml\_\-getValue@{xml\_\-getValue}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-getValue}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-getValue (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_cf4a0552f2da6858cd3c1c531e649fd2}
+
+
+Get the Value for the ELEMENT. 
+
+xml\_\-getValue -- Get the Value for the ELEMENT.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the ELEMENT \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string of the value or the Value \end{Desc}
+\hypertarget{xmlParse_8c_b31cfbb81925f1f4f34dfdd831e4178a}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-newNode@{xml\_\-newNode}}
+\index{xml\_\-newNode@{xml\_\-newNode}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-newNode}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-newNode (handle\_\-t {\em parent}, \/  int {\em type})}}
+\label{xmlParse_8c_b31cfbb81925f1f4f34dfdd831e4178a}
+
+
+Creates a new blank unlinked node. 
+
+xml\_\-newNode -- Creates a new blank unlinked node.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em parent}]A handle to the \hyperlink{structElement}{Element} that you want to add a node to \item[{\em type}]The type of node you wish to create \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle to the created node \end{Desc}
+\hypertarget{xmlParse_8c_285e1a64e73aeaf55c5659c83362ce1e}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-openXML@{xml\_\-openXML}}
+\index{xml\_\-openXML@{xml\_\-openXML}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-openXML}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-openXML (char $\ast$ {\em arg})}}
+\label{xmlParse_8c_285e1a64e73aeaf55c5659c83362ce1e}
+
+
+Parse an XML document and return a handle to it. 
+
+xml\_\-openXML -- Parse an XML document and return a handle to it
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em arg}]The source of the table \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The root node handle of the VOTable \end{Desc}
+
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Create an empty, but valid, DOM tree.
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Download the URL and process the result.
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Get the input from stdin.
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Process a local file URI.
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Process a local file pathname.
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Process an input argument is XML string\hypertarget{xmlParse_8c_b99b3a43bf2ad2eb34bd39aa5b0e1333}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-setAttr@{xml\_\-setAttr}}
+\index{xml\_\-setAttr@{xml\_\-setAttr}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-setAttr}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-setAttr (handle\_\-t {\em elem\_\-h}, \/  char $\ast$ {\em attr}, \/  char $\ast$ {\em value})}}
+\label{xmlParse_8c_b99b3a43bf2ad2eb34bd39aa5b0e1333}
+
+
+Set the attribute for the \hyperlink{structElement}{Element}. 
+
+xml\_\-setAttr -- Set the attribute for the \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \item[{\em attr}]A string holding the attribute name \item[{\em value}]A string holding the attribute value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The status of the set \end{Desc}
+\hypertarget{xmlParse_8c_87ba30eba49ce505135445f2af7ad92f}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-setValue@{xml\_\-setValue}}
+\index{xml\_\-setValue@{xml\_\-setValue}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-setValue}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-setValue (handle\_\-t {\em elem\_\-h}, \/  char $\ast$ {\em value})}}
+\label{xmlParse_8c_87ba30eba49ce505135445f2af7ad92f}
+
+
+Set the Value for the ELEMENT. 
+
+xml\_\-setValue -- Set the Value for the ELEMENT.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the ELEMENT \item[{\em value}]A string holding the value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The status of the set \end{Desc}
+\hypertarget{xmlParse_8c_32f2b211ac0b5b7410d819cffb2c671a}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-setWarnings@{xml\_\-setWarnings}}
+\index{xml\_\-setWarnings@{xml\_\-setWarnings}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-setWarnings}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-setWarnings (int {\em value})}}
+\label{xmlParse_8c_32f2b211ac0b5b7410d819cffb2c671a}
+
+
+Set the warning level. 
+
+xml\_\-setWarnings -- Set the warning level.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em value}]Warning level \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParse_8c_7c05bf0924f9112ae7bd7cec6116d401}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-typeOf@{xml\_\-typeOf}}
+\index{xml\_\-typeOf@{xml\_\-typeOf}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-typeOf}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-typeOf (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_7c05bf0924f9112ae7bd7cec6116d401}
+
+
+Return type of the \hyperlink{structElement}{Element}. 
+
+xml\_\-typeOf -- Return type of the \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An integer of the type \end{Desc}
+\hypertarget{xmlParse_8c_bb93b6563b56a8c47fc644a1f3579c79}{
+\index{xmlParse.c@{xmlParse.c}!xml\_\-valueOf@{xml\_\-valueOf}}
+\index{xml\_\-valueOf@{xml\_\-valueOf}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xml\_\-valueOf}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-valueOf (handle\_\-t {\em elem\_\-h})}}
+\label{xmlParse_8c_bb93b6563b56a8c47fc644a1f3579c79}
+
+
+Return type of the \hyperlink{structElement}{Element}. 
+
+xml\_\-valueOf -- Return type of the \hyperlink{structElement}{Element}.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem\_\-h}]A handle\_\-t the \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An integer of the type \end{Desc}
+\hypertarget{xmlParse_8c_4fabfe8316e1485d3b14038f858b5b38}{
+\index{xmlParse.c@{xmlParse.c}!xmlEmsg@{xmlEmsg}}
+\index{xmlEmsg@{xmlEmsg}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{xmlEmsg}]{\setlength{\rightskip}{0pt plus 5cm}void xmlEmsg (char $\ast$ {\em msg})}}
+\label{xmlParse_8c_4fabfe8316e1485d3b14038f858b5b38}
+
+
+xmlEmsg -- Error message print utility. 
+
+\subsection{Variable Documentation}
+\hypertarget{xmlParse_8c_8972288a8eaa6d5249e562915527a958}{
+\index{xmlParse.c@{xmlParse.c}!element\_\-stack@{element\_\-stack}}
+\index{element\_\-stack@{element\_\-stack}!xmlParse.c@{xmlParse.c}}
+\subsubsection[{element\_\-stack}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Stack}$\ast$ {\bf element\_\-stack} = NULL}}
+\label{xmlParse_8c_8972288a8eaa6d5249e562915527a958}
+
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Public Interface
+
+xml = xml\_\-openXML (filename$|$str$|$NULL) xml\_\-closeXML (xml)
+
+handle = xml\_\-newNode (parent, type) xml\_\-freeNode (node) xml\_\-deleteNode (node) xml\_\-attachNode (parent, new) handle = xml\_\-copyElement (handle\_\-t source\_\-h, handle\_\-t parent\_\-h)
+
+val = xml\_\-getValue (handle) stat = xml\_\-setValue (handle, value)
+
+attr = xml\_\-getAttr (handle, attr) stat = xml\_\-setAttr (handle, attr, value)
+
+len = xml\_\-getLength (elem\_\-h) N = xml\_\-getNumberOf (elem\_\-h, type)
+
+handle = xml\_\-findByAttr (parent, name, value) handle $\ast$xml\_\-findInGroup (group, type) handle = xml\_\-getNext (handle) handle = xml\_\-getSibling (handle) handle = xml\_\-getChild (handle) handle = xml\_\-getParent (handle) handle = xml\_\-getChildOfType (handle, int type)
+
+int = xml\_\-valueOf (handle) type = xml\_\-typeOf (handle) xml\_\-setWarnings (value) 

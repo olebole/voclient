@@ -1,0 +1,5 @@
+#!/bin/csh -f
+
+scp $1 tucana.tuc.noao.edu:voc/libvotable/
+scp $1 tucana.tuc.noao.edu:vao/voc.svn/libvotable/
+scp $1 tucana.tuc.noao.edu:vao/voc.svn/../rel/1.0/libvotable/

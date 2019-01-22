@@ -1,0 +1,164 @@
+\hypertarget{vocServer_8h}{
+\section{vocServer.h File Reference}
+\label{vocServer_8h}\index{vocServer.h@{vocServer.h}}
+}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structmsgParam}{msgParam}
+\item 
+struct \hyperlink{structmsgResult}{msgResult}
+\item 
+struct \textbf{svrMethod}
+\item 
+struct \textbf{Resolver}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{vocServer_8h_885a6481fc6d474d0be18bc0facf648d}{
+\#define \textbf{MAX\_\-PARAMS}~16}
+\label{vocServer_8h_885a6481fc6d474d0be18bc0facf648d}
+
+\item 
+\hypertarget{vocServer_8h_dedf236e9f6f8f120678be24a2f543f4}{
+\#define \textbf{SZ\_\-MSG}~512}
+\label{vocServer_8h_dedf236e9f6f8f120678be24a2f543f4}
+
+\item 
+\hypertarget{vocServer_8h_412f6e8f0db8980030a0e1790a9b81ab}{
+\#define \textbf{SVR\_\-DEBUG}~(getenv(\char`\"{}SVR\_\-DBG\char`\"{})$|$$|$access(\char`\"{}/tmp/SVR\_\-DBG\char`\"{},F\_\-OK)==0)}
+\label{vocServer_8h_412f6e8f0db8980030a0e1790a9b81ab}
+
+\item 
+\hypertarget{vocServer_8h_82265706e29001e49c47f7dd33b54ae6}{
+\#define \textbf{SVR\_\-VERB}~(getenv(\char`\"{}SVR\_\-VERB\char`\"{})$|$$|$access(\char`\"{}/tmp/SVR\_\-VERB\char`\"{},F\_\-OK)==0)}
+\label{vocServer_8h_82265706e29001e49c47f7dd33b54ae6}
+
+\item 
+\#define \hyperlink{vocServer_8h_e10ee7bb673fc8cd38171b9c82d2e06a}{\_\-SVR\_\-METHOD\_\-SIG\_\-}~(int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars);
+\item 
+\hypertarget{vocServer_8h_dd1915496aa7d3084af44ffab12dd33d}{
+\#define \textbf{MAX\_\-SESAME\_\-ALIASES}~16}
+\label{vocServer_8h_dd1915496aa7d3084af44ffab12dd33d}
+
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+\hypertarget{vocServer_8h_5ad7d32f3a1ddabdc2933223ca6ce2ea}{
+typedef int \textbf{handle\_\-t}}
+\label{vocServer_8h_5ad7d32f3a1ddabdc2933223ca6ce2ea}
+
+\item 
+\hypertarget{vocServer_8h_202a6ad4970b4686e4fe6764a37cc8e3}{
+typedef struct \hyperlink{structmsgParam}{msgParam} $\ast$ \textbf{msgParamP}}
+\label{vocServer_8h_202a6ad4970b4686e4fe6764a37cc8e3}
+
+\item 
+\hypertarget{vocServer_8h_dbca083d539a73295a44140468fb4704}{
+typedef struct \hyperlink{structmsgResult}{msgResult} $\ast$ \textbf{msgResultP}}
+\label{vocServer_8h_dbca083d539a73295a44140468fb4704}
+
+\item 
+\hypertarget{vocServer_8h_0f118e86084a362f6b818a99ca85c51c}{
+typedef struct Resolver $\ast$ \textbf{ResolverP}}
+\label{vocServer_8h_0f118e86084a362f6b818a99ca85c51c}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{vocServer_8h_36569b9fe5f19348fd1116f0fd12677a}{
+vocRes\_\-t $\ast$ \textbf{svr\_\-processMsg} (vocMsg\_\-t $\ast$msg)}
+\label{vocServer_8h_36569b9fe5f19348fd1116f0fd12677a}
+
+\item 
+char $\ast$ \hyperlink{vocServer_8h_c76f93758cbe3816a8d5bfb631c20a34}{svr\_\-urlEncode} (char $\ast$str)
+\item 
+char $\ast$ \hyperlink{vocServer_8h_a4404a5d071e109e43b72cff311f2184}{svr\_\-encIntResult} (int status, int nitems, int val)
+\item 
+\hypertarget{vocServer_8h_db1afb06f9dd457090c06d4e2c343bbc}{
+char $\ast$ \textbf{svr\_\-getURL} (char $\ast$url)}
+\label{vocServer_8h_db1afb06f9dd457090c06d4e2c343bbc}
+
+\item 
+int \hyperlink{vocServer_8h_d9164240aeb72ec6d1ba894003c35311}{svr\_\-fileRead} (int fd, void $\ast$vptr, int nbytes)
+\begin{CompactList}\small\item\em Read exactly \char`\"{}n\char`\"{} bytes from a file descriptor. \item\end{CompactList}\item 
+int \hyperlink{vocServer_8h_821ae0d41ef92732aa0660975b45aeb3}{svr\_\-fileWrite} (int fd, void $\ast$vptr, int nbytes)
+\begin{CompactList}\small\item\em Write exactly \char`\"{}n\char`\"{} bytes to a file descriptor. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+VOCSERVER.H -- Include file for the \char`\"{}Mini Daemon\char`\"{} server.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]April 2013 \end{Desc}
+
+
+\subsection{Define Documentation}
+\hypertarget{vocServer_8h_e10ee7bb673fc8cd38171b9c82d2e06a}{
+\index{vocServer.h@{vocServer.h}!\_\-SVR\_\-METHOD\_\-SIG\_\-@{\_\-SVR\_\-METHOD\_\-SIG\_\-}}
+\index{\_\-SVR\_\-METHOD\_\-SIG\_\-@{\_\-SVR\_\-METHOD\_\-SIG\_\-}!vocServer.h@{vocServer.h}}
+\subsubsection[{\_\-SVR\_\-METHOD\_\-SIG\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-SVR\_\-METHOD\_\-SIG\_\-~(int objid, {\bf msgParam} $\ast$pars, int npars);}}
+\label{vocServer_8h_e10ee7bb673fc8cd38171b9c82d2e06a}
+
+
+Server method structure. 
+
+\subsection{Function Documentation}
+\hypertarget{vocServer_8h_a4404a5d071e109e43b72cff311f2184}{
+\index{vocServer.h@{vocServer.h}!svr\_\-encIntResult@{svr\_\-encIntResult}}
+\index{svr\_\-encIntResult@{svr\_\-encIntResult}!vocServer.h@{vocServer.h}}
+\subsubsection[{svr\_\-encIntResult}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ svr\_\-encIntResult (int {\em status}, \/  int {\em nitems}, \/  int {\em val})}}
+\label{vocServer_8h_a4404a5d071e109e43b72cff311f2184}
+
+
+SVR\_\-ENCINTRESULT -- Encode and integer result. \hypertarget{vocServer_8h_d9164240aeb72ec6d1ba894003c35311}{
+\index{vocServer.h@{vocServer.h}!svr\_\-fileRead@{svr\_\-fileRead}}
+\index{svr\_\-fileRead@{svr\_\-fileRead}!vocServer.h@{vocServer.h}}
+\subsubsection[{svr\_\-fileRead}]{\setlength{\rightskip}{0pt plus 5cm}int svr\_\-fileRead (int {\em fd}, \/  void $\ast$ {\em vptr}, \/  int {\em nbytes})}}
+\label{vocServer_8h_d9164240aeb72ec6d1ba894003c35311}
+
+
+Read exactly \char`\"{}n\char`\"{} bytes from a file descriptor. 
+
+SVR\_\-FILEREAD -- Read exactly \char`\"{}n\char`\"{} bytes from a file descriptor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fd}]file descriptor \item[{\em vptr}]data buffer to be written \item[{\em nbytes}]number of bytes to write \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of bytes written \end{Desc}
+\hypertarget{vocServer_8h_821ae0d41ef92732aa0660975b45aeb3}{
+\index{vocServer.h@{vocServer.h}!svr\_\-fileWrite@{svr\_\-fileWrite}}
+\index{svr\_\-fileWrite@{svr\_\-fileWrite}!vocServer.h@{vocServer.h}}
+\subsubsection[{svr\_\-fileWrite}]{\setlength{\rightskip}{0pt plus 5cm}int svr\_\-fileWrite (int {\em fd}, \/  void $\ast$ {\em vptr}, \/  int {\em nbytes})}}
+\label{vocServer_8h_821ae0d41ef92732aa0660975b45aeb3}
+
+
+Write exactly \char`\"{}n\char`\"{} bytes to a file descriptor. 
+
+SVR\_\-FILEWRITE -- Write exactly \char`\"{}n\char`\"{} bytes to a file descriptor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fd}]file descriptor \item[{\em vptr}]data buffer to be written \item[{\em nbytes}]number of bytes to write \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of bytes written \end{Desc}
+\hypertarget{vocServer_8h_c76f93758cbe3816a8d5bfb631c20a34}{
+\index{vocServer.h@{vocServer.h}!svr\_\-urlEncode@{svr\_\-urlEncode}}
+\index{svr\_\-urlEncode@{svr\_\-urlEncode}!vocServer.h@{vocServer.h}}
+\subsubsection[{svr\_\-urlEncode}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ svr\_\-urlEncode (char $\ast$ {\em str})}}
+\label{vocServer_8h_c76f93758cbe3816a8d5bfb631c20a34}
+
+
+SVR\_\-URLENCODE -- Returns a url-encoded version of str. Call must free() the pointer that is returned. 

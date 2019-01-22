@@ -1,0 +1,166 @@
+In file included from cvoDAL.c:115:
+../include/dalclient.h:354:1: error: unknown type name 'POS'
+POS    dal_setPos  (DAL dal_h, double c1, double c2, double size, char *frame);
+^
+cvoDAL.c:514:1: error: conflicting types for 'cvo_addServiceURL'
+cvo_addServiceURL (DAL dal, char *service_url)
+^
+cvoDAL.c:427:2: note: previous implicit declaration is here
+        cvo_addServiceURL (dal, service_url);
+        ^
+cvoDAL.c:516:5: error: use of undeclared identifier 'dalConn_t'
+    dalConn_t conn = svr_H2P (dal);     /**  NOT YET IMPLEMENTED  **/
+    ^
+cvoDAL.c:517:13: error: use of undeclared identifier 'conn'
+    strcpy (conn->baseurl, service_url);
+            ^
+/usr/include/secure/_string.h:83:27: note: expanded from macro 'strcpy'
+  __builtin___strcpy_chk (dest, src, __darwin_obsz (dest))
+                          ^
+cvoDAL.c:527:5: error: use of undeclared identifier 'dalConn_t'
+    dalConn_t conn = svr_H2P (dal);     /**  NOT YET IMPLEMENTED  **/
+    ^
+cvoDAL.c:528:13: error: use of undeclared identifier 'conn'
+    return (conn->baseurl);
+            ^
+cvoDAL.c:550:51: error: use of undeclared identifier 'ra_size'
+    Query query = dal_getConeQuery (dal, ra, dec, ra_size, dec_size, format);
+                                                  ^
+cvoDAL.c:805:1: error: conflicting types for 'cvo_floatValue'
+cvo_floatValue (QRAttribute v)
+^
+cvoDAL.c:784:14: note: previous implicit declaration is here
+    return ( cvo_floatValue ( cvo_getAttribute (rec, attrname)) );
+             ^
+cvoDAL.c:813:1: error: conflicting types for 'cvo_stringValue'
+cvo_stringValue (QRAttribute v)
+^
+cvoDAL.c:788:14: note: previous implicit declaration is here
+    return ( cvo_stringValue ( cvo_getAttribute (rec, attrname)) );
+             ^
+9 errors generated.
+
+
+
+
+
+cvoSesame.c:138:17: warning: Potential leak of memory pointed to by 'sesame'
+        return (sr);
+                ^~
+1 warning generated.
+svrUtil.c:87:9: warning: Null pointer argument in call to memory copy function
+        memcpy (&(mem->memory[mem->size]), ptr, realsize);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/secure/_string.h:65:3: note: expanded from macro 'memcpy'
+  __builtin___memcpy_chk (dest, src, len, __darwin_obsz0 (dest))
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+svrUtil.c:135:2: warning: Null pointer argument in call to memory copy function
+        memcpy (data, chunk.memory, chunk.size);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/secure/_string.h:65:3: note: expanded from macro 'memcpy'
+  __builtin___memcpy_chk (dest, src, len, __darwin_obsz0 (dest))
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+
+
+
+vocDAL.c:184:19: warning: Call to 'open' requires a third argument when the 'O_CREAT' flag is set
+        if ((fd = open (file, O_CREAT|O_TRUNC|O_WRONLY)) < 0) {
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vocDAL.c:257:19: warning: Call to 'open' requires a third argument when the 'O_CREAT' flag is set
+        if ((fd = open (file, O_CREAT|O_TRUNC|O_WRONLY)) < 0) {
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vocDAL.c:331:19: warning: Call to 'open' requires a third argument when the 'O_CREAT' flag is set
+        if ((fd = open (file, O_CREAT|O_TRUNC|O_WRONLY)) < 0) {
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vocDAL.c:1405:9: warning: Potential leak of memory pointed to by 'fname'
+    if (msg_sendRawMsg (vo->io_chan, msg) != ERR) {
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+
+
+
+vocDAL_spp.c:732:5: warning: Argument to free() is the address of a global variable, which is not memory allocated by malloc()
+    free ((char *) _attr);
+    ^~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+
+
+
+vocLib.c:199:11: warning: Access to field 'quiet' results in a dereference of a null pointer (loaded from variable 'vopt')
+            if (!vopt->quiet)
+                 ^~~~~~~~~~~
+vocLib.c:614:24: warning: Dereference of null pointer (loaded from variable 'ip')
+    for (i=0; isdigit (*ip); i++, ip++)
+                       ^~~
+vocLib.c:767:2: warning: Value stored to 'len' is never read
+        len = strlen (val);
+        ^     ~~~~~~~~~~~~
+vocLib.c:887:18: warning: Potential leak of memory pointed to by 'path'
+        return ((char *)NULL);
+                        ^~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include/stddef.h:77:24: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+                       ^
+4 warnings generated.
+
+
+
+vocMsg.c:390:18: warning: Assigned value is garbage or undefined
+            res->buflen = len;
+                        ^ ~~~
+vocMsg.c:435:9: warning: Access to field 'type' results in a dereference of a null pointer (loaded from variable 'res')
+    if (res->type == TY_BULK) {
+        ^~~~~~~~~
+vocMsg.c:437:2: warning: Value stored to 'stat' is never read
+        stat = msg_readBulkToFile (fd, fname, overwrite, nbytes, &res->buflen);
+        ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vocMsg.c:710:6: warning: Value stored to 'n' is never read
+            n = ( (maxbytes < n) ? maxbytes : n);
+            ^   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vocMsg.c:762:6: warning: Value stored to 'nleft' is never read
+            nleft = 0;
+            ^       ~
+vocMsg.c:848:6: warning: Value stored to 'dp' is never read
+            dp      += (nread - 3);
+            ^          ~~~~~~~~~~~
+vocMsg.c:1092:10: warning: Value stored to 'i' is never read
+    for (i=0; *op && !isspace (*op); ) {
+         ^ ~
+7 warnings generated.
+
+
+
+vocRegistry.c:650:9: warning: Value stored to 'ip' during its initialization is never read
+                char *ip = val;
+                      ^~   ~~~
+1 warning generated.
+
+
+
+vocServer.c:103:5: warning: Value stored to 'msglen' is never read
+    msglen = strlen (msg->message);
+    ^        ~~~~~~~~~~~~~~~~~~~~~
+vocServer.c:112:5: warning: Value stored to 'tok' is never read
+    tok = strtok (NULL, " ");                   /* skip opening brace   */
+    ^     ~~~~~~~~~~~~~~~~~~
+vocServer.c:147:2: warning: Value stored to 'msgclass' is never read
+        msgclass = strtok (NULL, " ");
+        ^          ~~~~~~~~~~~~~~~~~~
+vocServer.c:148:2: warning: Value stored to 'str' is never read
+        str      = strtok (NULL, " ");
+        ^          ~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+
+
+
+vocSesame.c:372:31: warning: Dereference of null pointer (loaded from variable 'ip')
+    for (ip=target, op=fname; *ip; ip++) 
+                              ^~~
+vocSesame.c:385:5: warning: Potential memory leak
+    fprintf (fd, "%s: %s %f %f %.2f %.2f %s\n", 
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vocSesame.c:388:15: warning: Potential memory leak
+        (obj->ra   = voc_resolverRA (sr)),
+                     ^~~~~~~~~~~~~~~~~~~
+3 warnings generated.

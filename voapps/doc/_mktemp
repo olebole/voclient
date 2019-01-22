@@ -1,0 +1,13 @@
+#!/bin/csh -f
+#
+#  MKTEMP -- Utility script to make a template man page.
+#
+#  Usage:	% mktemp <taskname>
+#
+#  Mike Fitzpatrick, NOAO, Nov 2011
+
+
+set  tlc = $1
+set  Tlc = `echo $1 | tr a-z A-Z`
+
+cat _template | sed -e "s/task/${tlc}/g" -e "s/TASK/${Tlc}/g" > $1.man

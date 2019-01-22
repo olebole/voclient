@@ -1,0 +1,24 @@
+
+
+Return Thingies....
+
+    Blobs:
+      Text:
+	arbitrary strings (e.g. table statistics)
+      Images
+	FITS/JPEG images
+      Tables
+	VOTables
+	CSV, ascii, etc
+
+    Registry:
+	SimpleResource
+
+    Sesame:
+	Sesame results
+
+
+Input Thingies:
+    FIle Names/Image Names/URLs
+    Text files (strings, list of strings)
+    VOTables

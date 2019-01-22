@@ -1,0 +1,90 @@
+
+VOClient v2.0 Architecture
+
+	The original VOClient API consisted of two main components:  A
+C-based API code that defined a client service interface, and a Java-based
+'daemon' executing in a separate process that implemented the needed VO
+capabilities.  The C interface constructs messages sent over a private RPC
+channel to the Java daemon which returns language independent 'handles' to
+the created objects that may be used later to walk a result set, retrieve a
+table element, etc.  The daemon is able to accept connections from multiple
+clients much as a database daemon would.  Client applications talk only to
+the C-based API and don't know how the functionality is implemented.
+
+Graphically this looks as:
+
+    Client               VOClient API                   VOClient Daemon
+   +==============================================+
+   |  +----+      +----------------------------+  |
+   |  | V  |<-----|-> voc_foo ()               |  |
+   |  | O  |      |      |                     |  |
+   |  |    |      |      <-> msg_foo ()        |  |
+   |  | A  |      |             |              |  |     +-----------------+
+   |  | P  |      |             +<----------------|---->| VOClient Daemon |
+   |  | P  |      |               RPC Message  |  |     +-----------------+
+   |  +----+      +----------------------------+  |
+   +==============================================+
+
+
+
+	In the updated architecture we want to remove the dependency on a
+Java daemon in order to support projects that rely only on C-based code.
+This requires us to implement the functionality that is currently in the
+Java daemon in C directly.  We do this with by creating two logical
+interfaces in the core VOClient library:
+
+      VOC	The existing (but updated) API.  Methods in this interface
+		primarily send messages to the daemon and return a result
+		handle or std int/float/char datatype.
+
+      CVO	Provides the same API signatures but implements the
+		functionality directly with calls to cURL, libvotable, etc.
+
+
+
+	Client applications then use the VOC interface as before, but we 
+allow a runtime selection of whether to use an external daemon by either
+processing the message in the client process by calling the CVO interface, 
+or passing the message over RPC to the daemon (either the Java version or
+a C version built from the CVO interface).
+
+
+    Client               VOClient API                       VOClient Daemon
+ +================================================+
+ |  +----+      +------------------------------+  |
+ |  |    |------|-> voc_foo ()                 |  |
+ |  | V  |      |      |                       |  |
+ |  | O  |      |      +-> msg_foo ()          |  |
+ |  | A  |      |             +-> cvo_foo()    |  |       +----------------+
+ |  | p  |      |             |   [inline]     |  |       | Java Version   |
+ |  | p  |      |             or               |  |     / +----------------+
+ |  |    |      |             +-------------------|-->|
+ |  |    |      |             |   RPC Message  |  |     \ +-------------------+
+ |  |    |      |                              |  |       | C Version         |
+ |  +----+      +------------------------------+  |       |    |              |
+ |                                                |       |    +-> cvo_foo()  |
+ |                                                |       +-------------------+
+ +================================================+
+
+
+
+	Alternatively, we can use the CVO interface directly as a
+compile-time option, i.e. clients still call the VOC interface, however we
+compile with a "-DVOC_INLINE" flag that triggers #define code in the
+<VOClient.h> to call the CVO interface (which shares the same method signature).
+
+        Client               VOClient API
+        +================================================+
+        |  +----+      +------------------------------+  |
+        |  | V  |      |                              |  |
+        |  | O  |      |                              |  |
+        |  |    |<-----|-> cvo_foo ()                 |  |
+        |  | A  |      |                              |  |
+        |  | p  |      |                              |  |
+        |  | p  |      |                              |  |
+        |  +----+      +------------------------------+  |
+        +================================================+
+
+
+
+

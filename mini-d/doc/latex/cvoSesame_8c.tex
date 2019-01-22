@@ -1,0 +1,254 @@
+\hypertarget{cvoSesame_8c}{
+\section{cvoSesame.c File Reference}
+\label{cvoSesame_8c}\index{cvoSesame.c@{cvoSesame.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$dirent.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structObject}{Object}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{cvoSesame_8c_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{cvoSesame_8c_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{cvoSesame_8c_1a1f0b0dca16cd463d7eb0b4abe6a496}{
+\#define \textbf{SESAME\_\-TRACE}~(getenv(\char`\"{}SESAME\_\-TRACE\char`\"{})$|$$|$access(\char`\"{}/tmp/SESAME\_\-TRACE\char`\"{},F\_\-OK)==0)}
+\label{cvoSesame_8c_1a1f0b0dca16cd463d7eb0b4abe6a496}
+
+\item 
+\hypertarget{cvoSesame_8c_cdc7844fbd4d45737d4aa56834d37829}{
+\#define \textbf{MAX\_\-OBJECTS}~128}
+\label{cvoSesame_8c_cdc7844fbd4d45737d4aa56834d37829}
+
+\item 
+\hypertarget{cvoSesame_8c_2e97c1de9ed6a4c34b8731fed4b2e624}{
+\#define \textbf{SZ\_\-TARGET}~128}
+\label{cvoSesame_8c_2e97c1de9ed6a4c34b8731fed4b2e624}
+
+\item 
+\hypertarget{cvoSesame_8c_17a0e6f497147bd48362ced110d46739}{
+\#define \textbf{SESAME\_\-URL}~\char`\"{}http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxp/NSV?\char`\"{}}
+\label{cvoSesame_8c_17a0e6f497147bd48362ced110d46739}
+
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+\hypertarget{cvoSesame_8c_867c408546a8562a552a59405804f607}{
+typedef struct \hyperlink{structObject}{Object} $\ast$ \textbf{ObjectPtr}}
+\label{cvoSesame_8c_867c408546a8562a552a59405804f607}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+handle\_\-t \hyperlink{cvoSesame_8c_a5877ff2df8aba4c1e406b5038fb2ff8}{svr\_\-newHandle} (int context, void $\ast$p)
+\item 
+int \hyperlink{cvoSesame_8c_549848ab6efc99d8d41f6d64eaa16130}{svr\_\-newHandleContext} (char $\ast$name, int size)
+\begin{CompactList}\small\item\em Get a new handle context. \item\end{CompactList}\item 
+void \hyperlink{cvoSesame_8c_63ae175ef0af630f86a3458de79c315f}{svr\_\-closeHandleContext} (int context)
+\begin{CompactList}\small\item\em Close a handle context. \item\end{CompactList}\item 
+\hypertarget{cvoSesame_8c_2d386fb90bae443bb36b6fcb6bc80796}{
+void $\ast$ \textbf{svr\_\-H2P} (handle\_\-t h)}
+\label{cvoSesame_8c_2d386fb90bae443bb36b6fcb6bc80796}
+
+\item 
+\hypertarget{cvoSesame_8c_01928130c54d9a765dfd2b95e22837a8}{
+handle\_\-t \textbf{svr\_\-P2H} (void $\ast$p)}
+\label{cvoSesame_8c_01928130c54d9a765dfd2b95e22837a8}
+
+\item 
+Sesame \hyperlink{cvoSesame_8c_8559ffc68f95fd9734135c72c12d0f0a}{voc\_\-isCachedObject} (char $\ast$target)
+\begin{CompactList}\small\item\em See if the requested object is in the cache. \item\end{CompactList}\item 
+\hypertarget{cvoSesame_8c_9d073ca5f9e75ddf22437f6b72d04ae9}{
+char $\ast$ \textbf{voc\_\-getCacheDir} (char $\ast$what)}
+\label{cvoSesame_8c_9d073ca5f9e75ddf22437f6b72d04ae9}
+
+\item 
+Sesame \hyperlink{cvoSesame_8c_eaa6948a4a34397f1964cccdaf56776b}{cvo\_\-cacheObject} (Sesame sr, char $\ast$target)
+\begin{CompactList}\small\item\em Store the object in the cache. \item\end{CompactList}\item 
+Sesame \hyperlink{cvoSesame_8c_2a28519027a586be31a59497825a5020}{cvo\_\-nameResolver} (char $\ast$target)
+\begin{CompactList}\small\item\em Query the CDS Sesame name resolver service. \item\end{CompactList}\item 
+\hypertarget{cvoSesame_8c_722719d9fe446273733239e0df55e178}{
+char $\ast$ \textbf{cvo\_\-resolverPos} (Sesame sr)}
+\label{cvoSesame_8c_722719d9fe446273733239e0df55e178}
+
+\item 
+\hypertarget{cvoSesame_8c_7709f593da6663db4f53c826b8da3eb8}{
+char $\ast$ \textbf{cvo\_\-resolverOtype} (Sesame sr)}
+\label{cvoSesame_8c_7709f593da6663db4f53c826b8da3eb8}
+
+\item 
+\hypertarget{cvoSesame_8c_98bd5958d10df6d3606f7492d0a989e0}{
+double \textbf{cvo\_\-resolverRA} (Sesame sr)}
+\label{cvoSesame_8c_98bd5958d10df6d3606f7492d0a989e0}
+
+\item 
+\hypertarget{cvoSesame_8c_68fb26dfe7c23bed116f728150469998}{
+double \textbf{cvo\_\-resolverRAErr} (Sesame sr)}
+\label{cvoSesame_8c_68fb26dfe7c23bed116f728150469998}
+
+\item 
+\hypertarget{cvoSesame_8c_05ea61383634305d807a899b84c45c61}{
+double \textbf{cvo\_\-resolverDEC} (Sesame sr)}
+\label{cvoSesame_8c_05ea61383634305d807a899b84c45c61}
+
+\item 
+\hypertarget{cvoSesame_8c_16d0303b89434a654babecb01a8f58d4}{
+double \textbf{cvo\_\-resolverDECErr} (Sesame sr)}
+\label{cvoSesame_8c_16d0303b89434a654babecb01a8f58d4}
+
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hypertarget{cvoSesame_8c_0632e98388af48160ced30138bcdb48c}{
+int \textbf{handle\_\-context} = 0}
+\label{cvoSesame_8c_0632e98388af48160ced30138bcdb48c}
+
+\item 
+\hypertarget{cvoSesame_8c_7675224625950c6cdd7100b4b78ade2c}{
+\hyperlink{structObject}{Object} \textbf{clientCache} \mbox{[}$\,$\mbox{]}}
+\label{cvoSesame_8c_7675224625950c6cdd7100b4b78ade2c}
+
+\item 
+\hypertarget{cvoSesame_8c_d8d847f1b70d0e2bc3da7e990ff0d317}{
+int \textbf{cacheTop}}
+\label{cvoSesame_8c_d8d847f1b70d0e2bc3da7e990ff0d317}
+
+\item 
+\hypertarget{cvoSesame_8c_e8b9013ac3d6a8f93991444d8c8c5919}{
+VOClient $\ast$ \textbf{vo}}
+\label{cvoSesame_8c_e8b9013ac3d6a8f93991444d8c8c5919}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+CVOSESAME.C -- Interface to the Sesame name resolver implementation.\hypertarget{vocSesame__spp_8c_DESCRIPTION}{}\subsection{DESCRIPTION}\label{vocSesame__spp_8c_DESCRIPTION}
+Sesame Name Resolver Interface: -------------------------------
+
+sr = cvo\_\-nameResolver (target) pos\_\-str = cvo\_\-resolverPos (sr) radeg = cvo\_\-resolverRA (sr) decdeg = cvo\_\-resolverDEC (sr) ra\_\-err = cvo\_\-resolverRAErr (sr) dec\_\-err = cvo\_\-resolverDECErr (sr) typ\_\-str = cvo\_\-resolverOtype (sr)
+
+Client programs may be written in any language that can interface to C code. Sample programs using the interface are provided as is a SWIG interface definition file. This inferface is based closely on the DAL client code produced for the 2005 NVOSS, as that interface evolves
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]December 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{cvoSesame_8c_eaa6948a4a34397f1964cccdaf56776b}{
+\index{cvoSesame.c@{cvoSesame.c}!cvo\_\-cacheObject@{cvo\_\-cacheObject}}
+\index{cvo\_\-cacheObject@{cvo\_\-cacheObject}!cvoSesame.c@{cvoSesame.c}}
+\subsubsection[{cvo\_\-cacheObject}]{\setlength{\rightskip}{0pt plus 5cm}Sesame cvo\_\-cacheObject (Sesame {\em sr}, \/  char $\ast$ {\em target})}}
+\label{cvoSesame_8c_eaa6948a4a34397f1964cccdaf56776b}
+
+
+Store the object in the cache. 
+
+CVO\_\-CACHEOBJECT -- Store the object in the cache.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sr}]handle to sesame query \item[{\em target}]target name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to cached object \end{Desc}
+\hypertarget{cvoSesame_8c_2a28519027a586be31a59497825a5020}{
+\index{cvoSesame.c@{cvoSesame.c}!cvo\_\-nameResolver@{cvo\_\-nameResolver}}
+\index{cvo\_\-nameResolver@{cvo\_\-nameResolver}!cvoSesame.c@{cvoSesame.c}}
+\subsubsection[{cvo\_\-nameResolver}]{\setlength{\rightskip}{0pt plus 5cm}handle cvo\_\-nameResolver (char $\ast$ {\em name})}}
+\label{cvoSesame_8c_2a28519027a586be31a59497825a5020}
+
+
+Query the CDS Sesame name resolver service. 
+
+NAMERESOLVER -- Query the CDS Sesame service to resolve the target name to coordinates. The query is done when creating the Sesame object, thereafter we simply query the object data.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em target}]name of target to be resolved \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Sesame Sesame object handle define SESAME\_\-URL \char`\"{}http://cdsweb.u-strasbg.fr/cgi-bin/nph-sesame/-oxp/SNVA?\char`\"{} \end{Desc}
+\hypertarget{cvoSesame_8c_63ae175ef0af630f86a3458de79c315f}{
+\index{cvoSesame.c@{cvoSesame.c}!svr\_\-closeHandleContext@{svr\_\-closeHandleContext}}
+\index{svr\_\-closeHandleContext@{svr\_\-closeHandleContext}!cvoSesame.c@{cvoSesame.c}}
+\subsubsection[{svr\_\-closeHandleContext}]{\setlength{\rightskip}{0pt plus 5cm}void svr\_\-closeHandleContext (int {\em context})}}
+\label{cvoSesame_8c_63ae175ef0af630f86a3458de79c315f}
+
+
+Close a handle context. 
+
+SVR\_\-CLOSEHANDLECONTEXT -- Close a handle context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em context}]Handle context\end{description}
+\end{Desc}
+Any pointers to external objects are simply deleted. It is up to the caller to manage any external objects. \hypertarget{cvoSesame_8c_a5877ff2df8aba4c1e406b5038fb2ff8}{
+\index{cvoSesame.c@{cvoSesame.c}!svr\_\-newHandle@{svr\_\-newHandle}}
+\index{svr\_\-newHandle@{svr\_\-newHandle}!cvoSesame.c@{cvoSesame.c}}
+\subsubsection[{svr\_\-newHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t svr\_\-newHandle (int {\em context}, \/  void $\ast$ {\em p})}}
+\label{cvoSesame_8c_a5877ff2df8aba4c1e406b5038fb2ff8}
+
+
+Public procedures \hypertarget{cvoSesame_8c_549848ab6efc99d8d41f6d64eaa16130}{
+\index{cvoSesame.c@{cvoSesame.c}!svr\_\-newHandleContext@{svr\_\-newHandleContext}}
+\index{svr\_\-newHandleContext@{svr\_\-newHandleContext}!cvoSesame.c@{cvoSesame.c}}
+\subsubsection[{svr\_\-newHandleContext}]{\setlength{\rightskip}{0pt plus 5cm}int svr\_\-newHandleContext (char $\ast$ {\em name}, \/  int {\em size})}}
+\label{cvoSesame_8c_549848ab6efc99d8d41f6d64eaa16130}
+
+
+Get a new handle context. 
+
+SVR\_\-NEWHANDLECONTEXT -- Get a new handle context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]Context name (informational only) \item[{\em size}]Max number of handles (not currently implemented) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Context number allocated\end{Desc}
+The size argument is not currently implemented and should be set to zero, which would cause a context to be created with the default size.
+
+A context number is a small integer, e.g., like a file descriptor. The handle mechanism permits only a limited number of simultaneously active handler contexts (no need to make it more complex than that). \hypertarget{cvoSesame_8c_8559ffc68f95fd9734135c72c12d0f0a}{
+\index{cvoSesame.c@{cvoSesame.c}!voc\_\-isCachedObject@{voc\_\-isCachedObject}}
+\index{voc\_\-isCachedObject@{voc\_\-isCachedObject}!cvoSesame.c@{cvoSesame.c}}
+\subsubsection[{voc\_\-isCachedObject}]{\setlength{\rightskip}{0pt plus 5cm}Sesame voc\_\-isCachedObject (char $\ast$ {\em target})}}
+\label{cvoSesame_8c_8559ffc68f95fd9734135c72c12d0f0a}
+
+
+See if the requested object is in the cache. 
+
+VOC\_\-ISCACHEDOBJECT -- See if the requested object is in the cache.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em target}]target name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to cached object \end{Desc}

@@ -1,0 +1,2 @@
+
+alias d	"/bin/rm -rf /iraf/web/vosession/* ; clear ; ./vosession -d"

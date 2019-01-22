@@ -1,0 +1,17 @@
+sm_regSearch
+sm_resSearchBySvc 
+sm_regQuery 
+sm_regAddSearchTerm 
+sm_removeSearchTerm   
+sm_regConstWaveband 
+sm_regConstSvcType 
+sm_regDALOnly 
+sm_regSortRes 
+sm_regGetSTCount 
+sm_regGetQueryString  
+sm_regExecute 
+sm_resExevuteRaw 
+sm_resGetCount 
+sm_resGetString 
+sm_resGetFloat 
+sm_resGetInt 

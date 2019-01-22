@@ -1,0 +1,180 @@
+
+VODATA:
+
+        All CLI tasks are (currently) implemented as C procedures sharing
+a common signature:
+
+    int <taskname> (int argc, char **argv, size_t *len, void **result);
+
+where argc/argv have the standard meaning for argument parsing, 'len' is
+the length of the 'result' data (which may be encoded internally to contain
+multiple result objects or a parameter stream).  The task function parses
+the argv vector to get the task options, using a custom interface to
+process a familiar short-form option (e.g. "-h" or a GNU-like "--help") or
+a 'param=value' syntax (e.g.  "help=1") interchangeably.  When the task
+is compiled into a CLI tool the result object is always discarded, when
+used in a VOPackage binary the result is encoded into the output parameter
+set and both the input and output parameters are passed between the API 
+using IPC channels.
+
+	Most parameters of the form 'param=value' are adequate for passing
+bool/int/float/string input options or getting output results.  Because the
+CLI tasks were designed originally as unix tools, bulk data (e.g. VOTable
+docs, FITS images, etc) are expected to be passed to the task (or are
+created) using filenames (e.g. lists of resources or objects/positions for
+input which generate multiple result tables as new files).  While the
+tasking interface and packaging scheme is a more advanced method of
+executing a task than a os.system() command, the interaction with a script
+is essentially the same.  
+
+	There are several ways to avoid disk-files when passing data between
+the python script (e.g. lists of resources/objects) and the task binary, or
+at least hide this implementation from the python script.  For the initial
+implementation we will assume the use of files is acceptable.
+
+
+Input parameters:
+
+	The input parameters for the task are named by the longname option
+to the task, e.g. the '-h' option is also '--help' and so the parameter
+name is 'help'.  In cases where multiple CLI flags are used to represent
+different options, an additional flag will be implemented that provides a
+single parameter to set the value (e.g. the unix task has a '-A', '-C', etc
+option to set the output format type, the API will use a parameter named
+'format' that accepts the values 'ascii', 'csv', etc instead).  
+
+    return=<opt>		Return object option
+
+    resource=<str>              ShortName/Identifier of data service (or 'any')
+    obj=<str>                   Name of object to be resolved
+    ra,dec=<real>               Decimal or Sexagesimal RA,Dec for query 
+    url=<str>                   URL to access or ServiceURL to query    
+    sr=<real>                   Search radius in degrees (def: 0.1)     
+
+    help=<bool>                 Print this help summary (not used)
+    verbose=level               Verbose or very-verbose mode (<0 for no output)
+
+        	Task Behavior Flags:
+    all=bool                    Query all data for the resource
+    count=bool                  Print a count                  
+    get=<rng>                   Get the files associated with a query
+    meta=bool                   Print column metadata for the resource
+
+        	Query Constraint Options:
+    bandpass=<str>              Constrain resources by bandpass
+    type=<str>                  Constrain resources by service type             
+    infile=<str>                Take arguments from file (or stdin)
+    obj=<str>                   Specify object list                
+    pos=<str>                   Specify position list              
+    radius=<real>               Set search radius (in degrees)                  
+    radsec=<real>               Set radius in arc-seconds        
+    radmin=<real>               Set radius in arc-minutes        
+    raddeg=<real>               Set radius in degrees (default: 0.1)
+    svc=<str>                   Specify the service name or url       
+
+        	Output Options:
+    format=ascii|csv|html|kml|raw|votable|tsv|
+    extract=pos|urls|html|kml   Extract results to separate file
+    root=<str>                  Set the root part of output name                
+
+            	Format-specific Options:
+    kmlmaxdownloads=<N>         Set max downloads (def: 100)
+    kmlgroup=both|obj|svc       Group KML output by both object and service
+    kmlsample=<N>               Set result sample                          
+    kmlnolabel                  Disable Placemark labels                   
+    kmlnoregion                 Disable region box                         
+    kmlnoverbose                Disable verbose labels                     
+
+    web_noborders               Disable HTML table borders
+    web_nolabel                 Disable HTML table verbose label
+    web_nohdr                   Disable HTML page header        
+
+            	Processing Options:
+    maxdownloads=<N>            Set max downloads (def: 1)
+    maxprocesses=<N>            Set max number of processes per obj query
+    maxthreads=<N>              Set max number of resource threads to run
+
+
+Output Parameters:
+
+    As a unix task, VODATA will produce:
+
+	1) free-form output to the screen indicating the progress and 
+	   results found
+	2) files containing results for each query.  Contents of the file
+	   will depend on the 'format' option but default to CSV files.
+	3) If the download option is specified, data from the accessReference
+	   column of a query result will also be created.
+
+    When called from the Python API, VODATA will return an output parameter
+set who's exact contents depend on the value of the 'return' input parameter.
+Allowed values of 'return' are:
+
+    none	No output parameter set is returned.  Task exit status is
+		obtained from the tasking interface.
+
+    summary	Output PSet contains the following parameters:
+
+	          Name	     Type   Description
+	          ----	     ----   -----------
+	          status     int    Task exit status (0=OK, >0=Error code)
+	          nresults   int    Number of result object parameters
+	          result1    str    Query summary string
+		    :	      :	      :     :
+	          result<N>  str    Query summary string
+
+	        The 'result' is a formatted string containing the following
+	        values:
+
+		  resource	query resource name/ivorn used
+		  position	query object name or position ('ra,dec')
+		  count		number of rows in result table
+		  filename	path to file of result in requested format
+		  status	status code (0=OK, >0=Error code)
+		  msg		error message string (if any)
+
+		[ My first though is that this is a simple space-delimited
+		  string that could be parsed and returned to the script as 
+		  a dictionary, other suggestions??? ]
+
+    files	Output PSet contains the following parameters:
+
+	          Name	     Type   Description
+	          ----	     ----   -----------
+	          status     int    Task exit status (0=OK, >0=Error code)
+	          nfiles     int    Number of result files
+	          size1      int    Query result file size
+	          file1      ptr    Query result file (binary encoded)
+		    :	      :	      :     :
+	          size<N>    int    Query result file size
+	          file<N>    ptr    Query result file (binary encoded)
+
+
+Additionally, the task may print free-form text output to the stdout/stderr
+if the 'quiet' parameter is set to zero.  By default text output will be
+suppressed so it doesn't interfere with the python script output, this
+option allows casual scripts to use the task as it might any other unix tool.
+
+
+Comments on Other CLI Tasks
+
+    The decision to limit the 'return' options to the high-level values
+of 'none', 'summary' and 'files' will generally apply to the other CLI 
+tasks as well.  This allows a python script to completely disable output
+from a voclient task (i.e. work silently to create files), get back the
+filenames created by the task so these can be handled in python directly (e.g
+to create a Connection object to a VOTable), or get the data in memory
+directly (e.g. for use as a pyfits image).
+
+    In the summary output the format of the 'result' string will be 
+task-specific but that is easily documented in the task docs and by 
+converting to a python dictionary for the script we can still have a 
+general tasking interface.  The 'files' output will consume memory
+resources in the script but the options allow the script to determine
+whether it wants to deal with the files created by the task or the
+data directly, and minimizes the changes required to all the CLI tools.
+
+    We may want to add some new methods to the tasking API to make this
+more pythonic, I'd have to write a toy script to see what makes sense.
+Otherwise, I think this is all more or less already supported in the C
+tasking code we're working on.

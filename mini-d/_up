@@ -1,0 +1,5 @@
+#!/bin/csh -f
+
+scp $1 tucana:voc/mini-d/
+scp $1 tucana:vao/voc.svn/mini-d/
+#scp $1 tucana:vao/voc.svn/../rel/1.0/mini-d/

@@ -1,0 +1,130 @@
+\hypertarget{svrUtil_8c}{
+\section{svrUtil.c File Reference}
+\label{svrUtil_8c}\index{svrUtil.c@{svrUtil.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/file.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$curl/curl.h$>$}\par
+{\tt \#include $<$curl/easy.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structMemoryStruct}{MemoryStruct}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{svrUtil_8c_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{svrUtil_8c_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{svrUtil_8c_32108415ff44b6f7537b9516f4a84be7}{
+\#define \textbf{SZ\_\-LINE}~256}
+\label{svrUtil_8c_32108415ff44b6f7537b9516f4a84be7}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ \hyperlink{svrUtil_8c_947a2e97f5d02a2364ffb28d5394958e}{svr\_\-getURL} (char $\ast$url)
+\item 
+char $\ast$ \hyperlink{svrUtil_8c_a4404a5d071e109e43b72cff311f2184}{svr\_\-encIntResult} (int status, int nitems, int val)
+\item 
+vocRes\_\-t $\ast$ \hyperlink{svrUtil_8c_9d0ef080d756d9004cee4e71ea759da7}{svr\_\-getOKResult} (void)
+\item 
+vocRes\_\-t $\ast$ \hyperlink{svrUtil_8c_72b788af24c9ee098811738c4063138b}{svr\_\-getERRResult} (void)
+\item 
+int \hyperlink{svrUtil_8c_d9164240aeb72ec6d1ba894003c35311}{svr\_\-fileRead} (int fd, void $\ast$vptr, int nbytes)
+\begin{CompactList}\small\item\em Read exactly \char`\"{}n\char`\"{} bytes from a file descriptor. \item\end{CompactList}\item 
+int \hyperlink{svrUtil_8c_821ae0d41ef92732aa0660975b45aeb3}{svr\_\-fileWrite} (int fd, void $\ast$vptr, int nbytes)
+\begin{CompactList}\small\item\em Write exactly \char`\"{}n\char`\"{} bytes to a file descriptor. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+SVRUTIL.C -- VOClient Mini-Daemon utility server methods.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]April 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{svrUtil_8c_a4404a5d071e109e43b72cff311f2184}{
+\index{svrUtil.c@{svrUtil.c}!svr\_\-encIntResult@{svr\_\-encIntResult}}
+\index{svr\_\-encIntResult@{svr\_\-encIntResult}!svrUtil.c@{svrUtil.c}}
+\subsubsection[{svr\_\-encIntResult}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ svr\_\-encIntResult (int {\em status}, \/  int {\em nitems}, \/  int {\em val})}}
+\label{svrUtil_8c_a4404a5d071e109e43b72cff311f2184}
+
+
+SVR\_\-ENCINTRESULT -- Encode and integer result. \hypertarget{svrUtil_8c_d9164240aeb72ec6d1ba894003c35311}{
+\index{svrUtil.c@{svrUtil.c}!svr\_\-fileRead@{svr\_\-fileRead}}
+\index{svr\_\-fileRead@{svr\_\-fileRead}!svrUtil.c@{svrUtil.c}}
+\subsubsection[{svr\_\-fileRead}]{\setlength{\rightskip}{0pt plus 5cm}int svr\_\-fileRead (int {\em fd}, \/  void $\ast$ {\em vptr}, \/  int {\em nbytes})}}
+\label{svrUtil_8c_d9164240aeb72ec6d1ba894003c35311}
+
+
+Read exactly \char`\"{}n\char`\"{} bytes from a file descriptor. 
+
+SVR\_\-FILEREAD -- Read exactly \char`\"{}n\char`\"{} bytes from a file descriptor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fd}]file descriptor \item[{\em vptr}]data buffer to be written \item[{\em nbytes}]number of bytes to write \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of bytes written \end{Desc}
+\hypertarget{svrUtil_8c_821ae0d41ef92732aa0660975b45aeb3}{
+\index{svrUtil.c@{svrUtil.c}!svr\_\-fileWrite@{svr\_\-fileWrite}}
+\index{svr\_\-fileWrite@{svr\_\-fileWrite}!svrUtil.c@{svrUtil.c}}
+\subsubsection[{svr\_\-fileWrite}]{\setlength{\rightskip}{0pt plus 5cm}int svr\_\-fileWrite (int {\em fd}, \/  void $\ast$ {\em vptr}, \/  int {\em nbytes})}}
+\label{svrUtil_8c_821ae0d41ef92732aa0660975b45aeb3}
+
+
+Write exactly \char`\"{}n\char`\"{} bytes to a file descriptor. 
+
+SVR\_\-FILEWRITE -- Write exactly \char`\"{}n\char`\"{} bytes to a file descriptor.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em fd}]file descriptor \item[{\em vptr}]data buffer to be written \item[{\em nbytes}]number of bytes to write \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of bytes written \end{Desc}
+\hypertarget{svrUtil_8c_72b788af24c9ee098811738c4063138b}{
+\index{svrUtil.c@{svrUtil.c}!svr\_\-getERRResult@{svr\_\-getERRResult}}
+\index{svr\_\-getERRResult@{svr\_\-getERRResult}!svrUtil.c@{svrUtil.c}}
+\subsubsection[{svr\_\-getERRResult}]{\setlength{\rightskip}{0pt plus 5cm}vocRes\_\-t$\ast$ svr\_\-getERRResult (void)}}
+\label{svrUtil_8c_72b788af24c9ee098811738c4063138b}
+
+
+SVR\_\-GETERRRESULT -- Create an empty 'ERR' result message. \hypertarget{svrUtil_8c_9d0ef080d756d9004cee4e71ea759da7}{
+\index{svrUtil.c@{svrUtil.c}!svr\_\-getOKResult@{svr\_\-getOKResult}}
+\index{svr\_\-getOKResult@{svr\_\-getOKResult}!svrUtil.c@{svrUtil.c}}
+\subsubsection[{svr\_\-getOKResult}]{\setlength{\rightskip}{0pt plus 5cm}vocRes\_\-t$\ast$ svr\_\-getOKResult (void)}}
+\label{svrUtil_8c_9d0ef080d756d9004cee4e71ea759da7}
+
+
+SVR\_\-GETOKRESULT -- Create an empty 'OK' result message. \hypertarget{svrUtil_8c_947a2e97f5d02a2364ffb28d5394958e}{
+\index{svrUtil.c@{svrUtil.c}!svr\_\-getURL@{svr\_\-getURL}}
+\index{svr\_\-getURL@{svr\_\-getURL}!svrUtil.c@{svrUtil.c}}
+\subsubsection[{svr\_\-getURL}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ svr\_\-getURL (char $\ast$ {\em url})}}
+\label{svrUtil_8c_947a2e97f5d02a2364ffb28d5394958e}
+
+
+SVR\_\-GETURL -- Download a URL to memory and return a pointer it. 

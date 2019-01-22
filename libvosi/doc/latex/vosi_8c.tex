@@ -1,0 +1,1269 @@
+\hypertarget{vosi_8c}{
+\section{vosi.c File Reference}
+\label{vosi_8c}\index{vosi.c@{vosi.c}}
+}
+Public interface procedures for the VO Support Interfaces (VOSI).  
+
+
+{\tt \#include $<$stdbool.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$expat.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$assert.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$curl/curl.h$>$}\par
+{\tt \#include $<$curl/easy.h$>$}\par
+{\tt \#include \char`\"{}xmlParseP.h\char`\"{}}\par
+{\tt \#include \char`\"{}xmlParse.h\char`\"{}}\par
+{\tt \#include \char`\"{}vosiP.h\char`\"{}}\par
+{\tt \#include \char`\"{}vosi.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{vosi_8c_369266c24eacffb87046522897a570d5}{
+\#define \textbf{\_\-GNU\_\-SOURCE}}
+\label{vosi_8c_369266c24eacffb87046522897a570d5}
+
+\item 
+\hypertarget{vosi_8c_eca034f67218340ecb2261a22c2f3dcd}{
+\#define \textbf{BUFSIZE}~4096}
+\label{vosi_8c_eca034f67218340ecb2261a22c2f3dcd}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{vosi_8c_e4183cb6da810bf97646fdd9f49a9b92}{
+char $\ast$ \textbf{strcasestr} ()}
+\label{vosi_8c_e4183cb6da810bf97646fdd9f49a9b92}
+
+\item 
+\hypertarget{vosi_8c_4c3f5a6599c76cf13f553648f7e6e358}{
+int \textbf{strcasecmp} ()}
+\label{vosi_8c_4c3f5a6599c76cf13f553648f7e6e358}
+
+\item 
+void \hyperlink{vosi_8c_92a40253c2eb348be87dde88c1b6f11d}{vosi\_\-printk} (char $\ast$format, char $\ast$string)
+\begin{CompactList}\small\item\em Private printing function. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_528563c315ba274d82de153e4a6ce746}{vosi\_\-capServiceTypeNames} (int ServiceType)
+\begin{CompactList}\small\item\em Translates ServiceType bitmap values to string equivalents. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_5b02142ca53393b9f9a46eec3af385c8}{vosi\_\-getCapabilities} (char $\ast$arg)
+\begin{CompactList}\small\item\em Access the VOSI 'capabilities' service. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_036fbc9837a9fffeaa6bec575505a5d4}{vosi\_\-getAvailability} (char $\ast$arg)
+\begin{CompactList}\small\item\em Access the VOSI 'availabilities' service. \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_a9c304dfc5f4741f5ce81e4cdca94fd1}{vosi\_\-availAvailable} (handle\_\-t avail)
+\begin{CompactList}\small\item\em Determine is the service is accepting requests. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_9a12c5a70e29a923f1849407f0910bfb}{vosi\_\-nextCapability} (handle\_\-t cap)
+\begin{CompactList}\small\item\em get the next \hyperlink{structCapabilities}{Capabilities} handle \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_1973b71eee39017a6e07576f81399ff9}{vosi\_\-numCapabilities} (void)
+\begin{CompactList}\small\item\em get the number of \hyperlink{structCapabilities}{Capabilities} \item\end{CompactList}\item 
+\hypertarget{vosi_8c_2a998d5e49d31b9f08fe4e18cbc853be}{
+handle\_\-t \textbf{vosi\_\-capabilityByIndex} (int index)}
+\label{vosi_8c_2a998d5e49d31b9f08fe4e18cbc853be}
+
+\item 
+char $\ast$ \hyperlink{vosi_8c_2b7793fe2e89a46723a5a8ca0d5009d8}{vosi\_\-capStandardID} (handle\_\-t cap)
+\begin{CompactList}\small\item\em standardID value of the \hyperlink{structCapabilities}{Capabilities} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_5ff3739e0ce1793b99e22345fff31108}{vosi\_\-capIVORN} (handle\_\-t cap)
+\begin{CompactList}\small\item\em IVORN value of the \hyperlink{structCapabilities}{Capabilities} structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_70cd589a9d6c58cf53c781fe7cd89f55}{vosi\_\-capLRN} (handle\_\-t cap)
+\begin{CompactList}\small\item\em LRN value of the \hyperlink{structCapabilities}{Capabilities} structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_5a920646bc6de8f77d1fdabb551981a8}{vosi\_\-capNStype} (handle\_\-t cap)
+\begin{CompactList}\small\item\em interface nstype (name-space type) value of the \hyperlink{structCapabilities}{Capabilities} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_53b32476e56f8e40df6ce1ada7571fc8}{vosi\_\-capAccessURL} (handle\_\-t cap)
+\begin{CompactList}\small\item\em interface access URL value of the \hyperlink{structCapabilities}{Capabilities} structure \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_e4d0ce249e38f969c6e29ba364212f75}{vosi\_\-capIndex} (handle\_\-t cap)
+\begin{CompactList}\small\item\em index of \hyperlink{structCapabilities}{Capabilities} structure \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_897c1255acd8b66c2c4da846b27db05d}{vosi\_\-capServiceType} (handle\_\-t cap)
+\begin{CompactList}\small\item\em service type (int) of \hyperlink{structCapabilities}{Capabilities} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_d86b07d10089d5e3f72defdb8d4127df}{vosi\_\-availUpSince} (handle\_\-t avail)
+\begin{CompactList}\small\item\em Get duration of continuous uptime. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_a5315966a3fde65b10d056d0d04101b2}{vosi\_\-availDownAt} (handle\_\-t avail)
+\begin{CompactList}\small\item\em Get time of next scheduled down time. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_ef482feb41d5aa7f25a95750918cbc53}{vosi\_\-availBackAt} (handle\_\-t avail)
+\begin{CompactList}\small\item\em Get time of return to service. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_042243fa6b92cbc3397350881219d122}{vosi\_\-availNote} (handle\_\-t avail)
+\begin{CompactList}\small\item\em Get availability note. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_8e6b840183a63e3d79dc915b6ff28a5f}{vosi\_\-getTables} (char $\ast$arg)
+\begin{CompactList}\small\item\em Access the VOSI 'tables' service. \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_67f1fb937f867c88921bea8c3b83ffa9}{vosi\_\-numSchema} (handle\_\-t tableset)
+\begin{CompactList}\small\item\em get number of \hyperlink{structvosiSchema}{vosiSchema} structures \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_7669a6a2a7629ecc999860167d77300d}{vosi\_\-schemaByIndex} (handle\_\-t tableset, int index)
+\begin{CompactList}\small\item\em get a schema with a given index \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_b5469b274a97470d8c35ca74695a28fe}{vosi\_\-getSchema} (handle\_\-t tableset)
+\begin{CompactList}\small\item\em get the first schem \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_0c4ca2f4ec04c49becb847bdf9edcf85}{vosi\_\-nextSchema} (handle\_\-t schema)
+\begin{CompactList}\small\item\em get the next schema \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_5f9c681a91d6c7884da513b6cacf7d47}{vosi\_\-schemaIndex} (handle\_\-t schema)
+\begin{CompactList}\small\item\em index of \hyperlink{structvosiSchema}{vosiSchema} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_da0c1ac7b4219920443091af7534ce80}{vosi\_\-schemaName} (handle\_\-t schema)
+\begin{CompactList}\small\item\em name of \hyperlink{structvosiSchema}{vosiSchema} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_6953a644d74b274f9771f7d54a79b14f}{vosi\_\-schemaTitle} (handle\_\-t schema)
+\begin{CompactList}\small\item\em title of \hyperlink{structvosiSchema}{vosiSchema} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_87638cb6d0b63c0d680aaaf5c71a24c5}{vosi\_\-schemaDescription} (handle\_\-t schema)
+\begin{CompactList}\small\item\em Description of \hyperlink{structvosiSchema}{vosiSchema} structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_60826b4719b79b04686adff8d66881e0}{vosi\_\-schemaUType} (handle\_\-t schema)
+\begin{CompactList}\small\item\em UType of \hyperlink{structvosiSchema}{vosiSchema} structure. \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_623db6232518a732e35aedfd132aba96}{vosi\_\-numTable} (handle\_\-t schema)
+\begin{CompactList}\small\item\em get number of tables in a schema \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_2c0f03e302093590110fc01d6fe06691}{vosi\_\-getTable} (handle\_\-t schema)
+\begin{CompactList}\small\item\em get the first table \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_09ec0d45f8fd7fa9ea23730469a36551}{vosi\_\-tableName} (handle\_\-t table)
+\begin{CompactList}\small\item\em name of \hyperlink{structvosiTable}{vosiTable} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_a804cd66b7d06227ef57f5ded5658e96}{vosi\_\-tableTitle} (handle\_\-t table)
+\begin{CompactList}\small\item\em title of \hyperlink{structvosiTable}{vosiTable} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_49b8edb2fcf33f5d5d1c0481f9fc5a6d}{vosi\_\-tableDescription} (handle\_\-t table)
+\begin{CompactList}\small\item\em description of \hyperlink{structvosiTable}{vosiTable} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_aa84c0fd9f0cd76c249393bb9bc24ea6}{vosi\_\-tableUType} (handle\_\-t table)
+\begin{CompactList}\small\item\em UType of \hyperlink{structvosiTable}{vosiTable} structure. \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_2bcea3403aa034ed58d107e2c620860f}{vosi\_\-tableIndex} (handle\_\-t table)
+\begin{CompactList}\small\item\em Index of \hyperlink{structvosiTable}{vosiTable} structure. \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_03f327673c000478f70ca9cb25997110}{vosi\_\-nextTable} (handle\_\-t table)
+\begin{CompactList}\small\item\em get the next table \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_ea4e2564ecce4e8e61d5fb12cb73ace7}{vosi\_\-tableByIndex} (handle\_\-t schema, int index)
+\begin{CompactList}\small\item\em get a table with a given index \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_d6e5982ea89dc873c1c7676bef6ef9b1}{vosi\_\-numCols} (handle\_\-t table)
+\begin{CompactList}\small\item\em get number of columns in a table \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_7aea4fe9c5f3d956d5eafcdd4ba9c7f1}{vosi\_\-getColumn} (handle\_\-t table)
+\begin{CompactList}\small\item\em get the first column \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_2eae47d524eb58fbe6de87e65cd585d5}{vosi\_\-colIndex} (handle\_\-t column)
+\begin{CompactList}\small\item\em Index of \hyperlink{structvosiColumn}{vosiColumn} structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_ab25422cb36c0acdd09d4726b1c0d785}{vosi\_\-colName} (handle\_\-t col)
+\begin{CompactList}\small\item\em name of \hyperlink{structvosiColumn}{vosiColumn} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_019a131a0625886d84cce2bd29642ffb}{vosi\_\-colDescription} (handle\_\-t col)
+\begin{CompactList}\small\item\em description of \hyperlink{structvosiColumn}{vosiColumn} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_8e846203221a725111c404b5a3e8a7f7}{vosi\_\-colUnit} (handle\_\-t col)
+\begin{CompactList}\small\item\em unit of \hyperlink{structvosiColumn}{vosiColumn} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_7d065a4d34cf1d8a9e9c5ce63bfec11e}{vosi\_\-colUCD} (handle\_\-t col)
+\begin{CompactList}\small\item\em UCD of \hyperlink{structvosiColumn}{vosiColumn} structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_f32f7f746e7b9a3e1407e887c4ca5660}{vosi\_\-colUType} (handle\_\-t col)
+\begin{CompactList}\small\item\em UType of \hyperlink{structvosiColumn}{vosiColumn} structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_691b1e4e87a0b19c110e21ff41530154}{vosi\_\-colDatatype} (handle\_\-t col)
+\begin{CompactList}\small\item\em datatype of \hyperlink{structvosiColumn}{vosiColumn} structure \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_e148e07dd89d4ac27af0e96ebc2ec60c}{vosi\_\-nextColumn} (handle\_\-t column)
+\begin{CompactList}\small\item\em get the next column \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_910b8348378c33ebef243abd29f88c7b}{vosi\_\-colByIndex} (handle\_\-t table, int index)
+\begin{CompactList}\small\item\em get a column with a given index \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_36e648cd9d06c97b7a70620bc663f740}{vosi\_\-numKeys} (handle\_\-t column)
+\begin{CompactList}\small\item\em get number of keys in a column \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_94f8603ead40781ac573b3ad61520cd0}{vosi\_\-getKey} (handle\_\-t column)
+\begin{CompactList}\small\item\em get the first ForeignKey in a column \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_3f2337fae0e5a15d2e15b9150342ba0e}{vosi\_\-nextKey} (handle\_\-t key)
+\begin{CompactList}\small\item\em get the next key in a column \item\end{CompactList}\item 
+handle\_\-t \hyperlink{vosi_8c_181a159ccb849c05ec8ac49d5ff5e430}{vosi\_\-keyByIndex} (handle\_\-t column, int index)
+\begin{CompactList}\small\item\em get a key with a given index \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_3ccdc7b690cc38420aef0cfb66acb98d}{vosi\_\-keyTargetTable} (handle\_\-t key)
+\begin{CompactList}\small\item\em targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_083b349a3bf472253ea0acc48d2576db}{vosi\_\-keyFromColumn} (handle\_\-t key)
+\begin{CompactList}\small\item\em targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_90d3eaa3bbb79ac190fd7edf979ef5d1}{vosi\_\-keyTargetColumn} (handle\_\-t key)
+\begin{CompactList}\small\item\em targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_6ae115ce0cec742be529454b1d865c82}{vosi\_\-keyDescription} (handle\_\-t key)
+\begin{CompactList}\small\item\em targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vosi_8c_f6276d2ed5ca6484d81721e38e98bbd8}{vosi\_\-keyUType} (handle\_\-t key)
+\begin{CompactList}\small\item\em targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \item\end{CompactList}\item 
+int \hyperlink{vosi_8c_2466c6941a2f507067963a0ed41793f1}{vosi\_\-keyIndex} (handle\_\-t key)
+\begin{CompactList}\small\item\em Index of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+char \hyperlink{vosi_8c_f1f4b279f22e89bf21f49090d874ed1c}{xml\_\-NameSpaceTagG} \mbox{[}MAX\_\-ATTR\mbox{]}\mbox{[}SZ\_\-ATTRNAME\mbox{]}
+\item 
+\hypertarget{vosi_8c_d64b59ac076be27b30a787f968df382e}{
+char \textbf{xml\_\-NameSpaceG} \mbox{[}MAX\_\-ATTR\mbox{]}\mbox{[}SZ\_\-ATTRVAL\mbox{]}}
+\label{vosi_8c_d64b59ac076be27b30a787f968df382e}
+
+\item 
+\hypertarget{vosi_8c_5ab666f754926572f4b6312cb6278e23}{
+int \textbf{xml\_\-NameSpaceCountG} = -1}
+\label{vosi_8c_5ab666f754926572f4b6312cb6278e23}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Public interface procedures for the VO Support Interfaces (VOSI). 
+
+VOSI.C -- Public interface procedures for the VO Support Interfaces (VOSI)
+
+\begin{Desc}
+\item[Author:]Ken Mighell and Mike Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Date:]8/11/14 
+
+9/11/14 KJM 
+
+9/16/14 KJM 
+
+9/17/14 KJM 
+
+9/18/14 KJM \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{vosi_8c_a9c304dfc5f4741f5ce81e4cdca94fd1}{
+\index{vosi.c@{vosi.c}!vosi\_\-availAvailable@{vosi\_\-availAvailable}}
+\index{vosi\_\-availAvailable@{vosi\_\-availAvailable}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-availAvailable}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-availAvailable (handle\_\-t {\em avail})}}
+\label{vosi_8c_a9c304dfc5f4741f5ce81e4cdca94fd1}
+
+
+Determine is the service is accepting requests. 
+
+vosi\_\-availAvailable -- Determine is the service is accepting requests.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em avail}]Handle to the parsed availabilities request. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 is service is down, 1 if available, -1 on error \end{Desc}
+\hypertarget{vosi_8c_ef482feb41d5aa7f25a95750918cbc53}{
+\index{vosi.c@{vosi.c}!vosi\_\-availBackAt@{vosi\_\-availBackAt}}
+\index{vosi\_\-availBackAt@{vosi\_\-availBackAt}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-availBackAt}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-availBackAt (handle\_\-t {\em avail})}}
+\label{vosi_8c_ef482feb41d5aa7f25a95750918cbc53}
+
+
+Get time of return to service. 
+
+vosi\_\-availBackAt -- Get time of return to service.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em avail}]Handle to the parsed availabilities request. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]dateTime string of return time \end{Desc}
+\hypertarget{vosi_8c_a5315966a3fde65b10d056d0d04101b2}{
+\index{vosi.c@{vosi.c}!vosi\_\-availDownAt@{vosi\_\-availDownAt}}
+\index{vosi\_\-availDownAt@{vosi\_\-availDownAt}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-availDownAt}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-availDownAt (handle\_\-t {\em avail})}}
+\label{vosi_8c_a5315966a3fde65b10d056d0d04101b2}
+
+
+Get time of next scheduled down time. 
+
+vosi\_\-availDownAt -- Get time of next scheduled down time.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em avail}]Handle to the parsed availabilities request. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]dateTime string of down time \end{Desc}
+\hypertarget{vosi_8c_042243fa6b92cbc3397350881219d122}{
+\index{vosi.c@{vosi.c}!vosi\_\-availNote@{vosi\_\-availNote}}
+\index{vosi\_\-availNote@{vosi\_\-availNote}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-availNote}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-availNote (handle\_\-t {\em avail})}}
+\label{vosi_8c_042243fa6b92cbc3397350881219d122}
+
+
+Get availability note. 
+
+vosi\_\-availNote -- Get availability note
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em avail}]Handle to the parsed availabilities request. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]text string \end{Desc}
+\hypertarget{vosi_8c_d86b07d10089d5e3f72defdb8d4127df}{
+\index{vosi.c@{vosi.c}!vosi\_\-availUpSince@{vosi\_\-availUpSince}}
+\index{vosi\_\-availUpSince@{vosi\_\-availUpSince}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-availUpSince}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-availUpSince (handle\_\-t {\em avail})}}
+\label{vosi_8c_d86b07d10089d5e3f72defdb8d4127df}
+
+
+Get duration of continuous uptime. 
+
+vosi\_\-availUpSince -- Get duration of continuous uptime.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em avail}]Handle to the parsed availabilities request. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]dateTime string containing uptime \end{Desc}
+\hypertarget{vosi_8c_53b32476e56f8e40df6ce1ada7571fc8}{
+\index{vosi.c@{vosi.c}!vosi\_\-capAccessURL@{vosi\_\-capAccessURL}}
+\index{vosi\_\-capAccessURL@{vosi\_\-capAccessURL}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capAccessURL}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-capAccessURL (handle\_\-t {\em cap})}}
+\label{vosi_8c_53b32476e56f8e40df6ce1ada7571fc8}
+
+
+interface access URL value of the \hyperlink{structCapabilities}{Capabilities} structure 
+
+vosi\_\-capAccessURL -- interface access URL value of the \hyperlink{structCapabilities}{Capabilities} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string containing the access URL value (may be empty or NULL) \end{Desc}
+\hypertarget{vosi_8c_e4d0ce249e38f969c6e29ba364212f75}{
+\index{vosi.c@{vosi.c}!vosi\_\-capIndex@{vosi\_\-capIndex}}
+\index{vosi\_\-capIndex@{vosi\_\-capIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capIndex}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-capIndex (handle\_\-t {\em cap})}}
+\label{vosi_8c_e4d0ce249e38f969c6e29ba364212f75}
+
+
+index of \hyperlink{structCapabilities}{Capabilities} structure 
+
+vosi\_\-capIndex -- index of \hyperlink{structCapabilities}{Capabilities} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int value of index of the \hyperlink{structCapabilities}{Capabilities} structure (-1 if error) \end{Desc}
+\hypertarget{vosi_8c_5ff3739e0ce1793b99e22345fff31108}{
+\index{vosi.c@{vosi.c}!vosi\_\-capIVORN@{vosi\_\-capIVORN}}
+\index{vosi\_\-capIVORN@{vosi\_\-capIVORN}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capIVORN}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-capIVORN (handle\_\-t {\em cap})}}
+\label{vosi_8c_5ff3739e0ce1793b99e22345fff31108}
+
+
+IVORN value of the \hyperlink{structCapabilities}{Capabilities} structure. 
+
+vosi\_\-capIVORN -- IVORN value of the Capaabilities structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string containing the IVORN value (may be empty or NULL) \end{Desc}
+\hypertarget{vosi_8c_70cd589a9d6c58cf53c781fe7cd89f55}{
+\index{vosi.c@{vosi.c}!vosi\_\-capLRN@{vosi\_\-capLRN}}
+\index{vosi\_\-capLRN@{vosi\_\-capLRN}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capLRN}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-capLRN (handle\_\-t {\em cap})}}
+\label{vosi_8c_70cd589a9d6c58cf53c781fe7cd89f55}
+
+
+LRN value of the \hyperlink{structCapabilities}{Capabilities} structure. 
+
+vosi\_\-capLRN -- LRN value of the \hyperlink{structCapabilities}{Capabilities} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string containing the LRN value (may be empty or NULL) \end{Desc}
+\hypertarget{vosi_8c_5a920646bc6de8f77d1fdabb551981a8}{
+\index{vosi.c@{vosi.c}!vosi\_\-capNStype@{vosi\_\-capNStype}}
+\index{vosi\_\-capNStype@{vosi\_\-capNStype}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capNStype}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-capNStype (handle\_\-t {\em cap})}}
+\label{vosi_8c_5a920646bc6de8f77d1fdabb551981a8}
+
+
+interface nstype (name-space type) value of the \hyperlink{structCapabilities}{Capabilities} structure 
+
+vosi\_\-capNStype -- interface nstype (name-space type) value of the \hyperlink{structCapabilities}{Capabilities} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string containing the nstype value (may be empty or NULL) \end{Desc}
+\hypertarget{vosi_8c_897c1255acd8b66c2c4da846b27db05d}{
+\index{vosi.c@{vosi.c}!vosi\_\-capServiceType@{vosi\_\-capServiceType}}
+\index{vosi\_\-capServiceType@{vosi\_\-capServiceType}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capServiceType}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-capServiceType (handle\_\-t {\em cap})}}
+\label{vosi_8c_897c1255acd8b66c2c4da846b27db05d}
+
+
+service type (int) of \hyperlink{structCapabilities}{Capabilities} structure 
+
+vosi\_\-capServiceType -- ServiceType value of \hyperlink{structCapabilities}{Capabilities} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int value of the ServiceType of \hyperlink{structCapabilities}{Capabilities} structure \end{Desc}
+\hypertarget{vosi_8c_528563c315ba274d82de153e4a6ce746}{
+\index{vosi.c@{vosi.c}!vosi\_\-capServiceTypeNames@{vosi\_\-capServiceTypeNames}}
+\index{vosi\_\-capServiceTypeNames@{vosi\_\-capServiceTypeNames}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capServiceTypeNames}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-capServiceTypeNames (int {\em ServiceType})}}
+\label{vosi_8c_528563c315ba274d82de153e4a6ce746}
+
+
+Translates ServiceType bitmap values to string equivalents. 
+
+vosi\_\-capServiceTypeNames -- Translates ServiceType bitmap values to string equivalents
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em int}]ServiceType bitmap of capabilities service type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]String equivalent of the bit map value \end{Desc}
+\hypertarget{vosi_8c_2b7793fe2e89a46723a5a8ca0d5009d8}{
+\index{vosi.c@{vosi.c}!vosi\_\-capStandardID@{vosi\_\-capStandardID}}
+\index{vosi\_\-capStandardID@{vosi\_\-capStandardID}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-capStandardID}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-capStandardID (handle\_\-t {\em cap})}}
+\label{vosi_8c_2b7793fe2e89a46723a5a8ca0d5009d8}
+
+
+standardID value of the \hyperlink{structCapabilities}{Capabilities} structure 
+
+vosi\_\-capStandardID -- standardID value of the \hyperlink{structCapabilities}{Capabilities} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to the \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string containing the standardID value (may be empty or NULL) \end{Desc}
+\hypertarget{vosi_8c_910b8348378c33ebef243abd29f88c7b}{
+\index{vosi.c@{vosi.c}!vosi\_\-colByIndex@{vosi\_\-colByIndex}}
+\index{vosi\_\-colByIndex@{vosi\_\-colByIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colByIndex}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-colByIndex (handle\_\-t {\em table}, \/  int {\em index})}}
+\label{vosi_8c_910b8348378c33ebef243abd29f88c7b}
+
+
+get a column with a given index 
+
+vosi\_\-colByIndex -- get a column with a given index
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \item[{\em index}]: index value of the column \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the column \mbox{[}-1 if bad handle\mbox{]}\mbox{[}zero if (index$<$0) $|$$|$ (index$>$=vosi\_\-numCols( table ) ) \mbox{]} \end{Desc}
+\hypertarget{vosi_8c_691b1e4e87a0b19c110e21ff41530154}{
+\index{vosi.c@{vosi.c}!vosi\_\-colDatatype@{vosi\_\-colDatatype}}
+\index{vosi\_\-colDatatype@{vosi\_\-colDatatype}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colDatatype}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-colDatatype (handle\_\-t {\em column})}}
+\label{vosi_8c_691b1e4e87a0b19c110e21ff41530154}
+
+
+datatype of \hyperlink{structvosiColumn}{vosiColumn} structure 
+
+vosi\_\-colDatatype -- datatype of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of datatype of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_019a131a0625886d84cce2bd29642ffb}{
+\index{vosi.c@{vosi.c}!vosi\_\-colDescription@{vosi\_\-colDescription}}
+\index{vosi\_\-colDescription@{vosi\_\-colDescription}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colDescription}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-colDescription (handle\_\-t {\em column})}}
+\label{vosi_8c_019a131a0625886d84cce2bd29642ffb}
+
+
+description of \hyperlink{structvosiColumn}{vosiColumn} structure 
+
+vosi\_\-colDescription -- description of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of description of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_2eae47d524eb58fbe6de87e65cd585d5}{
+\index{vosi.c@{vosi.c}!vosi\_\-colIndex@{vosi\_\-colIndex}}
+\index{vosi\_\-colIndex@{vosi\_\-colIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colIndex}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-colIndex (handle\_\-t {\em column})}}
+\label{vosi_8c_2eae47d524eb58fbe6de87e65cd585d5}
+
+
+Index of \hyperlink{structvosiColumn}{vosiColumn} structure. 
+
+vosi\_\-colIndex -- Index of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int value of index of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_ab25422cb36c0acdd09d4726b1c0d785}{
+\index{vosi.c@{vosi.c}!vosi\_\-colName@{vosi\_\-colName}}
+\index{vosi\_\-colName@{vosi\_\-colName}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colName}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-colName (handle\_\-t {\em column})}}
+\label{vosi_8c_ab25422cb36c0acdd09d4726b1c0d785}
+
+
+name of \hyperlink{structvosiColumn}{vosiColumn} structure 
+
+vosi\_\-colName -- name of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of name of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_7d065a4d34cf1d8a9e9c5ce63bfec11e}{
+\index{vosi.c@{vosi.c}!vosi\_\-colUCD@{vosi\_\-colUCD}}
+\index{vosi\_\-colUCD@{vosi\_\-colUCD}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colUCD}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-colUCD (handle\_\-t {\em column})}}
+\label{vosi_8c_7d065a4d34cf1d8a9e9c5ce63bfec11e}
+
+
+UCD of \hyperlink{structvosiColumn}{vosiColumn} structure. 
+
+vosi\_\-colUCD -- UCD of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of UCD of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_8e846203221a725111c404b5a3e8a7f7}{
+\index{vosi.c@{vosi.c}!vosi\_\-colUnit@{vosi\_\-colUnit}}
+\index{vosi\_\-colUnit@{vosi\_\-colUnit}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colUnit}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-colUnit (handle\_\-t {\em column})}}
+\label{vosi_8c_8e846203221a725111c404b5a3e8a7f7}
+
+
+unit of \hyperlink{structvosiColumn}{vosiColumn} structure 
+
+vosi\_\-colUnit -- unit of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of unit of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_f32f7f746e7b9a3e1407e887c4ca5660}{
+\index{vosi.c@{vosi.c}!vosi\_\-colUType@{vosi\_\-colUType}}
+\index{vosi\_\-colUType@{vosi\_\-colUType}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-colUType}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-colUType (handle\_\-t {\em column})}}
+\label{vosi_8c_f32f7f746e7b9a3e1407e887c4ca5660}
+
+
+UType of \hyperlink{structvosiColumn}{vosiColumn} structure. 
+
+vosi\_\-colUType -- UType of \hyperlink{structvosiColumn}{vosiColumn} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of UType of the \hyperlink{structvosiColumn}{vosiColumn} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_036fbc9837a9fffeaa6bec575505a5d4}{
+\index{vosi.c@{vosi.c}!vosi\_\-getAvailability@{vosi\_\-getAvailability}}
+\index{vosi\_\-getAvailability@{vosi\_\-getAvailability}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getAvailability}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t vosi\_\-getAvailability (char $\ast$ {\em arg})}}
+\label{vosi_8c_036fbc9837a9fffeaa6bec575505a5d4}
+
+
+Access the VOSI 'availabilities' service. 
+
+vosi\_\-getAvailability -- Access the VOSI 'availabilities' service
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em arg}]The source of the table (fname$|$url$|$str) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to the availabilities struct, -1 on error \end{Desc}
+\hypertarget{vosi_8c_5b02142ca53393b9f9a46eec3af385c8}{
+\index{vosi.c@{vosi.c}!vosi\_\-getCapabilities@{vosi\_\-getCapabilities}}
+\index{vosi\_\-getCapabilities@{vosi\_\-getCapabilities}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getCapabilities}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t vosi\_\-getCapabilities (char $\ast$ {\em arg})}}
+\label{vosi_8c_5b02142ca53393b9f9a46eec3af385c8}
+
+
+Access the VOSI 'capabilities' service. 
+
+vosi\_\-getCapabilities-- Access the VOSI 'capabilities' service
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em arg}]The source of the XML document (fname$|$url$|$str) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to the capabilites struct, -1 on error \end{Desc}
+\hypertarget{vosi_8c_7aea4fe9c5f3d956d5eafcdd4ba9c7f1}{
+\index{vosi.c@{vosi.c}!vosi\_\-getColumn@{vosi\_\-getColumn}}
+\index{vosi\_\-getColumn@{vosi\_\-getColumn}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getColumn}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-getColumn (handle\_\-t {\em table})}}
+\label{vosi_8c_7aea4fe9c5f3d956d5eafcdd4ba9c7f1}
+
+
+get the first column 
+
+vosi\_\-getColumn -- get the first column
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the first column \mbox{[}0 if no columns exist\mbox{]}\mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_94f8603ead40781ac573b3ad61520cd0}{
+\index{vosi.c@{vosi.c}!vosi\_\-getKey@{vosi\_\-getKey}}
+\index{vosi\_\-getKey@{vosi\_\-getKey}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getKey}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-getKey (handle\_\-t {\em column})}}
+\label{vosi_8c_94f8603ead40781ac573b3ad61520cd0}
+
+
+get the first ForeignKey in a column 
+
+vosi\_\-getKey -- get the first ForeignKey in a column
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the first ForeignKey in a column \mbox{[}0 if no keys exist\mbox{]}\mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_b5469b274a97470d8c35ca74695a28fe}{
+\index{vosi.c@{vosi.c}!vosi\_\-getSchema@{vosi\_\-getSchema}}
+\index{vosi\_\-getSchema@{vosi\_\-getSchema}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getSchema}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-getSchema (handle\_\-t {\em tset})}}
+\label{vosi_8c_b5469b274a97470d8c35ca74695a28fe}
+
+
+get the first schem 
+
+vosi\_\-getSchema -- get the first schema
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTableSet}{vosiTableSet} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the first schema \mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_2c0f03e302093590110fc01d6fe06691}{
+\index{vosi.c@{vosi.c}!vosi\_\-getTable@{vosi\_\-getTable}}
+\index{vosi\_\-getTable@{vosi\_\-getTable}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getTable}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-getTable (handle\_\-t {\em schema})}}
+\label{vosi_8c_2c0f03e302093590110fc01d6fe06691}
+
+
+get the first table 
+
+vosi\_\-getTable -- get the first table
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the first table \mbox{[}0 if no tables exist\mbox{]}\mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_8e6b840183a63e3d79dc915b6ff28a5f}{
+\index{vosi.c@{vosi.c}!vosi\_\-getTables@{vosi\_\-getTables}}
+\index{vosi\_\-getTables@{vosi\_\-getTables}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-getTables}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t vosi\_\-getTables (char $\ast$ {\em arg})}}
+\label{vosi_8c_8e6b840183a63e3d79dc915b6ff28a5f}
+
+
+Access the VOSI 'tables' service. 
+
+vosi\_\-getTables -- Access the VOSI 'tables' service
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em arg}]The source of the XML document (fname$|$url$|$str) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to the \hyperlink{structvosiTableSet}{vosiTableSet} struct, -1 on error \end{Desc}
+\hypertarget{vosi_8c_181a159ccb849c05ec8ac49d5ff5e430}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyByIndex@{vosi\_\-keyByIndex}}
+\index{vosi\_\-keyByIndex@{vosi\_\-keyByIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyByIndex}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-keyByIndex (handle\_\-t {\em column}, \/  int {\em index})}}
+\label{vosi_8c_181a159ccb849c05ec8ac49d5ff5e430}
+
+
+get a key with a given index 
+
+vosi\_\-keyByIndex -- get a key with a given index
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \item[{\em index}]: index value of the key \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the key \mbox{[}-1 if bad handle\mbox{]}\mbox{[}zero if bad index\mbox{]}\mbox{[}-2 if no keys\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_6ae115ce0cec742be529454b1d865c82}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyDescription@{vosi\_\-keyDescription}}
+\index{vosi\_\-keyDescription@{vosi\_\-keyDescription}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyDescription}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-keyDescription (handle\_\-t {\em key})}}
+\label{vosi_8c_6ae115ce0cec742be529454b1d865c82}
+
+
+targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure 
+
+vosi\_\-keyDescription -- targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of targetTable of the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_083b349a3bf472253ea0acc48d2576db}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyFromColumn@{vosi\_\-keyFromColumn}}
+\index{vosi\_\-keyFromColumn@{vosi\_\-keyFromColumn}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyFromColumn}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-keyFromColumn (handle\_\-t {\em key})}}
+\label{vosi_8c_083b349a3bf472253ea0acc48d2576db}
+
+
+targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure 
+
+vosi\_\-keyFromColumn -- targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of targetTable of the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_2466c6941a2f507067963a0ed41793f1}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyIndex@{vosi\_\-keyIndex}}
+\index{vosi\_\-keyIndex@{vosi\_\-keyIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyIndex}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-keyIndex (handle\_\-t {\em key})}}
+\label{vosi_8c_2466c6941a2f507067963a0ed41793f1}
+
+
+Index of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure. 
+
+vosi\_\-keyIndex -- Index of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int value of index of the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_90d3eaa3bbb79ac190fd7edf979ef5d1}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyTargetColumn@{vosi\_\-keyTargetColumn}}
+\index{vosi\_\-keyTargetColumn@{vosi\_\-keyTargetColumn}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyTargetColumn}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-keyTargetColumn (handle\_\-t {\em key})}}
+\label{vosi_8c_90d3eaa3bbb79ac190fd7edf979ef5d1}
+
+
+targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure 
+
+vosi\_\-keyTargetColumn -- targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of targetTable of the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_3ccdc7b690cc38420aef0cfb66acb98d}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyTargetTable@{vosi\_\-keyTargetTable}}
+\index{vosi\_\-keyTargetTable@{vosi\_\-keyTargetTable}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyTargetTable}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-keyTargetTable (handle\_\-t {\em key})}}
+\label{vosi_8c_3ccdc7b690cc38420aef0cfb66acb98d}
+
+
+targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure 
+
+vosi\_\-keyTargetTable -- targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of targetTable of the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_f6276d2ed5ca6484d81721e38e98bbd8}{
+\index{vosi.c@{vosi.c}!vosi\_\-keyUType@{vosi\_\-keyUType}}
+\index{vosi\_\-keyUType@{vosi\_\-keyUType}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-keyUType}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-keyUType (handle\_\-t {\em key})}}
+\label{vosi_8c_f6276d2ed5ca6484d81721e38e98bbd8}
+
+
+targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure 
+
+vosi\_\-keyUType -- targetTable of \hyperlink{structvosiForeignKey}{vosiForeignKey} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of targetTable of the \hyperlink{structvosiForeignKey}{vosiForeignKey} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_9a12c5a70e29a923f1849407f0910bfb}{
+\index{vosi.c@{vosi.c}!vosi\_\-nextCapability@{vosi\_\-nextCapability}}
+\index{vosi\_\-nextCapability@{vosi\_\-nextCapability}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-nextCapability}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t vosi\_\-nextCapability (handle\_\-t {\em cap})}}
+\label{vosi_8c_9a12c5a70e29a923f1849407f0910bfb}
+
+
+get the next \hyperlink{structCapabilities}{Capabilities} handle 
+
+vosi\_\-nextCapability -- get the next \hyperlink{structCapabilities}{Capabilities} handle
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cap}]handle to a \hyperlink{structCapabilities}{Capabilities} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to the next \hyperlink{structCapabilities}{Capabilities} structre (0 if it does not exist) \end{Desc}
+\hypertarget{vosi_8c_e148e07dd89d4ac27af0e96ebc2ec60c}{
+\index{vosi.c@{vosi.c}!vosi\_\-nextColumn@{vosi\_\-nextColumn}}
+\index{vosi\_\-nextColumn@{vosi\_\-nextColumn}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-nextColumn}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-nextColumn (handle\_\-t {\em column})}}
+\label{vosi_8c_e148e07dd89d4ac27af0e96ebc2ec60c}
+
+
+get the next column 
+
+vosi\_\-nextColumn -- get the next column
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the next column \mbox{[}-1 if bad input handle\mbox{]}\mbox{[}0 if no next column\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_3f2337fae0e5a15d2e15b9150342ba0e}{
+\index{vosi.c@{vosi.c}!vosi\_\-nextKey@{vosi\_\-nextKey}}
+\index{vosi\_\-nextKey@{vosi\_\-nextKey}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-nextKey}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-nextKey (handle\_\-t {\em key})}}
+\label{vosi_8c_3f2337fae0e5a15d2e15b9150342ba0e}
+
+
+get the next key in a column 
+
+vosi\_\-nextKey -- get the next key in a column
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the vosiKey structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the next column \mbox{[}-1 if bad input handle\mbox{]}\mbox{[}0 if no next key\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_0c4ca2f4ec04c49becb847bdf9edcf85}{
+\index{vosi.c@{vosi.c}!vosi\_\-nextSchema@{vosi\_\-nextSchema}}
+\index{vosi\_\-nextSchema@{vosi\_\-nextSchema}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-nextSchema}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-nextSchema (handle\_\-t {\em schema})}}
+\label{vosi_8c_0c4ca2f4ec04c49becb847bdf9edcf85}
+
+
+get the next schema 
+
+vosi\_\-nextSchema -- get the next schema
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the next schema (-1 if bad input handle) (0 if no next schema) \end{Desc}
+\hypertarget{vosi_8c_03f327673c000478f70ca9cb25997110}{
+\index{vosi.c@{vosi.c}!vosi\_\-nextTable@{vosi\_\-nextTable}}
+\index{vosi\_\-nextTable@{vosi\_\-nextTable}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-nextTable}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-nextTable (handle\_\-t {\em table})}}
+\label{vosi_8c_03f327673c000478f70ca9cb25997110}
+
+
+get the next table 
+
+vosi\_\-nextTable -- get the next table
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the next table \mbox{[}-1 if bad input handle\mbox{]}\mbox{[}0 if no next table\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_1973b71eee39017a6e07576f81399ff9}{
+\index{vosi.c@{vosi.c}!vosi\_\-numCapabilities@{vosi\_\-numCapabilities}}
+\index{vosi\_\-numCapabilities@{vosi\_\-numCapabilities}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-numCapabilities}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-numCapabilities (void)}}
+\label{vosi_8c_1973b71eee39017a6e07576f81399ff9}
+
+
+get the number of \hyperlink{structCapabilities}{Capabilities} 
+
+vosi\_\-numCapabilities -- get number of \hyperlink{structCapabilities}{Capabilities}
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em void}](no arguments) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of \hyperlink{structCapabilities}{Capabilities} \end{Desc}
+\hypertarget{vosi_8c_d6e5982ea89dc873c1c7676bef6ef9b1}{
+\index{vosi.c@{vosi.c}!vosi\_\-numCols@{vosi\_\-numCols}}
+\index{vosi\_\-numCols@{vosi\_\-numCols}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-numCols}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-numCols (handle\_\-t {\em table})}}
+\label{vosi_8c_d6e5982ea89dc873c1c7676bef6ef9b1}
+
+
+get number of columns in a table 
+
+vosi\_\-numCols -- get number of columns in a table
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int number of \hyperlink{structvosiColumn}{vosiColumn} structures in the table \mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_36e648cd9d06c97b7a70620bc663f740}{
+\index{vosi.c@{vosi.c}!vosi\_\-numKeys@{vosi\_\-numKeys}}
+\index{vosi\_\-numKeys@{vosi\_\-numKeys}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-numKeys}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-numKeys (handle\_\-t {\em column})}}
+\label{vosi_8c_36e648cd9d06c97b7a70620bc663f740}
+
+
+get number of keys in a column 
+
+vosi\_\-numKeys -- get number of keys in a column
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to \hyperlink{structvosiColumn}{vosiColumn} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int number of \hyperlink{structvosiForeignKey}{vosiForeignKey} structures in a column \mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_67f1fb937f867c88921bea8c3b83ffa9}{
+\index{vosi.c@{vosi.c}!vosi\_\-numSchema@{vosi\_\-numSchema}}
+\index{vosi\_\-numSchema@{vosi\_\-numSchema}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-numSchema}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-numSchema (handle\_\-t {\em tset})}}
+\label{vosi_8c_67f1fb937f867c88921bea8c3b83ffa9}
+
+
+get number of \hyperlink{structvosiSchema}{vosiSchema} structures 
+
+vosi\_\-numSchema -- get number of \hyperlink{structvosiSchema}{vosiSchema} structures
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTableSet}{vosiTableSet} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of \hyperlink{structvosiSchema}{vosiSchema} structures \mbox{[}-1 for bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_623db6232518a732e35aedfd132aba96}{
+\index{vosi.c@{vosi.c}!vosi\_\-numTable@{vosi\_\-numTable}}
+\index{vosi\_\-numTable@{vosi\_\-numTable}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-numTable}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-numTable (handle\_\-t {\em schema})}}
+\label{vosi_8c_623db6232518a732e35aedfd132aba96}
+
+
+get number of tables in a schema 
+
+vosi\_\-numTable -- get number of tables in a schema
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int number of \hyperlink{structvosiTable}{vosiTable} structures in the schema \end{Desc}
+\hypertarget{vosi_8c_92a40253c2eb348be87dde88c1b6f11d}{
+\index{vosi.c@{vosi.c}!vosi\_\-printk@{vosi\_\-printk}}
+\index{vosi\_\-printk@{vosi\_\-printk}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-printk}]{\setlength{\rightskip}{0pt plus 5cm}void vosi\_\-printk (char $\ast$ {\em format}, \/  char $\ast$ {\em string})}}
+\label{vosi_8c_92a40253c2eb348be87dde88c1b6f11d}
+
+
+Private printing function. 
+
+vosi\_\-printk -- Private printing function
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em format}]Format string with one s \item[{\em avail}]String to be printed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+\hypertarget{vosi_8c_7669a6a2a7629ecc999860167d77300d}{
+\index{vosi.c@{vosi.c}!vosi\_\-schemaByIndex@{vosi\_\-schemaByIndex}}
+\index{vosi\_\-schemaByIndex@{vosi\_\-schemaByIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-schemaByIndex}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-schemaByIndex (handle\_\-t {\em tset}, \/  int {\em index})}}
+\label{vosi_8c_7669a6a2a7629ecc999860167d77300d}
+
+
+get a schema with a given index 
+
+vosi\_\-schemaByIndex -- get a schema with a given index
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTableSet}{vosiTableSet} structure \item[{\em index}]: index value of the schema \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the schema \mbox{[}-1 if bad handle\mbox{]}\mbox{[}zero if (index$<$0) $|$$|$ (index$>$=vosi\_\-numSchema( tset ) ) \mbox{]} \end{Desc}
+\hypertarget{vosi_8c_87638cb6d0b63c0d680aaaf5c71a24c5}{
+\index{vosi.c@{vosi.c}!vosi\_\-schemaDescription@{vosi\_\-schemaDescription}}
+\index{vosi\_\-schemaDescription@{vosi\_\-schemaDescription}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-schemaDescription}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-schemaDescription (handle\_\-t {\em schema})}}
+\label{vosi_8c_87638cb6d0b63c0d680aaaf5c71a24c5}
+
+
+Description of \hyperlink{structvosiSchema}{vosiSchema} structure. 
+
+vosi\_\-schemaDescription -- Description of \hyperlink{structvosiSchema}{vosiSchema} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of Description of the \hyperlink{structvosiSchema}{vosiSchema} structure \end{Desc}
+\hypertarget{vosi_8c_5f9c681a91d6c7884da513b6cacf7d47}{
+\index{vosi.c@{vosi.c}!vosi\_\-schemaIndex@{vosi\_\-schemaIndex}}
+\index{vosi\_\-schemaIndex@{vosi\_\-schemaIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-schemaIndex}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-schemaIndex (handle\_\-t {\em schema})}}
+\label{vosi_8c_5f9c681a91d6c7884da513b6cacf7d47}
+
+
+index of \hyperlink{structvosiSchema}{vosiSchema} structure 
+
+vosi\_\-schemaIndex -- index of \hyperlink{structvosiSchema}{vosiSchema} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]int value of index of the \hyperlink{structvosiSchema}{vosiSchema} structure (-1 if error) \end{Desc}
+\hypertarget{vosi_8c_da0c1ac7b4219920443091af7534ce80}{
+\index{vosi.c@{vosi.c}!vosi\_\-schemaName@{vosi\_\-schemaName}}
+\index{vosi\_\-schemaName@{vosi\_\-schemaName}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-schemaName}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-schemaName (handle\_\-t {\em schema})}}
+\label{vosi_8c_da0c1ac7b4219920443091af7534ce80}
+
+
+name of \hyperlink{structvosiSchema}{vosiSchema} structure 
+
+vosi\_\-schemaName -- name of \hyperlink{structvosiSchema}{vosiSchema} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of name of the \hyperlink{structvosiSchema}{vosiSchema} structure \end{Desc}
+\hypertarget{vosi_8c_6953a644d74b274f9771f7d54a79b14f}{
+\index{vosi.c@{vosi.c}!vosi\_\-schemaTitle@{vosi\_\-schemaTitle}}
+\index{vosi\_\-schemaTitle@{vosi\_\-schemaTitle}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-schemaTitle}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-schemaTitle (handle\_\-t {\em schema})}}
+\label{vosi_8c_6953a644d74b274f9771f7d54a79b14f}
+
+
+title of \hyperlink{structvosiSchema}{vosiSchema} structure 
+
+vosi\_\-schemaTitle -- title of \hyperlink{structvosiSchema}{vosiSchema} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of title of the \hyperlink{structvosiSchema}{vosiSchema} structure \end{Desc}
+\hypertarget{vosi_8c_60826b4719b79b04686adff8d66881e0}{
+\index{vosi.c@{vosi.c}!vosi\_\-schemaUType@{vosi\_\-schemaUType}}
+\index{vosi\_\-schemaUType@{vosi\_\-schemaUType}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-schemaUType}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-schemaUType (handle\_\-t {\em schema})}}
+\label{vosi_8c_60826b4719b79b04686adff8d66881e0}
+
+
+UType of \hyperlink{structvosiSchema}{vosiSchema} structure. 
+
+vosi\_\-schemaUType -- UType of \hyperlink{structvosiSchema}{vosiSchema} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of UType of the \hyperlink{structvosiSchema}{vosiSchema} structure (-1 if error) \end{Desc}
+\hypertarget{vosi_8c_ea4e2564ecce4e8e61d5fb12cb73ace7}{
+\index{vosi.c@{vosi.c}!vosi\_\-tableByIndex@{vosi\_\-tableByIndex}}
+\index{vosi\_\-tableByIndex@{vosi\_\-tableByIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-tableByIndex}]{\setlength{\rightskip}{0pt plus 5cm}handel\_\-t vosi\_\-tableByIndex (handle\_\-t {\em schema}, \/  int {\em index})}}
+\label{vosi_8c_ea4e2564ecce4e8e61d5fb12cb73ace7}
+
+
+get a table with a given index 
+
+vosi\_\-tableByIndex -- get a table with a given index
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiSchema}{vosiSchema} structure \item[{\em index}]: index value of the table \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle of the table \mbox{[}-1 if bad handle\mbox{]}\mbox{[}zero if (index$<$0) $|$$|$ (index$>$=vosi\_\-numTable( tset ) ) \mbox{]} \end{Desc}
+\hypertarget{vosi_8c_49b8edb2fcf33f5d5d1c0481f9fc5a6d}{
+\index{vosi.c@{vosi.c}!vosi\_\-tableDescription@{vosi\_\-tableDescription}}
+\index{vosi\_\-tableDescription@{vosi\_\-tableDescription}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-tableDescription}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-tableDescription (handle\_\-t {\em table})}}
+\label{vosi_8c_49b8edb2fcf33f5d5d1c0481f9fc5a6d}
+
+
+description of \hyperlink{structvosiTable}{vosiTable} structure 
+
+vosi\_\-tableDescription -- description of \hyperlink{structvosiTable}{vosiTable} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of description of the \hyperlink{structvosiTable}{vosiTable} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_2bcea3403aa034ed58d107e2c620860f}{
+\index{vosi.c@{vosi.c}!vosi\_\-tableIndex@{vosi\_\-tableIndex}}
+\index{vosi\_\-tableIndex@{vosi\_\-tableIndex}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-tableIndex}]{\setlength{\rightskip}{0pt plus 5cm}int vosi\_\-tableIndex (handle\_\-t {\em table})}}
+\label{vosi_8c_2bcea3403aa034ed58d107e2c620860f}
+
+
+Index of \hyperlink{structvosiTable}{vosiTable} structure. 
+
+vosi\_\-tableIndex -- Index of \hyperlink{structvosiTable}{vosiTable} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of description of the \hyperlink{structvosiTable}{vosiTable} structure \mbox{[}-1 if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_09ec0d45f8fd7fa9ea23730469a36551}{
+\index{vosi.c@{vosi.c}!vosi\_\-tableName@{vosi\_\-tableName}}
+\index{vosi\_\-tableName@{vosi\_\-tableName}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-tableName}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-tableName (handle\_\-t {\em table})}}
+\label{vosi_8c_09ec0d45f8fd7fa9ea23730469a36551}
+
+
+name of \hyperlink{structvosiTable}{vosiTable} structure 
+
+vosi\_\-tableName -- name of \hyperlink{structvosiTable}{vosiTable} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of name of the \hyperlink{structvosiTable}{vosiTable} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_a804cd66b7d06227ef57f5ded5658e96}{
+\index{vosi.c@{vosi.c}!vosi\_\-tableTitle@{vosi\_\-tableTitle}}
+\index{vosi\_\-tableTitle@{vosi\_\-tableTitle}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-tableTitle}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-tableTitle (handle\_\-t {\em table})}}
+\label{vosi_8c_a804cd66b7d06227ef57f5ded5658e96}
+
+
+title of \hyperlink{structvosiTable}{vosiTable} structure 
+
+vosi\_\-tableTitle -- title of \hyperlink{structvosiTable}{vosiTable} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of title of the \hyperlink{structvosiTable}{vosiTable} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+\hypertarget{vosi_8c_aa84c0fd9f0cd76c249393bb9bc24ea6}{
+\index{vosi.c@{vosi.c}!vosi\_\-tableUType@{vosi\_\-tableUType}}
+\index{vosi\_\-tableUType@{vosi\_\-tableUType}!vosi.c@{vosi.c}}
+\subsubsection[{vosi\_\-tableUType}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ vosi\_\-tableUType (handle\_\-t {\em table})}}
+\label{vosi_8c_aa84c0fd9f0cd76c249393bb9bc24ea6}
+
+
+UType of \hyperlink{structvosiTable}{vosiTable} structure. 
+
+vosi\_\-tableUType -- UType of \hyperlink{structvosiTable}{vosiTable} structure
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]to the \hyperlink{structvosiTable}{vosiTable} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string of description of the \hyperlink{structvosiTable}{vosiTable} structure \mbox{[}NULL if bad handle\mbox{]} \end{Desc}
+
+
+\subsection{Variable Documentation}
+\hypertarget{vosi_8c_f1f4b279f22e89bf21f49090d874ed1c}{
+\index{vosi.c@{vosi.c}!xml\_\-NameSpaceTagG@{xml\_\-NameSpaceTagG}}
+\index{xml\_\-NameSpaceTagG@{xml\_\-NameSpaceTagG}!vosi.c@{vosi.c}}
+\subsubsection[{xml\_\-NameSpaceTagG}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf xml\_\-NameSpaceTagG}\mbox{[}MAX\_\-ATTR\mbox{]}\mbox{[}SZ\_\-ATTRNAME\mbox{]}}}
+\label{vosi_8c_f1f4b279f22e89bf21f49090d874ed1c}
+
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ Public Interface
+
+avail = vosi\_\-getAvailability( filename$|$str$|$url$|$NULL ) int = vosi\_\-availAvailable( avail ) str = vosi\_\-availUpSince( avail ) str = vosi\_\-availDownAt( avail ) str = vosi\_\-availBackAt( avail ) str = vosi\_\-availNote( avail )
+
+cap = vosi\_\-getCapabilities( filename$|$str$|$url$|$NULL ) next\_\-cap = vosi\_\-nextCapability( cap ) new\_\-cap = vosi\_\-capabilityByIndex( index ) int = \hyperlink{vosi_8h_1973b71eee39017a6e07576f81399ff9}{vosi\_\-numCapabilities( void )} str = vosi\_\-capStandardID( cap ) str = vosi\_\-capIVORN( cap ) str = vosi\_\-capLRN( cap ) str = vosi\_\-capNStype( cap ) str = vosi\_\-capAccessURL( cap ) int = vosi\_\-capIndex( cap ) int = vosi\_\-cap\_\-ServiceType( cap ) str = \hyperlink{vosi_8h_486e19b61164316eb03628dd1db75c45}{vosi\_\-capServiceTypeNames( int )}
+
+tset = vosi\_\-getTables( filename$|$str$|$url$|$NULL ) schema = vosi\_\-getSchema( tableset ) schema = vosi\_\-schemaByIndex( tableset, index ) schema = vosi\_\-nextSchema( schema ) int = vosi\_\-numSchema( tableset ) int= vosi\_\-schemaIndex( schema ) str = vosi\_\-schemaName( schema ) str = vosi\_\-schemaTitle( schema ) str = vosi\_\-schemaDescription( schema ) str = vosi\_\-schemaUType( schema ) int = vosi\_\-numTable( schema ) table = vosi\_\-getTable( schema ) table = vosi\_\-tableByIndex( schema, index ) table = vosi\_\-nextTable( table ) str = vosi\_\-tableName( table ) str = vosi\_\-tableTitle( table ) str = vosi\_\-tableDescription( table ) str = vosi\_\-tableUType( table ) int = vosi\_\-tableIndex( table ) int = vosi\_\-numCols( table ) column = vosi\_\-getColumn( table ) column = vosi\_\-colByIndex( table, index ) column = vosi\_\-nextColumn( column ) str = vosi\_\-colName( column ) str = vosi\_\-colDescription( column ) str = vosi\_\-colUnit( column ) str = vosi\_\-colUCD( column ) str = vosi\_\-colUType( column ) str = vosi\_\-colDatatype( column ) int = vosi\_\-colIndex( column ) int = vosi\_\-numKeys( column ) key = vosi\_\-getKey( column ) key = vosi\_\-keyByIndex( column, index ) key = vosi\_\-nextKey( key ) str = vosi\_\-keyTargetTable( key ) str = vosi\_\-keyFromColumn( key ) str = vosi\_\-keyTargetColumn( key ) str = vosi\_\-keyDescription( key ) str = vosi\_\-keyUType( key ) int = vosi\_\-keyIndex( key ) 

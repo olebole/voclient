@@ -1,0 +1,116 @@
+\hypertarget{xmlAttr_8c}{
+\section{xmlAttr.c File Reference}
+\label{xmlAttr_8c}\index{xmlAttr.c@{xmlAttr.c}}
+}
+(Private) Methods to manage XML attributes.  
+
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include \char`\"{}xmlParseP.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hypertarget{xmlAttr_8c_e4183cb6da810bf97646fdd9f49a9b92}{
+char $\ast$ \textbf{strcasestr} ()}
+\label{xmlAttr_8c_e4183cb6da810bf97646fdd9f49a9b92}
+
+\item 
+int \hyperlink{xmlAttr_8c_2a866e68e18c3d3a81db08cd115e9d7c}{xml\_\-attrSet} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock, char $\ast$name, char $\ast$value)
+\begin{CompactList}\small\item\em Set/Create an attributes (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlAttr_8c_6ab348072af35918295f806bb66ec422}{xml\_\-attrGet} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock, char $\ast$name)
+\begin{CompactList}\small\item\em Get an attribute's value (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlAttr_8c_50389636838d1e47eba94dbe64451908}{xml\_\-attrXML} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock)
+\begin{CompactList}\small\item\em Get the attributes for an XML tag (private method). \item\end{CompactList}\item 
+\hypertarget{xmlAttr_8c_6e8158cac03b335e6e38aa995b2cec65}{
+char $\ast$ \textbf{xml\_\-attrNames} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock)}
+\label{xmlAttr_8c_6e8158cac03b335e6e38aa995b2cec65}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+(Private) Methods to manage XML attributes. 
+
+XMLATTR.C -- (Private) Methods to manage XML attributes.
+
+\begin{Desc}
+\item[Author:]Mike Fitzpatrick and Eric Timmermann and Ken Mighell \end{Desc}
+\begin{Desc}
+\item[Date:]8/03/09 
+
+8/18/14 KJM: added function xml\_\-attrNames \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{xmlAttr_8c_6ab348072af35918295f806bb66ec422}{
+\index{xmlAttr.c@{xmlAttr.c}!xml\_\-attrGet@{xml\_\-attrGet}}
+\index{xml\_\-attrGet@{xml\_\-attrGet}!xmlAttr.c@{xmlAttr.c}}
+\subsubsection[{xml\_\-attrGet}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-attrGet ({\bf AttrBlock} $\ast$ {\em ablock}, \/  char $\ast$ {\em name})}}
+\label{xmlAttr_8c_6ab348072af35918295f806bb66ec422}
+
+
+Get an attribute's value (private method). 
+
+xml\_\-attrGet -- Get an attribute's value (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes \item[{\em $\ast$name}]A string that hold the name of an attribute \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Value of the attribute or NULL \end{Desc}
+\hypertarget{xmlAttr_8c_2a866e68e18c3d3a81db08cd115e9d7c}{
+\index{xmlAttr.c@{xmlAttr.c}!xml\_\-attrSet@{xml\_\-attrSet}}
+\index{xml\_\-attrSet@{xml\_\-attrSet}!xmlAttr.c@{xmlAttr.c}}
+\subsubsection[{xml\_\-attrSet}]{\setlength{\rightskip}{0pt plus 5cm}status xml\_\-attrSet ({\bf AttrBlock} $\ast$ {\em ablock}, \/  char $\ast$ {\em name}, \/  char $\ast$ {\em value})}}
+\label{xmlAttr_8c_2a866e68e18c3d3a81db08cd115e9d7c}
+
+
+Set/Create an attributes (private method). 
+
+xml\_\-attrSet -- Set/Create an attributes (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes. \item[{\em name}]A string that hold the name of an attribute. \item[{\em value}]A string that hold the value of an attribute. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The status of the request. 1 Success, 0=FAIL.\end{Desc}
+\begin{Desc}
+\item[Warning:]If an attribute has no name/value, this will not create it. \end{Desc}
+\hypertarget{xmlAttr_8c_50389636838d1e47eba94dbe64451908}{
+\index{xmlAttr.c@{xmlAttr.c}!xml\_\-attrXML@{xml\_\-attrXML}}
+\index{xml\_\-attrXML@{xml\_\-attrXML}!xmlAttr.c@{xmlAttr.c}}
+\subsubsection[{xml\_\-attrXML}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-attrXML ({\bf AttrBlock} $\ast$ {\em ablock})}}
+\label{xmlAttr_8c_50389636838d1e47eba94dbe64451908}
+
+
+Get the attributes for an XML tag (private method). 
+
+Get names of the attributes for an XML tag (private method).
+
+xml\_\-attrXML -- Get the attributes for an XML tag (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string containing the attributes for an XML tag\end{Desc}
+xml\_\-attrNames -- Get the names of the attributes for an XML tag (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A space-separated string containing the names of the attributes for an XML tag \end{Desc}

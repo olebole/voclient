@@ -1,0 +1,465 @@
+\hypertarget{cvoRegistry_8h}{
+\section{cvoRegistry.h File Reference}
+\label{cvoRegistry_8h}\index{cvoRegistry.h@{cvoRegistry.h}}
+}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structsearchTerm}{searchTerm}
+\item 
+struct \hyperlink{structVOTResource}{VOTResource}
+\item 
+struct \hyperlink{structregQuery}{regQuery}
+\item 
+struct \hyperlink{structregQueryRes}{regQueryRes}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{cvoRegistry_8h_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{cvoRegistry_8h_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{cvoRegistry_8h_5fdfc9d775650caffe614b85db1ef6ee}{
+\#define \textbf{REG\_\-DEBUG}~(getenv(\char`\"{}REG\_\-DBG\char`\"{})$|$$|$access(\char`\"{}/tmp/REG\_\-DBG\char`\"{},F\_\-OK)==0)}
+\label{cvoRegistry_8h_5fdfc9d775650caffe614b85db1ef6ee}
+
+\item 
+\hypertarget{cvoRegistry_8h_92cc2dd0f59759e2b009040c14d12b1a}{
+\#define \textbf{DEF\_\-REGISTRY}~\char`\"{}http://vao.stsci.edu/directory/NVORegInt.asmx/\char`\"{}}
+\label{cvoRegistry_8h_92cc2dd0f59759e2b009040c14d12b1a}
+
+\item 
+\hypertarget{cvoRegistry_8h_23a564df324a6f5272c48a1ae77e4754}{
+\#define \textbf{OLD\_\-REGISTRY}~\char`\"{}http://nvo.stsci.edu/vor10/NVORegInt.asmx/\char`\"{}}
+\label{cvoRegistry_8h_23a564df324a6f5272c48a1ae77e4754}
+
+\item 
+\hypertarget{cvoRegistry_8h_b733d5e6cf03daec89936b72e2ba54a1}{
+\#define \textbf{TEST\_\-REGISTRY}~\char`\"{}http://vaotest.stsci.edu/directory/NVORegInt.asmx/\char`\"{}}
+\label{cvoRegistry_8h_b733d5e6cf03daec89936b72e2ba54a1}
+
+\item 
+\hypertarget{cvoRegistry_8h_2b08ed57300fd5f9fa66a812d159899c}{
+\#define \textbf{DEF\_\-METHOD}~\char`\"{}VOTPredOpt\char`\"{}}
+\label{cvoRegistry_8h_2b08ed57300fd5f9fa66a812d159899c}
+
+\item 
+\hypertarget{cvoRegistry_8h_5c8dd9e737af63a79cd9369c24ddfa11}{
+\#define \textbf{MAX\_\-SEARCH\_\-TERMS}~64}
+\label{cvoRegistry_8h_5c8dd9e737af63a79cd9369c24ddfa11}
+
+\item 
+\hypertarget{cvoRegistry_8h_a653c0eca99802a09fd9560f28a9b1c1}{
+\#define \textbf{MAX\_\-TAGS}~10}
+\label{cvoRegistry_8h_a653c0eca99802a09fd9560f28a9b1c1}
+
+\item 
+\hypertarget{cvoRegistry_8h_34a7d47b1d3fe7b2a401f99657966a7b}{
+\#define \textbf{MAX\_\-ATTRS}~40}
+\label{cvoRegistry_8h_34a7d47b1d3fe7b2a401f99657966a7b}
+
+\item 
+\hypertarget{cvoRegistry_8h_4ad6b27302c290b31000b9d7b537959c}{
+\#define \textbf{SZ\_\-STR}~512}
+\label{cvoRegistry_8h_4ad6b27302c290b31000b9d7b537959c}
+
+\item 
+\hypertarget{cvoRegistry_8h_839f260bab638adea25636d9f898defd}{
+\#define \textbf{SZ\_\-BIGSTR}~2048}
+\label{cvoRegistry_8h_839f260bab638adea25636d9f898defd}
+
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+\hypertarget{cvoRegistry_8h_4e93553580f4bf37ea32a826304aceaa}{
+typedef struct \hyperlink{structsearchTerm}{searchTerm} $\ast$ \textbf{searchTermP}}
+\label{cvoRegistry_8h_4e93553580f4bf37ea32a826304aceaa}
+
+\item 
+\hypertarget{cvoRegistry_8h_182634e578ce6a6be9ad9801c0268357}{
+typedef struct \hyperlink{structVOTResource}{VOTResource} $\ast$ \textbf{VOTResourceP}}
+\label{cvoRegistry_8h_182634e578ce6a6be9ad9801c0268357}
+
+\item 
+\hypertarget{cvoRegistry_8h_5f06cb97f26ad8789cb4b28ac07b80d5}{
+typedef struct \hyperlink{structregQuery}{regQuery} $\ast$ \textbf{regQueryP}}
+\label{cvoRegistry_8h_5f06cb97f26ad8789cb4b28ac07b80d5}
+
+\item 
+\hypertarget{cvoRegistry_8h_ec45efd04895c85a701594c3be5105fa}{
+typedef struct \hyperlink{structregQueryRes}{regQueryRes} $\ast$ \textbf{regQueryResP}}
+\label{cvoRegistry_8h_ec45efd04895c85a701594c3be5105fa}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+RegResult \hyperlink{cvoRegistry_8h_0f39d02f4f35e33a9487c7aafd1f9dce}{cvo\_\-regSearch} (char $\ast$term1, char $\ast$term2, int orValues)
+\begin{CompactList}\small\item\em High-level Registry query interface. \item\end{CompactList}\item 
+RegResult \hyperlink{cvoRegistry_8h_963d89a8a3dbf2e61f2e09e8edaf5fb6}{cvo\_\-regSearchByService} (char $\ast$svc, char $\ast$term, int orValues)
+\begin{CompactList}\small\item\em Search Registry using a search term and service constraint. \item\end{CompactList}\item 
+RegQuery \hyperlink{cvoRegistry_8h_94db59027d33851f8ab9e97edd36f8e2}{cvo\_\-regQuery} (char $\ast$term, int orValues)
+\begin{CompactList}\small\item\em Create a RegistryQuery object. \item\end{CompactList}\item 
+void \hyperlink{cvoRegistry_8h_99e331757e802d08f1b3e93a703fb931}{cvo\_\-regAddSearchTerm} (RegQuery query, char $\ast$term, int orValue)
+\begin{CompactList}\small\item\em Add a search term to the specified query. \item\end{CompactList}\item 
+void \hyperlink{cvoRegistry_8h_b8d0c0da29091f683959c6e1d19d423a}{cvo\_\-regRemoveSearchTerm} (RegQuery query, char $\ast$term)
+\begin{CompactList}\small\item\em Remove a search term to the specified query. \item\end{CompactList}\item 
+void \hyperlink{cvoRegistry_8h_e24c404eb5958246e3af65dff6103fff}{cvo\_\-regConstWaveband} (RegQuery query, char $\ast$waveband)
+\begin{CompactList}\small\item\em Constrain the Registry search by waveband. \item\end{CompactList}\item 
+\hypertarget{cvoRegistry_8h_25e548495229978e448cc990fa37a986}{
+void \textbf{cvo\_\-regConstSvcType} (RegQuery query, char $\ast$svcType)}
+\label{cvoRegistry_8h_25e548495229978e448cc990fa37a986}
+
+\item 
+void \hyperlink{cvoRegistry_8h_88c2ac76b7f00f0221079e231463beba}{cvo\_\-regDALOnly} (RegQuery query, int value)
+\begin{CompactList}\small\item\em Set the \char`\"{}DAL Only\char`\"{} flag. \item\end{CompactList}\item 
+void \hyperlink{cvoRegistry_8h_48c9590cf5f9c54ec0e40fb6d3477f23}{cvo\_\-regSortRes} (RegQuery query, int value)
+\begin{CompactList}\small\item\em Set the resource \char`\"{}sort\char`\"{} flag. \item\end{CompactList}\item 
+int \hyperlink{cvoRegistry_8h_3c8624f7e8f18bbe7e074efb898dca97}{cvo\_\-regGetSTCount} (RegQuery query)
+\begin{CompactList}\small\item\em Get the number of search terms in the current query. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{cvoRegistry_8h_955a2fd4a9b91c757c2732c16058b500}{cvo\_\-regGetQueryString} (RegQuery query)
+\begin{CompactList}\small\item\em Get the current query as an http GET URL. \item\end{CompactList}\item 
+RegResult \hyperlink{cvoRegistry_8h_a41910461625f5e63127bfbe2578ac9a}{cvo\_\-regExecute} (RegQuery query)
+\begin{CompactList}\small\item\em Execute the specified query. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{cvoRegistry_8h_08758ff42f763aac803ee04e58fb2c74}{cvo\_\-regExecuteRaw} (RegQuery query)
+\begin{CompactList}\small\item\em Execute the specified query and return raw result string. \item\end{CompactList}\item 
+int \hyperlink{cvoRegistry_8h_ad978901aff494102f26d4a715d5c8de}{cvo\_\-resGetCount} (RegResult res)
+\begin{CompactList}\small\item\em Return a count of the number of results records. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{cvoRegistry_8h_5a8aa8f0601a565b43776ba9a70f8130}{cvo\_\-resGetStr} (RegResult res, char $\ast$attr, int index)
+\begin{CompactList}\small\item\em Get a string-valued attribute from the result resource record. \item\end{CompactList}\item 
+double \hyperlink{cvoRegistry_8h_ae938665c384ca524cc02b1ea876345f}{cvo\_\-resGetFloat} (RegResult res, char $\ast$attr, int index)
+\begin{CompactList}\small\item\em Get a real-valued attribute from the result resource record. \item\end{CompactList}\item 
+int \hyperlink{cvoRegistry_8h_d6e3d87e8a39f73fe3a511c5b9140abc}{cvo\_\-resGetInt} (RegResult res, char $\ast$attr, int index)
+\begin{CompactList}\small\item\em Get an int-valued attribute from the result resource record. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+CVO\_\-REGISTRYQUERY.H -- Implementation detils for the CVO Registry code.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]January 2014 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{cvoRegistry_8h_99e331757e802d08f1b3e93a703fb931}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regAddSearchTerm@{cvo\_\-regAddSearchTerm}}
+\index{cvo\_\-regAddSearchTerm@{cvo\_\-regAddSearchTerm}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regAddSearchTerm}]{\setlength{\rightskip}{0pt plus 5cm}void cvo\_\-regAddSearchTerm (RegQuery {\em query}, \/  char $\ast$ {\em term}, \/  int {\em orValue})}}
+\label{cvoRegistry_8h_99e331757e802d08f1b3e93a703fb931}
+
+
+Add a search term to the specified query. 
+
+CVO\_\-REGADDSEARCHTERM -- Add a search term (sql predicate or keyword list) to the specified query.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \item[{\em term}]keyword search term \item[{\em orValues}]logically OR values? \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{cvoRegistry_8h_e24c404eb5958246e3af65dff6103fff}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regConstWaveband@{cvo\_\-regConstWaveband}}
+\index{cvo\_\-regConstWaveband@{cvo\_\-regConstWaveband}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regConstWaveband}]{\setlength{\rightskip}{0pt plus 5cm}void cvo\_\-regConstWaveband (RegQuery {\em query}, \/  char $\ast$ {\em waveband})}}
+\label{cvoRegistry_8h_e24c404eb5958246e3af65dff6103fff}
+
+
+Constrain the Registry search by waveband. 
+
+Constrain the Registry search by service type.
+
+CVO\_\-REGCONSTWAVEBAND -- Constrain the Registry search by waveband.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \item[{\em waveband}]waveband string \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing\end{Desc}
+CVO\_\-REGCONSTSVCTYPE -- Constraing the Registry search by service type.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \item[{\em svcType}]service type string \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{cvoRegistry_8h_88c2ac76b7f00f0221079e231463beba}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regDALOnly@{cvo\_\-regDALOnly}}
+\index{cvo\_\-regDALOnly@{cvo\_\-regDALOnly}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regDALOnly}]{\setlength{\rightskip}{0pt plus 5cm}void cvo\_\-regDALOnly (RegQuery {\em query}, \/  int {\em value})}}
+\label{cvoRegistry_8h_88c2ac76b7f00f0221079e231463beba}
+
+
+Set the \char`\"{}DAL Only\char`\"{} flag. 
+
+CVO\_\-REGDALONLY -- Set the \char`\"{}DAL Only\char`\"{} flag. If set, we expand a resource search to break out the individual DAL services into separate results.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \item[{\em value}]value of the DAL-only flag \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{cvoRegistry_8h_a41910461625f5e63127bfbe2578ac9a}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regExecute@{cvo\_\-regExecute}}
+\index{cvo\_\-regExecute@{cvo\_\-regExecute}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regExecute}]{\setlength{\rightskip}{0pt plus 5cm}RegResult cvo\_\-regExecute (RegQuery {\em query})}}
+\label{cvoRegistry_8h_a41910461625f5e63127bfbe2578ac9a}
+
+
+Execute the specified query. 
+
+CVO\_\-REGEXECUTE -- Execute the specified query, returning a result object code or NULL.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]registry result object handle \end{Desc}
+\hypertarget{cvoRegistry_8h_08758ff42f763aac803ee04e58fb2c74}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regExecuteRaw@{cvo\_\-regExecuteRaw}}
+\index{cvo\_\-regExecuteRaw@{cvo\_\-regExecuteRaw}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regExecuteRaw}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cvo\_\-regExecuteRaw (RegQuery {\em query})}}
+\label{cvoRegistry_8h_08758ff42f763aac803ee04e58fb2c74}
+
+
+Execute the specified query and return raw result string. 
+
+CVO\_\-REGEXECUTERAW -- Execute the specified query and return the raw resulting XML string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]raw data return from data (caller must free) \end{Desc}
+\hypertarget{cvoRegistry_8h_955a2fd4a9b91c757c2732c16058b500}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regGetQueryString@{cvo\_\-regGetQueryString}}
+\index{cvo\_\-regGetQueryString@{cvo\_\-regGetQueryString}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regGetQueryString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cvo\_\-regGetQueryString (RegQuery {\em query})}}
+\label{cvoRegistry_8h_955a2fd4a9b91c757c2732c16058b500}
+
+
+Get the current query as an http GET URL. 
+
+CVO\_\-REGGETQUERYSTRING -- Get the current query as an http GET URL.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]query URL \end{Desc}
+\hypertarget{cvoRegistry_8h_3c8624f7e8f18bbe7e074efb898dca97}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regGetSTCount@{cvo\_\-regGetSTCount}}
+\index{cvo\_\-regGetSTCount@{cvo\_\-regGetSTCount}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regGetSTCount}]{\setlength{\rightskip}{0pt plus 5cm}int cvo\_\-regGetSTCount (RegQuery {\em query})}}
+\label{cvoRegistry_8h_3c8624f7e8f18bbe7e074efb898dca97}
+
+
+Get the number of search terms in the current query. 
+
+CVO\_\-REGGETSTCOUNT -- Get the number of search terms in the current query.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{cvoRegistry_8h_94db59027d33851f8ab9e97edd36f8e2}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regQuery@{cvo\_\-regQuery}}
+\index{cvo\_\-regQuery@{cvo\_\-regQuery}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regQuery}]{\setlength{\rightskip}{0pt plus 5cm}RegQuery cvo\_\-regQuery (char $\ast$ {\em term}, \/  int {\em orValues})}}
+\label{cvoRegistry_8h_94db59027d33851f8ab9e97edd36f8e2}
+
+
+Create a RegistryQuery object. 
+
+CVO\_\-REGQUERY -- Create a RegistryQuery object.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em term}]keyword search term \item[{\em orValues}]logically OR values? \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to Registry Query object \end{Desc}
+\hypertarget{cvoRegistry_8h_b8d0c0da29091f683959c6e1d19d423a}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regRemoveSearchTerm@{cvo\_\-regRemoveSearchTerm}}
+\index{cvo\_\-regRemoveSearchTerm@{cvo\_\-regRemoveSearchTerm}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regRemoveSearchTerm}]{\setlength{\rightskip}{0pt plus 5cm}void cvo\_\-regRemoveSearchTerm (RegQuery {\em query}, \/  char $\ast$ {\em term})}}
+\label{cvoRegistry_8h_b8d0c0da29091f683959c6e1d19d423a}
+
+
+Remove a search term to the specified query. 
+
+CVO\_\-REMOVESEARCHTERM -- Remove the search term from the query.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \item[{\em term}]keyword search term \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{cvoRegistry_8h_0f39d02f4f35e33a9487c7aafd1f9dce}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regSearch@{cvo\_\-regSearch}}
+\index{cvo\_\-regSearch@{cvo\_\-regSearch}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regSearch}]{\setlength{\rightskip}{0pt plus 5cm}RegResult cvo\_\-regSearch (char $\ast$ {\em term1}, \/  char $\ast$ {\em term2}, \/  int {\em orValues})}}
+\label{cvoRegistry_8h_0f39d02f4f35e33a9487c7aafd1f9dce}
+
+
+High-level Registry query interface. 
+
+CVO\_\-REGSEARCH -- High-level procedure to form a query and execute it immediately. We allow that 'term1' may be a complex SQL WHERE predicate, and that 'term2' (or vice versa) is a search-keyword list. The 'orValues' applies to the keyword list (if present), otherwise it applies to the two search term elements. The default action if two terms are specified is to logically AND them.
+
+The thinking here is that one might want SIAP services for Quasars. This is easily expressed in an SQL form to get SIAP resources, however a Quasar may be known as a QSO, AGN, active-nuclei, etc and so we need a easy way to OR the keywords but AND that result with the SQL predicate.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em term1}]first search term \item[{\em term2}]second search term \item[{\em orValues}]logically OR values? \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to Registry result object \end{Desc}
+\hypertarget{cvoRegistry_8h_963d89a8a3dbf2e61f2e09e8edaf5fb6}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regSearchByService@{cvo\_\-regSearchByService}}
+\index{cvo\_\-regSearchByService@{cvo\_\-regSearchByService}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regSearchByService}]{\setlength{\rightskip}{0pt plus 5cm}RegResult cvo\_\-regSearchByService (char $\ast$ {\em svc}, \/  char $\ast$ {\em term}, \/  int {\em orValues})}}
+\label{cvoRegistry_8h_963d89a8a3dbf2e61f2e09e8edaf5fb6}
+
+
+Search Registry using a search term and service constraint. 
+
+CVO\_\-REGSEARCHBYSERVICE -- Search the Registry using a search term and constrain by service type.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em svc}]service type constraint \item[{\em term}]keyword search term \item[{\em orValues}]logically OR values? \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to Registry result object \end{Desc}
+\hypertarget{cvoRegistry_8h_48c9590cf5f9c54ec0e40fb6d3477f23}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-regSortRes@{cvo\_\-regSortRes}}
+\index{cvo\_\-regSortRes@{cvo\_\-regSortRes}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-regSortRes}]{\setlength{\rightskip}{0pt plus 5cm}void cvo\_\-regSortRes (RegQuery {\em query}, \/  int {\em value})}}
+\label{cvoRegistry_8h_48c9590cf5f9c54ec0e40fb6d3477f23}
+
+
+Set the resource \char`\"{}sort\char`\"{} flag. 
+
+CVO\_\-REGSORTRES -- Set the resource \char`\"{}sort\char`\"{} flag. If enabled, we try to order the resource table by some logical means.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Registry query handle \item[{\em value}]value of the sort flag \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{cvoRegistry_8h_ad978901aff494102f26d4a715d5c8de}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-resGetCount@{cvo\_\-resGetCount}}
+\index{cvo\_\-resGetCount@{cvo\_\-resGetCount}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-resGetCount}]{\setlength{\rightskip}{0pt plus 5cm}int cvo\_\-resGetCount (RegResult {\em res})}}
+\label{cvoRegistry_8h_ad978901aff494102f26d4a715d5c8de}
+
+
+Return a count of the number of results records. 
+
+CVO\_\-RESGETCOUNT -- Return a count of the number of results records.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em res}]Registry result handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of result records \end{Desc}
+\hypertarget{cvoRegistry_8h_ae938665c384ca524cc02b1ea876345f}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-resGetFloat@{cvo\_\-resGetFloat}}
+\index{cvo\_\-resGetFloat@{cvo\_\-resGetFloat}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-resGetFloat}]{\setlength{\rightskip}{0pt plus 5cm}double cvo\_\-resGetFloat (RegResult {\em res}, \/  char $\ast$ {\em attr}, \/  int {\em index})}}
+\label{cvoRegistry_8h_ae938665c384ca524cc02b1ea876345f}
+
+
+Get a real-valued attribute from the result resource record. 
+
+CVO\_\-GETFLOAT -- Get a real-valued attribute from the result resource record. Currently recognized real-valued attributes include:
+
+MaxSR maximum search radius
+
+Attribute string are case-insensitive.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em res}]Registry result handle \item[{\em attr}]record attribute \item[{\em index}]record index \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string-valued attribute \end{Desc}
+\hypertarget{cvoRegistry_8h_d6e3d87e8a39f73fe3a511c5b9140abc}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-resGetInt@{cvo\_\-resGetInt}}
+\index{cvo\_\-resGetInt@{cvo\_\-resGetInt}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-resGetInt}]{\setlength{\rightskip}{0pt plus 5cm}int cvo\_\-resGetInt (RegResult {\em res}, \/  char $\ast$ {\em attr}, \/  int {\em index})}}
+\label{cvoRegistry_8h_d6e3d87e8a39f73fe3a511c5b9140abc}
+
+
+Get an int-valued attribute from the result resource record. 
+
+CVO\_\-GETINT -- Get a integer-valued attribute from the result resource record. Currently recognized real-valued attributes include:
+
+MaxRecords maximum records returned by the service
+
+Attribute string are case-insensitive.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em res}]Registry result handle \item[{\em attr}]record attribute \item[{\em index}]record index \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string-valued attribute \end{Desc}
+\hypertarget{cvoRegistry_8h_5a8aa8f0601a565b43776ba9a70f8130}{
+\index{cvoRegistry.h@{cvoRegistry.h}!cvo\_\-resGetStr@{cvo\_\-resGetStr}}
+\index{cvo\_\-resGetStr@{cvo\_\-resGetStr}!cvoRegistry.h@{cvoRegistry.h}}
+\subsubsection[{cvo\_\-resGetStr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cvo\_\-resGetStr (RegResult {\em res}, \/  char $\ast$ {\em attr}, \/  int {\em index})}}
+\label{cvoRegistry_8h_5a8aa8f0601a565b43776ba9a70f8130}
+
+
+Get a string-valued attribute from the result resource record. 
+
+CVO\_\-GETSTR -- Get a string-valued attribute from the result resource record. Currently recognized real-valued attributes include:
+
+Title Resource title (long version) ShortName Short name of Resource ServiceURL Service URL (if appropriate) ReferenceURL URL to reference about Resource Description Text description of resource Identifier Standard ivo identifier of resource ServiceType Service Type (Cone, Siap, etc) Type Resource Type (catalog, survey, etc) CoverageSpatial Spatial coverage (STC) CoverageTemporal Temporal coverage of data
+
+CoverageSpectral Spectral coverage (csv list of bandpasses) ContentLevel Content level (research, EPO, etc -- csv list)
+
+Attribute strings are case-insensitive.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em res}]Registry result handle \item[{\em attr}]record attribute \item[{\em index}]record index \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string-valued attribute \end{Desc}

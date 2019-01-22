@@ -1,0 +1,561 @@
+\hypertarget{svrDAL_8c}{
+\section{svrDAL.c File Reference}
+\label{svrDAL_8c}\index{svrDAL.c@{svrDAL.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/file.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/socket.h$>$}\par
+{\tt \#include $<$sys/select.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$sys/un.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$netdb.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/uio.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_9362c415ba25690709a5595eca9cbc4b}{sm\_\-newConnection} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Create a new connection context. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_a589e82fbe50dc19a16b6c8eab6e9fca}{sm\_\-getRawURL} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Download a URL and return the result. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_44e2057b142b947294bc93efb8a98973}{sm\_\-removeConnection} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Close a client DAL connection context. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_9408b7e7f15d75a117887994db08e6d3}{sm\_\-getServiceCount} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_0e5c321d427f686a172d4a1579c2fcc4}{sm\_\-addServiceURL} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Add a service URL to the specified connection. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_583eacfbcb633d9f14d68de2135cdb0e}{sm\_\-getServiceURL} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the requested service URL for the connection. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_23c669eae510e1a367fafc5f3f5d8319}{sm\_\-getQuery} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get a generic Query context from the server. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_554038d30b10758c6c48ac956dde2c64}{sm\_\-addParameter} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Add a string parameter to a Query string. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_b3d0413ef0b4f29da4c3e48551c3a580}{sm\_\-getQueryString} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the query string to be executed. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_08aa128586a834fca8584d3fc3e2ca0e}{sm\_\-execute} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Execute the specified query in the DAL server. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_3e527e413112d999818cb8f1819a1555}{sm\_\-getQResponse} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Utility to get QResponse handle from a query. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_e6d8613576c3018215cc16dc27684b5b}{sm\_\-executeCSV} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Execute the query and return a CSV table. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_21919a0640e15fdad02c94dd47ba178d}{sm\_\-executeTSV} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Execute the query and return a TSV table. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_eb5300076105e93bf5edc9599f55626c}{sm\_\-executeASCII} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Execute the query and return a TSV table. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_c6637500794eeca101b0a0f8d83e07dd}{sm\_\-evecuteVOTable} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Execute the query and return a TSV table. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_fb6d2810416a374a13ce0de48071efba}{sm\_\-getRecordCount} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get a count of records return by the QResponse. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_5de12752c48ee57e1f1c5be676087c87}{sm\_\-getRecord} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the response record by Number. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_5e3e75cfdf0415afe274d4af9242dd1a}{sm\_\-getAttrCount} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the attribute record count. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_046023adbebd9f4679017e1ae24c07ea}{sm\_\-getFieldAttr} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the field attribute string. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_ba0d726dac4ba2d1db8503a1baa1ccf7}{sm\_\-getAttrList} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get a list of attributes for the record. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_5a796e603e38652d6a5145583400679d}{sm\_\-getAttribute} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get a response record attribute object. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_995da2d6f6ad633a838f28eaf487f6ef}{sm\_\-intValue} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Set an integer value in a record. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_28b4faa8cd830767ff7dd57a8e30dbd4}{sm\_\-floatValue} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Set a floating-point value in a record. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_bdf8aa10da1c4e95dcc41a309985e6b0}{sm\_\-stringValue} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Set a string value in a record. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_a622dc90de3c1bef39bdf434ee7c8012}{sm\_\-getDataset} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Download the specified dataset. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrDAL_8c_b4d157fddf1db7876046883fb739e50e}{sm\_\-validateObject} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+SVRDAL.C -- VOClient Mini-Daemon server methods for DAL queries.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]April 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{svrDAL_8c_554038d30b10758c6c48ac956dde2c64}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-addParameter@{sm\_\-addParameter}}
+\index{sm\_\-addParameter@{sm\_\-addParameter}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-addParameter}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-addParameter (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_554038d30b10758c6c48ac956dde2c64}
+
+
+Add a string parameter to a Query string. 
+
+SM\_\-ADDPARAMETER -- Add a string parameter to a Query string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_0e5c321d427f686a172d4a1579c2fcc4}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-addServiceURL@{sm\_\-addServiceURL}}
+\index{sm\_\-addServiceURL@{sm\_\-addServiceURL}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-addServiceURL}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-addServiceURL (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_0e5c321d427f686a172d4a1579c2fcc4}
+
+
+Add a service URL to the specified connection. 
+
+SM\_\-ADDSERVICEURL -- Add a service URL to the specified connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_c6637500794eeca101b0a0f8d83e07dd}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-evecuteVOTable@{sm\_\-evecuteVOTable}}
+\index{sm\_\-evecuteVOTable@{sm\_\-evecuteVOTable}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-evecuteVOTable}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-evecuteVOTable (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_c6637500794eeca101b0a0f8d83e07dd}
+
+
+Execute the query and return a TSV table. 
+
+SM\_\-EVECUTEVOTABLE -- Execute the query and return a TSV table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_08aa128586a834fca8584d3fc3e2ca0e}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-execute@{sm\_\-execute}}
+\index{sm\_\-execute@{sm\_\-execute}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-execute}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-execute (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_08aa128586a834fca8584d3fc3e2ca0e}
+
+
+Execute the specified query in the DAL server. 
+
+SM\_\-EXECUTE -- Execute the specified query in the DAL server.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_eb5300076105e93bf5edc9599f55626c}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-executeASCII@{sm\_\-executeASCII}}
+\index{sm\_\-executeASCII@{sm\_\-executeASCII}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-executeASCII}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-executeASCII (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_eb5300076105e93bf5edc9599f55626c}
+
+
+Execute the query and return a TSV table. 
+
+SM\_\-EXECUTEASCII -- Execute the query and return a TSV table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_e6d8613576c3018215cc16dc27684b5b}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-executeCSV@{sm\_\-executeCSV}}
+\index{sm\_\-executeCSV@{sm\_\-executeCSV}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-executeCSV}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-executeCSV (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_e6d8613576c3018215cc16dc27684b5b}
+
+
+Execute the query and return a CSV table. 
+
+SM\_\-EXECUTECSV -- Execute the query and return a CSV table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_21919a0640e15fdad02c94dd47ba178d}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-executeTSV@{sm\_\-executeTSV}}
+\index{sm\_\-executeTSV@{sm\_\-executeTSV}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-executeTSV}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-executeTSV (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_21919a0640e15fdad02c94dd47ba178d}
+
+
+Execute the query and return a TSV table. 
+
+SM\_\-EXECUTETSV -- Execute the query and return a TSV table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_28b4faa8cd830767ff7dd57a8e30dbd4}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-floatValue@{sm\_\-floatValue}}
+\index{sm\_\-floatValue@{sm\_\-floatValue}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-floatValue}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-floatValue (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_28b4faa8cd830767ff7dd57a8e30dbd4}
+
+
+Set a floating-point value in a record. 
+
+SM\_\-FLOATVALUE -- Set a floating-point value in a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_5e3e75cfdf0415afe274d4af9242dd1a}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getAttrCount@{sm\_\-getAttrCount}}
+\index{sm\_\-getAttrCount@{sm\_\-getAttrCount}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getAttrCount}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getAttrCount (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_5e3e75cfdf0415afe274d4af9242dd1a}
+
+
+Get the attribute record count. 
+
+SM\_\-GETATTRCOUNT -- Get the attribute record count.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_5a796e603e38652d6a5145583400679d}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getAttribute@{sm\_\-getAttribute}}
+\index{sm\_\-getAttribute@{sm\_\-getAttribute}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getAttribute}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getAttribute (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_5a796e603e38652d6a5145583400679d}
+
+
+Get a response record attribute object. 
+
+SM\_\-GETATTRIBUTE -- Get a response record attribute object.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_ba0d726dac4ba2d1db8503a1baa1ccf7}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getAttrList@{sm\_\-getAttrList}}
+\index{sm\_\-getAttrList@{sm\_\-getAttrList}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getAttrList}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getAttrList (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_ba0d726dac4ba2d1db8503a1baa1ccf7}
+
+
+Get a list of attributes for the record. 
+
+SM\_\-GETATTRLIST -- Get a list of attributes for the record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_a622dc90de3c1bef39bdf434ee7c8012}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getDataset@{sm\_\-getDataset}}
+\index{sm\_\-getDataset@{sm\_\-getDataset}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getDataset}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getDataset (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_a622dc90de3c1bef39bdf434ee7c8012}
+
+
+Download the specified dataset. 
+
+SM\_\-GETDATASET -- Download the specified dataset.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_046023adbebd9f4679017e1ae24c07ea}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getFieldAttr@{sm\_\-getFieldAttr}}
+\index{sm\_\-getFieldAttr@{sm\_\-getFieldAttr}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getFieldAttr}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getFieldAttr (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_046023adbebd9f4679017e1ae24c07ea}
+
+
+Get the field attribute string. 
+
+SM\_\-GETFIELDATTR -- Get the field attribute string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_3e527e413112d999818cb8f1819a1555}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getQResponse@{sm\_\-getQResponse}}
+\index{sm\_\-getQResponse@{sm\_\-getQResponse}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getQResponse}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getQResponse (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_3e527e413112d999818cb8f1819a1555}
+
+
+Utility to get QResponse handle from a query. 
+
+SM\_\-GETQRESPONSE -- Utility to get QResponse handle from a query.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_23c669eae510e1a367fafc5f3f5d8319}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getQuery@{sm\_\-getQuery}}
+\index{sm\_\-getQuery@{sm\_\-getQuery}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getQuery}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getQuery (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_23c669eae510e1a367fafc5f3f5d8319}
+
+
+Get a generic Query context from the server. 
+
+SM\_\-GETQUERY -- Get a generic Query context from the server.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_b3d0413ef0b4f29da4c3e48551c3a580}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getQueryString@{sm\_\-getQueryString}}
+\index{sm\_\-getQueryString@{sm\_\-getQueryString}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getQueryString}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getQueryString (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_b3d0413ef0b4f29da4c3e48551c3a580}
+
+
+Get the query string to be executed. 
+
+SM\_\-GETQUERYSTRING -- Get the query string to be executed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_a589e82fbe50dc19a16b6c8eab6e9fca}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getRawURL@{sm\_\-getRawURL}}
+\index{sm\_\-getRawURL@{sm\_\-getRawURL}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getRawURL}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getRawURL (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_a589e82fbe50dc19a16b6c8eab6e9fca}
+
+
+Download a URL and return the result. 
+
+SM\_\-GETRAWURL -- Download a URL and return the result.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_5de12752c48ee57e1f1c5be676087c87}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getRecord@{sm\_\-getRecord}}
+\index{sm\_\-getRecord@{sm\_\-getRecord}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getRecord}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getRecord (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_5de12752c48ee57e1f1c5be676087c87}
+
+
+Get the response record by Number. 
+
+SM\_\-GETRECORD -- Get the response record by Number.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_fb6d2810416a374a13ce0de48071efba}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getRecordCount@{sm\_\-getRecordCount}}
+\index{sm\_\-getRecordCount@{sm\_\-getRecordCount}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getRecordCount}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getRecordCount (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_fb6d2810416a374a13ce0de48071efba}
+
+
+Get a count of records return by the QResponse. 
+
+SM\_\-GETRECORDCOUNT -- Get a count of records return by the QResponse.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_9408b7e7f15d75a117887994db08e6d3}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getServiceCount@{sm\_\-getServiceCount}}
+\index{sm\_\-getServiceCount@{sm\_\-getServiceCount}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getServiceCount}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getServiceCount (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_9408b7e7f15d75a117887994db08e6d3}
+
+
+Method description. 
+
+SM\_\-GETSERVICECOUNT -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_583eacfbcb633d9f14d68de2135cdb0e}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-getServiceURL@{sm\_\-getServiceURL}}
+\index{sm\_\-getServiceURL@{sm\_\-getServiceURL}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-getServiceURL}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-getServiceURL (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_583eacfbcb633d9f14d68de2135cdb0e}
+
+
+Get the requested service URL for the connection. 
+
+SM\_\-GETSERVICEURL -- Get the requested service URL for the connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_995da2d6f6ad633a838f28eaf487f6ef}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-intValue@{sm\_\-intValue}}
+\index{sm\_\-intValue@{sm\_\-intValue}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-intValue}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-intValue (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_995da2d6f6ad633a838f28eaf487f6ef}
+
+
+Set an integer value in a record. 
+
+SM\_\-INTVALUE -- Set an integer value in a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_9362c415ba25690709a5595eca9cbc4b}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-newConnection@{sm\_\-newConnection}}
+\index{sm\_\-newConnection@{sm\_\-newConnection}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-newConnection}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-newConnection (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_9362c415ba25690709a5595eca9cbc4b}
+
+
+Create a new connection context. 
+
+Public procedures Private procedures SM\_\-NEWCONNECTION -- Create a new connection context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_44e2057b142b947294bc93efb8a98973}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-removeConnection@{sm\_\-removeConnection}}
+\index{sm\_\-removeConnection@{sm\_\-removeConnection}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-removeConnection}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-removeConnection (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_44e2057b142b947294bc93efb8a98973}
+
+
+Close a client DAL connection context. 
+
+SM\_\-REMOVECONNECTION -- Close a client DAL connection context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_bdf8aa10da1c4e95dcc41a309985e6b0}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-stringValue@{sm\_\-stringValue}}
+\index{sm\_\-stringValue@{sm\_\-stringValue}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-stringValue}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-stringValue (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_bdf8aa10da1c4e95dcc41a309985e6b0}
+
+
+Set a string value in a record. 
+
+SM\_\-STRINGVALUE -- Set a string value in a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrDAL_8c_b4d157fddf1db7876046883fb739e50e}{
+\index{svrDAL.c@{svrDAL.c}!sm\_\-validateObject@{sm\_\-validateObject}}
+\index{sm\_\-validateObject@{sm\_\-validateObject}!svrDAL.c@{svrDAL.c}}
+\subsubsection[{sm\_\-validateObject}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-validateObject (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrDAL_8c_b4d157fddf1db7876046883fb739e50e}
+
+
+Method description. 
+
+SM\_\-VALIDATEOBJECT -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}

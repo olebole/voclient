@@ -1,0 +1,713 @@
+\hypertarget{xmlParseP_8h}{
+\section{xmlParseP.h File Reference}
+\label{xmlParseP_8h}\index{xmlParseP.h@{xmlParseP.h}}
+}
+Internal XML parser definitions.  
+
+
+{\tt \#include $<$expat.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structAttrList}{AttrList}
+\begin{CompactList}\small\item\em Information for an attribute. \item\end{CompactList}\item 
+struct \hyperlink{structAttrBlock}{AttrBlock}
+\begin{CompactList}\small\item\em Information for a block of attributes. \item\end{CompactList}\item 
+struct \textbf{elem\_\-t}
+\item 
+struct \textbf{node}
+\item 
+struct \hyperlink{structStack}{Stack}
+\begin{CompactList}\small\item\em This is a structure that holds the information for a stack. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{xmlParseP_8h_93b643eeb3f51dd594dd32dab154bd20}{
+\#define \textbf{VOT\_\-DOC\_\-VERSION}~\char`\"{}1.2\char`\"{}}
+\label{xmlParseP_8h_93b643eeb3f51dd594dd32dab154bd20}
+
+\item 
+\hypertarget{xmlParseP_8h_a48629a668bfc21febfe4aa371c69672}{
+\#define \textbf{VOT\_\-XSI}~\char`\"{}http://www.w3.org/2001/XMLSchema-instance\char`\"{}}
+\label{xmlParseP_8h_a48629a668bfc21febfe4aa371c69672}
+
+\item 
+\hypertarget{xmlParseP_8h_20d9c55a9212a3de1fff48aa199d5720}{
+\#define \textbf{VOT\_\-SCHEMA\_\-LOC}~\char`\"{}http://www.ivoa.net/xml/VOTable/v1.1  http://www.ivoa.net/xml/VOTable/v1.1\char`\"{}}
+\label{xmlParseP_8h_20d9c55a9212a3de1fff48aa199d5720}
+
+\item 
+\hypertarget{xmlParseP_8h_6ea373a6e0c4f42058ab1c14d81a5a7d}{
+\#define \textbf{VOT\_\-XMLNS}~\char`\"{}http://www.ivoa.net/xml/VOTable/v1.1\char`\"{}}
+\label{xmlParseP_8h_6ea373a6e0c4f42058ab1c14d81a5a7d}
+
+\item 
+\hypertarget{xmlParseP_8h_b3d347ff54e7d8ed191bb6e6a4bb98e8}{
+\#define \textbf{SZ\_\-ELEMNAME}~32}
+\label{xmlParseP_8h_b3d347ff54e7d8ed191bb6e6a4bb98e8}
+
+\item 
+\hypertarget{xmlParseP_8h_9aed3a964b10f1c101be4aa024a28b65}{
+\#define \textbf{SZ\_\-ATTRNAME}~32}
+\label{xmlParseP_8h_9aed3a964b10f1c101be4aa024a28b65}
+
+\item 
+\hypertarget{xmlParseP_8h_338283392c86633c614eec7e28df2ee1}{
+\#define \textbf{SZ\_\-ATTRVAL}~2048}
+\label{xmlParseP_8h_338283392c86633c614eec7e28df2ee1}
+
+\item 
+\hypertarget{xmlParseP_8h_0eb1d3a89b93c111785ef003b0b2cba8}{
+\#define \textbf{SZ\_\-FNAME}~255}
+\label{xmlParseP_8h_0eb1d3a89b93c111785ef003b0b2cba8}
+
+\item 
+\hypertarget{xmlParseP_8h_dd63f1bab1fc0ce36a85c6333d9fea1d}{
+\#define \textbf{SZ\_\-XMLTAG}~1024}
+\label{xmlParseP_8h_dd63f1bab1fc0ce36a85c6333d9fea1d}
+
+\item 
+\hypertarget{xmlParseP_8h_32108415ff44b6f7537b9516f4a84be7}{
+\#define \textbf{SZ\_\-LINE}~4096}
+\label{xmlParseP_8h_32108415ff44b6f7537b9516f4a84be7}
+
+\item 
+\hypertarget{xmlParseP_8h_a2386e8d15f3745d278abcd17e5929d5}{
+\#define \textbf{MAX\_\-ATTR}~100}
+\label{xmlParseP_8h_a2386e8d15f3745d278abcd17e5929d5}
+
+\item 
+\hypertarget{xmlParseP_8h_f124795c150434ff274e1572bee8eba9}{
+\#define \textbf{MAX\_\-ELEMENTS}~1024}
+\label{xmlParseP_8h_f124795c150434ff274e1572bee8eba9}
+
+\item 
+\hypertarget{xmlParseP_8h_6864c97be5f9c0d463c051efd2f6905b}{
+\#define \textbf{HANDLE\_\-INCREMENT}~1024000}
+\label{xmlParseP_8h_6864c97be5f9c0d463c051efd2f6905b}
+
+\item 
+\hypertarget{xmlParseP_8h_c6afabdc09a49a433ee19d8a9486056d}{
+\#define \textbf{min}(a, b)~((a$<$b)?a:b)}
+\label{xmlParseP_8h_c6afabdc09a49a433ee19d8a9486056d}
+
+\item 
+\hypertarget{xmlParseP_8h_ffe776513b24d84b39af8ab0930fef7f}{
+\#define \textbf{max}(a, b)~((a$>$b)?a:b)}
+\label{xmlParseP_8h_ffe776513b24d84b39af8ab0930fef7f}
+
+\item 
+\hypertarget{xmlParseP_8h_3b0e3f6e2463bfe3ab40dd8377272fb6}{
+\#define \hyperlink{xmlParseP_8h_3b0e3f6e2463bfe3ab40dd8377272fb6}{handle\_\-t}~int}
+\label{xmlParseP_8h_3b0e3f6e2463bfe3ab40dd8377272fb6}
+
+\begin{CompactList}\small\item\em Handle type definition. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+\hypertarget{xmlParseP_8h_afa552abcce44ab0a84df10bc7c07a49}{
+typedef struct elem\_\-t \textbf{Element}}
+\label{xmlParseP_8h_afa552abcce44ab0a84df10bc7c07a49}
+
+\item 
+\hypertarget{xmlParseP_8h_ba087cc5af103c72c4e5864cc5622196}{
+typedef struct node \textbf{Node}}
+\label{xmlParseP_8h_ba087cc5af103c72c4e5864cc5622196}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{xmlParseP_8h_43469e89f38d3b203a342ad242332dce}{xml\_\-attrSet} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock, char $\ast$name, char $\ast$value)
+\begin{CompactList}\small\item\em Set/Create an attributes (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParseP_8h_ecf018add4276766cc0047892858698a}{xml\_\-attrGet} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock, char $\ast$name)
+\begin{CompactList}\small\item\em Get an attribute's value (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParseP_8h_4d1296f37791754294167d7a03ce8d6f}{xml\_\-attrXML} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock)
+\begin{CompactList}\small\item\em Get the attributes for an XML tag (private method). \item\end{CompactList}\item 
+\hypertarget{xmlParseP_8h_6e8158cac03b335e6e38aa995b2cec65}{
+char $\ast$ \textbf{xml\_\-attrNames} (\hyperlink{structAttrBlock}{AttrBlock} $\ast$ablock)}
+\label{xmlParseP_8h_6e8158cac03b335e6e38aa995b2cec65}
+
+\item 
+int \hyperlink{xmlParseP_8h_d53297756013ea0351f9c49539795a1f}{xml\_\-eType} (char $\ast$name)
+\begin{CompactList}\small\item\em Get the integer value (ID) of the name (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParseP_8h_408174ad3a545eb9579915828cff9d04}{xml\_\-elemName} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Get the name of the \hyperlink{structElement}{Element} (private method). \item\end{CompactList}\item 
+int \hyperlink{xmlParseP_8h_713fb295b9d6ee231d94a4253d3b8690}{xml\_\-elemType} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Get the integer value (ID) of the \hyperlink{structElement}{Element} (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParseP_8h_a58b1efe3980ce30b1d653b7fd84a202}{xml\_\-elemXML} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Builds a string of the opening XML Tag (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlParseP_8h_263ae8cb86df04683275ae9f203644a1}{xml\_\-elemXMLEnd} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Build a string of the ending XML Tag (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlParseP_8h_bb318eeba0e2fca4e8aa9f96c2a3defa}{xml\_\-newElem} (unsigned int type)
+\begin{CompactList}\small\item\em Allocate a new structure of the given type (private method). \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParseP_8h_614c66671b635649879784907b198795}{xml\_\-setHandle} (\hyperlink{structElement}{Element} $\ast$elem)
+\begin{CompactList}\small\item\em Assign the \hyperlink{structElement}{Element} a handle\_\-t (private method). \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlParseP_8h_d5ca7efb386c9b20346ac930977f75ea}{xml\_\-lookupHandle} (\hyperlink{structElement}{Element} $\ast$elem)
+\begin{CompactList}\small\item\em Lookup the handle\_\-t to an \hyperlink{structElement}{Element} (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_1960619be162701cc36aa2efc492224f}{xml\_\-freeHandle} (handle\_\-t handle)
+\begin{CompactList}\small\item\em Free a handle for use (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlParseP_8h_c9eb8f49eebf7f20be94dc05f66bd40e}{xml\_\-getElement} (handle\_\-t handle)
+\begin{CompactList}\small\item\em Get the \hyperlink{structElement}{Element} refered to by handle\_\-t (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_31658bacd766c815f056335a26bc87f2}{xml\_\-newHandleTable} (void)
+\begin{CompactList}\small\item\em Initialize a handle table (private method). \item\end{CompactList}\item 
+int \hyperlink{xmlParseP_8h_a1b4ce8b2afb7dc1d4ea1126b1a719cc}{xml\_\-handleCount} (void)
+\begin{CompactList}\small\item\em Get the number of handle\_\-t used (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_caeffa119e67448b8c312a69d0e70d0c}{xml\_\-handleCleanup} (void)
+\begin{CompactList}\small\item\em Free all the handle nodes (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_bbec9399b3d3203f9052ecb37f4abcb2}{xml\_\-handleError} (char $\ast$msg)
+\begin{CompactList}\small\item\em Print an error message. \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_6b19bc9d396e8d8686978a8b73f4dc02}{xml\_\-endElement} (void $\ast$userData, const char $\ast$name)
+\begin{CompactList}\small\item\em CB whenever an end tag is seen (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_8154bc19522ce0d583bebc87f625c424}{xml\_\-startElement} (void $\ast$userData, const char $\ast$name, const char $\ast$$\ast$atts)
+\begin{CompactList}\small\item\em CB whenever a start tag is seen (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_25e9767109f18c8c05465031ce994c7a}{xml\_\-charData} (void $\ast$userData, const XML\_\-Char $\ast$s, int len)
+\begin{CompactList}\small\item\em Handle non-element character strings (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_9dfa9177ec5297c355c21c7406014cb2}{xml\_\-startCData} (void $\ast$userData)
+\begin{CompactList}\small\item\em Handle the start of CDATA strings (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_3175cd4223da1dbb7a1480b355a1db2c}{xml\_\-endCData} (void $\ast$userData)
+\begin{CompactList}\small\item\em Handle the end of CDATA strings (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_8042a0998d148e2d7837f4d8b9c52fce}{xmlPush} (\hyperlink{structStack}{Stack} $\ast$st, \hyperlink{structElement}{Element} $\ast$elem)
+\begin{CompactList}\small\item\em Push a \hyperlink{structNode}{Node} to the top of the stack (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlParseP_8h_b0450c87064278318c97fbe3a7d51292}{xmlPop} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Return a \hyperlink{structNode}{Node} from the top of the stack (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlParseP_8h_7c76b9618f28ed87cbfec1b379e8278d}{xmlPeek} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Peek at \hyperlink{structElement}{Element} on top of the \hyperlink{structStack}{Stack} (private method). \item\end{CompactList}\item 
+\hyperlink{structStack}{Stack} $\ast$ \hyperlink{xmlParseP_8h_f6e1f05d0eb5640dc356be1411734277}{xml\_\-newStack} (void)
+\begin{CompactList}\small\item\em Makes a new stack (private method). \item\end{CompactList}\item 
+int \hyperlink{xmlParseP_8h_268b63775879a5adc4e7bc8410a6415c}{xml\_\-isEmpty} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Checks to see if the stack is empty (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_6a4a8fc7b5153e7de51bc3d82e96654b}{xml\_\-clearStack} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Clear the stack (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlParseP_8h_5cda730b2506974c3094a4db4d838535}{xml\_\-printStack} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Print the name of all the stack elements (private method). \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Internal XML parser definitions. 
+
+XMLPARSEP.H -- Internal XML parser definitions.
+
+\begin{Desc}
+\item[Author:]Mike Fitzpatrick and Eric Timmermann \end{Desc}
+\begin{Desc}
+\item[Date:]8/03/09 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{xmlParseP_8h_ecf018add4276766cc0047892858698a}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-attrGet@{xml\_\-attrGet}}
+\index{xml\_\-attrGet@{xml\_\-attrGet}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-attrGet}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ xml\_\-attrGet ({\bf AttrBlock} $\ast$ {\em ablock}, \/  char $\ast$ {\em name})}}
+\label{xmlParseP_8h_ecf018add4276766cc0047892858698a}
+
+
+Get an attribute's value (private method). 
+
+xml\_\-attrGet -- Get an attribute's value (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes \item[{\em $\ast$name}]A string that hold the name of an attribute \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Value of the attribute or NULL \end{Desc}
+\hypertarget{xmlParseP_8h_43469e89f38d3b203a342ad242332dce}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-attrSet@{xml\_\-attrSet}}
+\index{xml\_\-attrSet@{xml\_\-attrSet}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-attrSet}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-attrSet ({\bf AttrBlock} $\ast$ {\em ablock}, \/  char $\ast$ {\em name}, \/  char $\ast$ {\em value})}}
+\label{xmlParseP_8h_43469e89f38d3b203a342ad242332dce}
+
+
+Set/Create an attributes (private method). 
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$
+
+Public Internal Methods. The procedures are used to implement the library, however are not part of the public interface.
+
+xml\_\-attrSet -- Set/Create an attributes (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes. \item[{\em name}]A string that hold the name of an attribute. \item[{\em value}]A string that hold the value of an attribute. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The status of the request. 1 Success, 0=FAIL.\end{Desc}
+\begin{Desc}
+\item[Warning:]If an attribute has no name/value, this will not create it. \end{Desc}
+\hypertarget{xmlParseP_8h_4d1296f37791754294167d7a03ce8d6f}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-attrXML@{xml\_\-attrXML}}
+\index{xml\_\-attrXML@{xml\_\-attrXML}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-attrXML}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ xml\_\-attrXML ({\bf AttrBlock} $\ast$ {\em ablock})}}
+\label{xmlParseP_8h_4d1296f37791754294167d7a03ce8d6f}
+
+
+Get the attributes for an XML tag (private method). 
+
+Get names of the attributes for an XML tag (private method).
+
+xml\_\-attrXML -- Get the attributes for an XML tag (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string containing the attributes for an XML tag\end{Desc}
+xml\_\-attrNames -- Get the names of the attributes for an XML tag (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$ablock}]An \hyperlink{structAttrBlock}{AttrBlock} to insert these attributes \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A space-separated string containing the names of the attributes for an XML tag \end{Desc}
+\hypertarget{xmlParseP_8h_25e9767109f18c8c05465031ce994c7a}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-charData@{xml\_\-charData}}
+\index{xml\_\-charData@{xml\_\-charData}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-charData}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-charData (void $\ast$ {\em user}, \/  const XML\_\-Char $\ast$ {\em s}, \/  int {\em len})}}
+\label{xmlParseP_8h_25e9767109f18c8c05465031ce994c7a}
+
+
+Handle non-element character strings (private method). 
+
+xml\_\-charData -- Handle non-element character strings (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em user}]User data (not used) \item[{\em s}]content string \item[{\em len}]length of string \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_6a4a8fc7b5153e7de51bc3d82e96654b}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-clearStack@{xml\_\-clearStack}}
+\index{xml\_\-clearStack@{xml\_\-clearStack}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-clearStack}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-clearStack ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlParseP_8h_6a4a8fc7b5153e7de51bc3d82e96654b}
+
+
+Clear the stack (private method). 
+
+xml\_\-clearStack -- Clear the stack (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_408174ad3a545eb9579915828cff9d04}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-elemName@{xml\_\-elemName}}
+\index{xml\_\-elemName@{xml\_\-elemName}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-elemName}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ xml\_\-elemName ({\bf Element} $\ast$ {\em e})}}
+\label{xmlParseP_8h_408174ad3a545eb9579915828cff9d04}
+
+
+Get the name of the \hyperlink{structElement}{Element} (private method). 
+
+xml\_\-elemName -- Get the name of the \hyperlink{structElement}{Element} (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$e}]A pointer to the \hyperlink{structElement}{Element} that you want the name of \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string pointer to the name of the element \end{Desc}
+\hypertarget{xmlParseP_8h_713fb295b9d6ee231d94a4253d3b8690}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-elemType@{xml\_\-elemType}}
+\index{xml\_\-elemType@{xml\_\-elemType}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-elemType}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-elemType ({\bf Element} $\ast$ {\em e})}}
+\label{xmlParseP_8h_713fb295b9d6ee231d94a4253d3b8690}
+
+
+Get the integer value (ID) of the \hyperlink{structElement}{Element} (private method). 
+
+xml\_\-elemType -- Get the integer value (ID) of the \hyperlink{structElement}{Element} (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em e}]A pointer to the \hyperlink{structElement}{Element} that you want the type of \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An integer corresponding to the type of the element \end{Desc}
+\hypertarget{xmlParseP_8h_a58b1efe3980ce30b1d653b7fd84a202}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-elemXML@{xml\_\-elemXML}}
+\index{xml\_\-elemXML@{xml\_\-elemXML}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-elemXML}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ xml\_\-elemXML ({\bf Element} $\ast$ {\em e})}}
+\label{xmlParseP_8h_a58b1efe3980ce30b1d653b7fd84a202}
+
+
+Builds a string of the opening XML Tag (private method). 
+
+xml\_\-elemXML -- Builds a string of the opening XML Tag (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$e}]A pointer to an \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string that contains the opening XML tag for e \end{Desc}
+\hypertarget{xmlParseP_8h_263ae8cb86df04683275ae9f203644a1}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-elemXMLEnd@{xml\_\-elemXMLEnd}}
+\index{xml\_\-elemXMLEnd@{xml\_\-elemXMLEnd}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-elemXMLEnd}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ xml\_\-elemXMLEnd ({\bf Element} $\ast$ {\em e})}}
+\label{xmlParseP_8h_263ae8cb86df04683275ae9f203644a1}
+
+
+Build a string of the ending XML Tag (private method). 
+
+xml\_\-elemXMLEnd -- Build a string of the ending XML Tag (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$e}]A pointer to an \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string that contains the ending XML tag for e \end{Desc}
+\hypertarget{xmlParseP_8h_3175cd4223da1dbb7a1480b355a1db2c}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-endCData@{xml\_\-endCData}}
+\index{xml\_\-endCData@{xml\_\-endCData}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-endCData}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-endCData (void $\ast$ {\em user})}}
+\label{xmlParseP_8h_3175cd4223da1dbb7a1480b355a1db2c}
+
+
+Handle the end of CDATA strings (private method). 
+
+xml\_\-endCData -- Handle the end of CDATA strings (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em user}]User data (not used) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_6b19bc9d396e8d8686978a8b73f4dc02}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-endElement@{xml\_\-endElement}}
+\index{xml\_\-endElement@{xml\_\-endElement}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-endElement}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-endElement (void $\ast$ {\em user}, \/  const char $\ast$ {\em name})}}
+\label{xmlParseP_8h_6b19bc9d396e8d8686978a8b73f4dc02}
+
+
+CB whenever an end tag is seen (private method). 
+
+xml\_\-endElement -- CB whenever an end tag is seen (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em user}]User data (not used) \item[{\em name}]The name in the XML tag \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_d53297756013ea0351f9c49539795a1f}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-eType@{xml\_\-eType}}
+\index{xml\_\-eType@{xml\_\-eType}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-eType}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-eType (char $\ast$ {\em name})}}
+\label{xmlParseP_8h_d53297756013ea0351f9c49539795a1f}
+
+
+Get the integer value (ID) of the name (private method). 
+
+xml\_\-eType -- Get the integer value (ID) of the name (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]Name of the desired type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An integer corresponding to the type of the element \end{Desc}
+\hypertarget{xmlParseP_8h_1960619be162701cc36aa2efc492224f}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-freeHandle@{xml\_\-freeHandle}}
+\index{xml\_\-freeHandle@{xml\_\-freeHandle}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-freeHandle}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-freeHandle (handle\_\-t {\em handle})}}
+\label{xmlParseP_8h_1960619be162701cc36aa2efc492224f}
+
+
+Free a handle for use (private method). 
+
+xml\_\-freeHandle -- Free a handle for use (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]A handle\_\-t to the \hyperlink{structElement}{Element} you wish to free \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_c9eb8f49eebf7f20be94dc05f66bd40e}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-getElement@{xml\_\-getElement}}
+\index{xml\_\-getElement@{xml\_\-getElement}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-getElement}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element}$\ast$ xml\_\-getElement (handle\_\-t {\em handle})}}
+\label{xmlParseP_8h_c9eb8f49eebf7f20be94dc05f66bd40e}
+
+
+Get the \hyperlink{structElement}{Element} refered to by handle\_\-t (private method). 
+
+xml\_\-getElement -- Get the \hyperlink{structElement}{Element} refered to by handle\_\-t (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]A handle\_\-t to the \hyperlink{structElement}{Element}. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the requested \hyperlink{structElement}{Element}. \end{Desc}
+\hypertarget{xmlParseP_8h_caeffa119e67448b8c312a69d0e70d0c}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-handleCleanup@{xml\_\-handleCleanup}}
+\index{xml\_\-handleCleanup@{xml\_\-handleCleanup}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-handleCleanup}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-handleCleanup (void)}}
+\label{xmlParseP_8h_caeffa119e67448b8c312a69d0e70d0c}
+
+
+Free all the handle nodes (private method). 
+
+xml\_\-handleCleanup -- Free all the handle nodes (private method)
+
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_a1b4ce8b2afb7dc1d4ea1126b1a719cc}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-handleCount@{xml\_\-handleCount}}
+\index{xml\_\-handleCount@{xml\_\-handleCount}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-handleCount}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-handleCount (void)}}
+\label{xmlParseP_8h_a1b4ce8b2afb7dc1d4ea1126b1a719cc}
+
+
+Get the number of handle\_\-t used (private method). 
+
+count of current used handles xml\_\-handleCount -- Get the number of handle\_\-t used (private method)
+
+\begin{Desc}
+\item[Returns:]The number of handle\_\-t types currently stored \end{Desc}
+\hypertarget{xmlParseP_8h_bbec9399b3d3203f9052ecb37f4abcb2}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-handleError@{xml\_\-handleError}}
+\index{xml\_\-handleError@{xml\_\-handleError}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-handleError}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-handleError (char $\ast$ {\em msg})}}
+\label{xmlParseP_8h_bbec9399b3d3203f9052ecb37f4abcb2}
+
+
+Print an error message. 
+
+xml\_\-handleError -- Print an error message.
+
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_268b63775879a5adc4e7bc8410a6415c}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-isEmpty@{xml\_\-isEmpty}}
+\index{xml\_\-isEmpty@{xml\_\-isEmpty}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-isEmpty ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlParseP_8h_268b63775879a5adc4e7bc8410a6415c}
+
+
+Checks to see if the stack is empty (private method). 
+
+xml\_\-isEmpty -- Checks to see if the stack is empty (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\em 1\/} if true, {\em 0\/} if false. \end{Desc}
+\hypertarget{xmlParseP_8h_d5ca7efb386c9b20346ac930977f75ea}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-lookupHandle@{xml\_\-lookupHandle}}
+\index{xml\_\-lookupHandle@{xml\_\-lookupHandle}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-lookupHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-lookupHandle ({\bf Element} $\ast$ {\em elem})}}
+\label{xmlParseP_8h_d5ca7efb386c9b20346ac930977f75ea}
+
+
+Lookup the handle\_\-t to an \hyperlink{structElement}{Element} (private method). 
+
+xml\_\-lookupHandle -- Lookup the handle\_\-t to an \hyperlink{structElement}{Element} (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$elem}]A pointer to an \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle\_\-t to the \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlParseP_8h_bb318eeba0e2fca4e8aa9f96c2a3defa}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-newElem@{xml\_\-newElem}}
+\index{xml\_\-newElem@{xml\_\-newElem}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-newElem}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element}$\ast$ xml\_\-newElem (unsigned int {\em type})}}
+\label{xmlParseP_8h_bb318eeba0e2fca4e8aa9f96c2a3defa}
+
+
+Allocate a new structure of the given type (private method). 
+
+xml\_\-newElem -- Allocate a new structure of the given type (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em type}]An integer that defines the type of \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An new \hyperlink{structElement}{Element} structure \end{Desc}
+\hypertarget{xmlParseP_8h_31658bacd766c815f056335a26bc87f2}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-newHandleTable@{xml\_\-newHandleTable}}
+\index{xml\_\-newHandleTable@{xml\_\-newHandleTable}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-newHandleTable}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-newHandleTable (void)}}
+\label{xmlParseP_8h_31658bacd766c815f056335a26bc87f2}
+
+
+Initialize a handle table (private method). 
+
+xml\_\-newHandleTable -- Initialize a handle table (private method)
+
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_f6e1f05d0eb5640dc356be1411734277}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-newStack@{xml\_\-newStack}}
+\index{xml\_\-newStack@{xml\_\-newStack}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-newStack}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Stack} $\ast$ xml\_\-newStack (void)}}
+\label{xmlParseP_8h_f6e1f05d0eb5640dc356be1411734277}
+
+
+Makes a new stack (private method). 
+
+xml\_\-newStack -- Makes a new stack (private method)
+
+\begin{Desc}
+\item[Returns:]A pointer to a new \hyperlink{structStack}{Stack}. \end{Desc}
+\hypertarget{xmlParseP_8h_5cda730b2506974c3094a4db4d838535}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-printStack@{xml\_\-printStack}}
+\index{xml\_\-printStack@{xml\_\-printStack}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-printStack}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-printStack ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlParseP_8h_5cda730b2506974c3094a4db4d838535}
+
+
+Print the name of all the stack elements (private method). 
+
+xml\_\-printStack -- Print the name of all the stack elements (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_614c66671b635649879784907b198795}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-setHandle@{xml\_\-setHandle}}
+\index{xml\_\-setHandle@{xml\_\-setHandle}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-setHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-setHandle ({\bf Element} $\ast$ {\em elem})}}
+\label{xmlParseP_8h_614c66671b635649879784907b198795}
+
+
+Assign the \hyperlink{structElement}{Element} a handle\_\-t (private method). 
+
+xml\_\-setHandle -- Assign the \hyperlink{structElement}{Element} a handle\_\-t (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem}]A pointer to an \hyperlink{structElement}{Element} to be assigned a handle\_\-t. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle\_\-t refering to elem \end{Desc}
+\hypertarget{xmlParseP_8h_9dfa9177ec5297c355c21c7406014cb2}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-startCData@{xml\_\-startCData}}
+\index{xml\_\-startCData@{xml\_\-startCData}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-startCData}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-startCData (void $\ast$ {\em user})}}
+\label{xmlParseP_8h_9dfa9177ec5297c355c21c7406014cb2}
+
+
+Handle the start of CDATA strings (private method). 
+
+xml\_\-startCData -- Handle the start of CDATA strings (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em user}]User data (not used) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_8154bc19522ce0d583bebc87f625c424}{
+\index{xmlParseP.h@{xmlParseP.h}!xml\_\-startElement@{xml\_\-startElement}}
+\index{xml\_\-startElement@{xml\_\-startElement}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xml\_\-startElement}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-startElement (void $\ast$ {\em user}, \/  const char $\ast$ {\em name}, \/  const char $\ast$$\ast$ {\em atts})}}
+\label{xmlParseP_8h_8154bc19522ce0d583bebc87f625c424}
+
+
+CB whenever a start tag is seen (private method). 
+
+xml\_\-startElement -- CB whenever a start tag is seen (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em user}]User data (not used) \item[{\em name}]The name in the XML tag. \item[{\em atts}]An array of attributes. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlParseP_8h_7c76b9618f28ed87cbfec1b379e8278d}{
+\index{xmlParseP.h@{xmlParseP.h}!xmlPeek@{xmlPeek}}
+\index{xmlPeek@{xmlPeek}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xmlPeek}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element} $\ast$ xmlPeek ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlParseP_8h_7c76b9618f28ed87cbfec1b379e8278d}
+
+
+Peek at \hyperlink{structElement}{Element} on top of the \hyperlink{structStack}{Stack} (private method). 
+
+xmlPeek -- Peek at \hyperlink{structElement}{Element} on top of the \hyperlink{structStack}{Stack} (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the head \hyperlink{structElement}{Element}, or NULL if empty \end{Desc}
+\hypertarget{xmlParseP_8h_b0450c87064278318c97fbe3a7d51292}{
+\index{xmlParseP.h@{xmlParseP.h}!xmlPop@{xmlPop}}
+\index{xmlPop@{xmlPop}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xmlPop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element} $\ast$ xmlPop ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlParseP_8h_b0450c87064278318c97fbe3a7d51292}
+
+
+Return a \hyperlink{structNode}{Node} from the top of the stack (private method). 
+
+xmlPop -- Return a \hyperlink{structNode}{Node} from the top of the stack (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the popped \hyperlink{structElement}{Element}. \end{Desc}
+\hypertarget{xmlParseP_8h_8042a0998d148e2d7837f4d8b9c52fce}{
+\index{xmlParseP.h@{xmlParseP.h}!xmlPush@{xmlPush}}
+\index{xmlPush@{xmlPush}!xmlParseP.h@{xmlParseP.h}}
+\subsubsection[{xmlPush}]{\setlength{\rightskip}{0pt plus 5cm}xmlPush ({\bf Stack} $\ast$ {\em st}, \/  {\bf Element} $\ast$ {\em elem})}}
+\label{xmlParseP_8h_8042a0998d148e2d7837f4d8b9c52fce}
+
+
+Push a \hyperlink{structNode}{Node} to the top of the stack (private method). 
+
+xmlPush -- Push a \hyperlink{structNode}{Node} to the top of the stack (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \item[{\em elem}]A pointer to an element to be put on the stack \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}

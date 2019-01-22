@@ -1,0 +1,97 @@
+\hypertarget{structCapabilities}{
+\section{Capabilities Struct Reference}
+\label{structCapabilities}\index{Capabilities@{Capabilities}}
+}
+Information from a \hyperlink{structCapabilities}{Capabilities} interface.  
+
+
+{\tt \#include $<$vosiP.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\hypertarget{structCapabilities_8020ae00bdbc48d12754fe04260e7fa1}{
+char \textbf{e1a\_\-standardID} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_8020ae00bdbc48d12754fe04260e7fa1}
+
+\item 
+\hypertarget{structCapabilities_ec89e67e6f5cf39ddc6adf814b1dd86e}{
+char \textbf{e1a\_\-standardID\_\-IVORN} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_ec89e67e6f5cf39ddc6adf814b1dd86e}
+
+\item 
+\hypertarget{structCapabilities_5908227b2abff053237f980a1f917365}{
+char \textbf{e1a\_\-standardID\_\-LRN} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_5908227b2abff053237f980a1f917365}
+
+\item 
+\hypertarget{structCapabilities_1acd1c479ef5855845552039ca8f4a9b}{
+char \textbf{e1a\_\-nstype} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_1acd1c479ef5855845552039ca8f4a9b}
+
+\item 
+\hypertarget{structCapabilities_30bd4ccaaf91344f78bb17f35069fe25}{
+char \textbf{e1a\_\-nstype\_\-namespace} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_30bd4ccaaf91344f78bb17f35069fe25}
+
+\item 
+\hypertarget{structCapabilities_43765289c66fc7ef70dd662011c38ebe}{
+char \textbf{e2a\_\-interface\_\-role} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_43765289c66fc7ef70dd662011c38ebe}
+
+\item 
+\hypertarget{structCapabilities_4c01027f6c327990ad16fb63972c7ecd}{
+char \textbf{e2a\_\-interface\_\-nstype} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_4c01027f6c327990ad16fb63972c7ecd}
+
+\item 
+\hypertarget{structCapabilities_c37517f8318d91e4d9339336f777970e}{
+char \textbf{e2a\_\-interface\_\-nstype\_\-namespace} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_c37517f8318d91e4d9339336f777970e}
+
+\item 
+\hypertarget{structCapabilities_f668fcc3d42afce3d5cb1a90db6258d2}{
+char \textbf{e3v\_\-interface\_\-accessURL} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_f668fcc3d42afce3d5cb1a90db6258d2}
+
+\item 
+\hypertarget{structCapabilities_1c5eeaea0c9957c60b6a59ccba3b2f62}{
+char \textbf{e3a\_\-interface\_\-accessURL\_\-use} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_1c5eeaea0c9957c60b6a59ccba3b2f62}
+
+\item 
+\hypertarget{structCapabilities_e0e325e393da6cb2ac3b6f2961889e4f}{
+int \textbf{ServiceType}}
+\label{structCapabilities_e0e325e393da6cb2ac3b6f2961889e4f}
+
+\item 
+\hypertarget{structCapabilities_d05c975eb7ea18a96fbbfbbcf659c2b9}{
+char \textbf{ServiceTypeName} \mbox{[}SZ\_\-LINE\mbox{]}}
+\label{structCapabilities_d05c975eb7ea18a96fbbfbbcf659c2b9}
+
+\item 
+\hypertarget{structCapabilities_9aa68c3a355699c292807e5d4bdf34dd}{
+int \textbf{index}}
+\label{structCapabilities_9aa68c3a355699c292807e5d4bdf34dd}
+
+\item 
+\hypertarget{structCapabilities_df944c69e784fdf6643a6abc23a74bab}{
+void $\ast$ \textbf{next}}
+\label{structCapabilities_df944c69e784fdf6643a6abc23a74bab}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Information from a \hyperlink{structCapabilities}{Capabilities} interface. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em e1a\_\-standardID}]1st level attribute: string for standardID \item[{\em e1a\_\-standardID\_\-IVORN}]1st level attribute: string for IVORN \item[{\em e1a\_\-standardID\_\-LRN}]1st level attribute: string for LRN \item[{\em e1a\_\-nstype}]1st level attribute: string for nstype (e.g., foo:type) \item[{\em e1a\_\-nstype\_\-namespace}]1st level attribute: string for namespace of nstype \item[{\em e2a\_\-interface\_\-role}]2nd level attribute: string for role of the interface element \item[{\em e2a\_\-interface\_\-nstype}]2nd level attribute: string for nstype of the interface element \item[{\em e2a\_\-interface\_\-nstype\_\-namespace}]2nd level attribute: string for nstype namespace of the interface element \item[{\em e3v\_\-interface\_\-accessURL}]3rd level value: string for accessURL \item[{\em e3a\_\-interface\_\-accessURL\_\-use}]3rd level attribute: string for use of accessURL \item[{\em ServiceType}]bitmap of ServiceType (int) \item[{\em ServiceTypeName}]string describing ServiceType \item[{\em index}]index (zero to n) of the current \hyperlink{structCapabilities}{Capabilities} structure \item[{\em next}]pointer to the next capabilities structure \end{description}
+\end{Desc}
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\hyperlink{vosiP_8h}{vosiP.h}\end{CompactItemize}

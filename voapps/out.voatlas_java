@@ -1,0 +1,122 @@
+
+=============================================================================
+== Test Cmd:  voatlas --help 
+
+
+  Usage:
+	voatlas [<opts>] [<field> | <pos>]
+
+  where
+       -%,--test              run unit test
+       -d,--debug              enable debugging
+       -h,--nelp               this messag
+       -r,--return             return result from metho
+
+ 	-b,--band <bpass>	Bandpas
+ 	-p,--survey <survey>	Survey program nam
+ 	-g,--graphic 		Get a graphic image (i.e. JPEG
+ 	-n,--naxis <npix>	Set returned image size
+
+ 	-s,--size <size>	Field siz
+	      <size>s		Field size (arcsec
+	      <size>m		Field size (arcmin
+	      <size>d		Field size (degrees, default
+	-F,--field <field>	Resolve query field nam
+	-R,--ra <ra>		Set query RA positio
+	-D,--dec <dec>		Set query Dec positio
+	-P,--pos <ra,dec>	Set query as a POS strin
+	-S,--samp 		Broadcast as SAMP messag
+	-v,--verbose 		Verbose output
+	-o <name>		Save image to named fil
+
+	 <name>			Target name to be resolved
+	 <ra> <dec>		Position to query
+
+Examples:
+
+    1)  Display an image of M83 on Aladin using SAMP
+
+	    % voatlas --samp m83
+
+    2)  Get a 256x256 JPEG image of the Sombrero galaxy
+
+	    % voatlas -o gal.jpg -n 256 --graphic sombrero
+
+    3)  Get a 20 arcmin Wise 2.2micron survey image of m101
+
+	    % voatlas -s 20m --survey=wise22 m101
+
+    4)  Get a radio image of 3c273, image will be '3c273.fits'
+
+	    % voatlas --band=radio 3c273
+
+    5)  List (verbose) the survey images available for ngc1234
+
+	    % voatlas --survey=list -v ngc1234
+
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  voatlas -S m83 
+
+Error: cannot resolve object 'm83'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas --samp m83 
+
+Error: cannot resolve object 'm83'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas -o gal.jpg -n 256 --graphic sombrero 
+
+Error: cannot resolve object 'sombrero'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas -s 20m --survey=wise22 m101 
+
+Error: cannot resolve object 'm101'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas --band=radio 3c273 
+
+Error: cannot resolve object '3c273'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas --survey=list -v ngc1234 
+
+Error: cannot resolve object 'ngc1234'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas m51 
+
+Error: cannot resolve object 'm51'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas -o m51.fits m51 
+
+Error: cannot resolve object 'm51'
+================================================================  status =  1
+Child exited with status 1
+
+=============================================================================
+== Test Cmd:  voatlas --ra=202.47 --dec=47.195 --samp 
+
+Error: No Hub available on startup
+================================================================  status =  0
+
+Task: voatlas       No. of Tests:  10    Passed: 2     Failed: 8
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

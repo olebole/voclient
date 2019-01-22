@@ -1,0 +1,166 @@
+\hypertarget{xmlStack_8c}{
+\section{xmlStack.c File Reference}
+\label{xmlStack_8c}\index{xmlStack.c@{xmlStack.c}}
+}
+(Private) Methods to manage the parser \hyperlink{structElement}{Element} stack.  
+
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$strings.h$>$}\par
+{\tt \#include \char`\"{}xmlParseP.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{structStack}{Stack} $\ast$ \hyperlink{xmlStack_8c_9d6f2436b23fc3cf7aaf27e7f0e10bc9}{xml\_\-newStack} (void)
+\begin{CompactList}\small\item\em Makes a new stack (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlStack_8c_f5353a8ec0e4b56eb00159bae34291f6}{xmlPop} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Return a \hyperlink{structNode}{Node} from the top of the stack (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlStack_8c_8711e73bb50a903f31fe32550795aad4}{xmlPush} (\hyperlink{structStack}{Stack} $\ast$st, \hyperlink{structElement}{Element} $\ast$elem)
+\begin{CompactList}\small\item\em Push a \hyperlink{structNode}{Node} to the top of the stack (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlStack_8c_cb46b9020c801d539afc173320ed3806}{xmlPeek} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Peek at \hyperlink{structElement}{Element} on top of the \hyperlink{structStack}{Stack} (private method). \item\end{CompactList}\item 
+int \hyperlink{xmlStack_8c_268b63775879a5adc4e7bc8410a6415c}{xml\_\-isEmpty} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Checks to see if the stack is empty (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlStack_8c_035899fedb849c675509d0e894efd8b1}{xml\_\-clearStack} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Clear the stack (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlStack_8c_28dab261dfba18b4bc85dfa8aa3c7dfc}{xml\_\-printStack} (\hyperlink{structStack}{Stack} $\ast$st)
+\begin{CompactList}\small\item\em Print the name of all the stack elements (private method). \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+(Private) Methods to manage the parser \hyperlink{structElement}{Element} stack. 
+
+XMLSTACK.C -- (Private) Methods to manage the parser \hyperlink{structElement}{Element} stack.
+
+\begin{Desc}
+\item[Author:]Mike Fitzpatrick and Eric Timmermann \end{Desc}
+\begin{Desc}
+\item[Date:]8/03/09 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{xmlStack_8c_035899fedb849c675509d0e894efd8b1}{
+\index{xmlStack.c@{xmlStack.c}!xml\_\-clearStack@{xml\_\-clearStack}}
+\index{xml\_\-clearStack@{xml\_\-clearStack}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xml\_\-clearStack}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-clearStack ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlStack_8c_035899fedb849c675509d0e894efd8b1}
+
+
+Clear the stack (private method). 
+
+xml\_\-clearStack -- Clear the stack (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlStack_8c_268b63775879a5adc4e7bc8410a6415c}{
+\index{xmlStack.c@{xmlStack.c}!xml\_\-isEmpty@{xml\_\-isEmpty}}
+\index{xml\_\-isEmpty@{xml\_\-isEmpty}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xml\_\-isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-isEmpty ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlStack_8c_268b63775879a5adc4e7bc8410a6415c}
+
+
+Checks to see if the stack is empty (private method). 
+
+xml\_\-isEmpty -- Checks to see if the stack is empty (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]{\em 1\/} if true, {\em 0\/} if false. \end{Desc}
+\hypertarget{xmlStack_8c_9d6f2436b23fc3cf7aaf27e7f0e10bc9}{
+\index{xmlStack.c@{xmlStack.c}!xml\_\-newStack@{xml\_\-newStack}}
+\index{xml\_\-newStack@{xml\_\-newStack}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xml\_\-newStack}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Stack}$\ast$ xml\_\-newStack (void)}}
+\label{xmlStack_8c_9d6f2436b23fc3cf7aaf27e7f0e10bc9}
+
+
+Makes a new stack (private method). 
+
+xml\_\-newStack -- Makes a new stack (private method)
+
+\begin{Desc}
+\item[Returns:]A pointer to a new \hyperlink{structStack}{Stack}. \end{Desc}
+\hypertarget{xmlStack_8c_28dab261dfba18b4bc85dfa8aa3c7dfc}{
+\index{xmlStack.c@{xmlStack.c}!xml\_\-printStack@{xml\_\-printStack}}
+\index{xml\_\-printStack@{xml\_\-printStack}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xml\_\-printStack}]{\setlength{\rightskip}{0pt plus 5cm}void xml\_\-printStack ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlStack_8c_28dab261dfba18b4bc85dfa8aa3c7dfc}
+
+
+Print the name of all the stack elements (private method). 
+
+xml\_\-printStack -- Print the name of all the stack elements (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlStack_8c_cb46b9020c801d539afc173320ed3806}{
+\index{xmlStack.c@{xmlStack.c}!xmlPeek@{xmlPeek}}
+\index{xmlPeek@{xmlPeek}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xmlPeek}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element}$\ast$ xmlPeek ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlStack_8c_cb46b9020c801d539afc173320ed3806}
+
+
+Peek at \hyperlink{structElement}{Element} on top of the \hyperlink{structStack}{Stack} (private method). 
+
+xmlPeek -- Peek at \hyperlink{structElement}{Element} on top of the \hyperlink{structStack}{Stack} (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the head \hyperlink{structElement}{Element}, or NULL if empty \end{Desc}
+\hypertarget{xmlStack_8c_f5353a8ec0e4b56eb00159bae34291f6}{
+\index{xmlStack.c@{xmlStack.c}!xmlPop@{xmlPop}}
+\index{xmlPop@{xmlPop}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xmlPop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element}$\ast$ xmlPop ({\bf Stack} $\ast$ {\em st})}}
+\label{xmlStack_8c_f5353a8ec0e4b56eb00159bae34291f6}
+
+
+Return a \hyperlink{structNode}{Node} from the top of the stack (private method). 
+
+xmlPop -- Return a \hyperlink{structNode}{Node} from the top of the stack (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the popped \hyperlink{structElement}{Element}. \end{Desc}
+\hypertarget{xmlStack_8c_8711e73bb50a903f31fe32550795aad4}{
+\index{xmlStack.c@{xmlStack.c}!xmlPush@{xmlPush}}
+\index{xmlPush@{xmlPush}!xmlStack.c@{xmlStack.c}}
+\subsubsection[{xmlPush}]{\setlength{\rightskip}{0pt plus 5cm}void xmlPush ({\bf Stack} $\ast$ {\em st}, \/  {\bf Element} $\ast$ {\em elem})}}
+\label{xmlStack_8c_8711e73bb50a903f31fe32550795aad4}
+
+
+Push a \hyperlink{structNode}{Node} to the top of the stack (private method). 
+
+xmlPush -- Push a \hyperlink{structNode}{Node} to the top of the stack (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em st}]A pointer to a \hyperlink{structStack}{Stack} \item[{\em elem}]A pointer to an element to be put on the stack \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}

@@ -1,0 +1,44 @@
+
+Messages:
+
+    CALL { %ld %s %d }		(long) objid, method, nparams
+	add'l params coded as '<type> <val>' (e.g. { ....1 0  2 0.0  3 "0.0"})
+
+    RESULT { %d %d %d }		status = 0  OK, 1  ERR
+				  type = TY_INT, TY_FLOAT, TY_STRING, TY_BULK
+					 TY_BULK =>  {nbytes, <data>}
+				nitems = 0  OK, 1  ERR
+	add'l params coded as '<val>' (e.g. { "CONE"})
+
+    MSG { %s %s }		msgclass, str
+
+    END				shutdown
+    QUIT			quit
+    ACK				ack
+    NOACK			noack
+
+-------------------------------------------------------------------------------
+
+
+msg_resultStatus ( (res = msg_sendMsg (chan, msg)) )
+
+------------
+
+vocRes_t res = msg_sendMsg ()
+stat = msg_resultStatus (res)
+
+if (stat == ERR)
+    ....some err act
+else
+    val = msg_getIntResult (res, index)
+
+
+------------
+
+vocRes_t * msg_sendMsg (int fd, vocMsg_t *msg)
+{
+    int stat = msg_sendRawMsg (fd, msg);
+    return ( (stat != ERR) ? msg_getResult (fd) : (vocRes_t *)NULL );
+}
+
+

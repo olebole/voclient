@@ -1,0 +1,199 @@
+\hypertarget{svrSesame_8c}{
+\section{svrSesame.c File Reference}
+\label{svrSesame_8c}\index{svrSesame.c@{svrSesame.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/file.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/socket.h$>$}\par
+{\tt \#include $<$sys/select.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$sys/un.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$netdb.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/uio.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{svrSesame_8c_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{svrSesame_8c_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{svrSesame_8c_6716a5668174f9bb9c687640ae39b356}{
+\#define \textbf{MAX\_\-ALIASES}~16}
+\label{svrSesame_8c_6716a5668174f9bb9c687640ae39b356}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+handle\_\-t \hyperlink{svrSesame_8c_5e691e19072cab5d20b69ebb28a9f059}{svr\_\-newHandle} (void $\ast$p)
+\item 
+\hypertarget{svrSesame_8c_2d386fb90bae443bb36b6fcb6bc80796}{
+void $\ast$ \textbf{svr\_\-H2P} (handle\_\-t h)}
+\label{svrSesame_8c_2d386fb90bae443bb36b6fcb6bc80796}
+
+\item 
+\hypertarget{svrSesame_8c_01928130c54d9a765dfd2b95e22837a8}{
+handle\_\-t \textbf{svr\_\-P2H} (void $\ast$p)}
+\label{svrSesame_8c_01928130c54d9a765dfd2b95e22837a8}
+
+\item 
+vocRes\_\-t $\ast$ \hyperlink{svrSesame_8c_624a486322dd3872819dc24f9085ba4c}{sm\_\-nameResolver} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Resolve a target name. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrSesame_8c_f7de024a830e794f000104712b83959a}{sm\_\-srGetPOS} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get a \char`\"{}POS\char`\"{} string for the resolved object.esolve a target name. \item\end{CompactList}\item 
+\hypertarget{svrSesame_8c_80870ecfcea059f0a735a0664ba12196}{
+vocRes\_\-t $\ast$ \textbf{sm\_\-srGetOtype} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)}
+\label{svrSesame_8c_80870ecfcea059f0a735a0664ba12196}
+
+\item 
+vocRes\_\-t $\ast$ \hyperlink{svrSesame_8c_c5060fd962ef0b838b46e6a41b5c535c}{sm\_\-srGetRA} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the RA position for a resolved object name. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrSesame_8c_18f5cf8e09113902b744e3337bee9739}{sm\_\-srGetRAErr} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the RA position error for a resolved object name. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrSesame_8c_149a49e9805ffb322c68e77541796e32}{sm\_\-srGetDEC} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the Declination position for a resolved object name. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrSesame_8c_7d6fb8181d0a2ca22c86cb5271d07c35}{sm\_\-srGetDECErr} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Get the DEC position error for a resolved object name. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+SVRSESAME.C -- VOClient Mini-Daemon server methods for Sesame queries.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]April 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{svrSesame_8c_624a486322dd3872819dc24f9085ba4c}{
+\index{svrSesame.c@{svrSesame.c}!sm\_\-nameResolver@{sm\_\-nameResolver}}
+\index{sm\_\-nameResolver@{sm\_\-nameResolver}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{sm\_\-nameResolver}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-nameResolver (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrSesame_8c_624a486322dd3872819dc24f9085ba4c}
+
+
+Resolve a target name. 
+
+SM\_\-NAMERESOLVER -- Resolve a target name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrSesame_8c_149a49e9805ffb322c68e77541796e32}{
+\index{svrSesame.c@{svrSesame.c}!sm\_\-srGetDEC@{sm\_\-srGetDEC}}
+\index{sm\_\-srGetDEC@{sm\_\-srGetDEC}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{sm\_\-srGetDEC}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-srGetDEC (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrSesame_8c_149a49e9805ffb322c68e77541796e32}
+
+
+Get the Declination position for a resolved object name. 
+
+SM\_\-SRGETDEC -- Get the Declination position for a resolved object name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrSesame_8c_7d6fb8181d0a2ca22c86cb5271d07c35}{
+\index{svrSesame.c@{svrSesame.c}!sm\_\-srGetDECErr@{sm\_\-srGetDECErr}}
+\index{sm\_\-srGetDECErr@{sm\_\-srGetDECErr}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{sm\_\-srGetDECErr}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-srGetDECErr (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrSesame_8c_7d6fb8181d0a2ca22c86cb5271d07c35}
+
+
+Get the DEC position error for a resolved object name. 
+
+SM\_\-SRGETDECERR -- Get the DEC position error for a resolved object name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrSesame_8c_f7de024a830e794f000104712b83959a}{
+\index{svrSesame.c@{svrSesame.c}!sm\_\-srGetPOS@{sm\_\-srGetPOS}}
+\index{sm\_\-srGetPOS@{sm\_\-srGetPOS}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{sm\_\-srGetPOS}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-srGetPOS (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrSesame_8c_f7de024a830e794f000104712b83959a}
+
+
+Get a \char`\"{}POS\char`\"{} string for the resolved object.esolve a target name. 
+
+SM\_\-SRGETPOS -- Get a \char`\"{}POS\char`\"{} string for the resolved object.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrSesame_8c_c5060fd962ef0b838b46e6a41b5c535c}{
+\index{svrSesame.c@{svrSesame.c}!sm\_\-srGetRA@{sm\_\-srGetRA}}
+\index{sm\_\-srGetRA@{sm\_\-srGetRA}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{sm\_\-srGetRA}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-srGetRA (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrSesame_8c_c5060fd962ef0b838b46e6a41b5c535c}
+
+
+Get the RA position for a resolved object name. 
+
+SM\_\-SRGETRA -- Get the RA position for a resolved object name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrSesame_8c_18f5cf8e09113902b744e3337bee9739}{
+\index{svrSesame.c@{svrSesame.c}!sm\_\-srGetRAErr@{sm\_\-srGetRAErr}}
+\index{sm\_\-srGetRAErr@{sm\_\-srGetRAErr}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{sm\_\-srGetRAErr}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-srGetRAErr (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrSesame_8c_18f5cf8e09113902b744e3337bee9739}
+
+
+Get the RA position error for a resolved object name. 
+
+SM\_\-SRGETRAERR -- Get the RA position error for a resolved object name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrSesame_8c_5e691e19072cab5d20b69ebb28a9f059}{
+\index{svrSesame.c@{svrSesame.c}!svr\_\-newHandle@{svr\_\-newHandle}}
+\index{svr\_\-newHandle@{svr\_\-newHandle}!svrSesame.c@{svrSesame.c}}
+\subsubsection[{svr\_\-newHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t svr\_\-newHandle (void $\ast$ {\em p})}}
+\label{svrSesame_8c_5e691e19072cab5d20b69ebb28a9f059}
+
+
+Public procedures 

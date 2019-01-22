@@ -1,0 +1,135 @@
+\hypertarget{vocServer_8c}{
+\section{vocServer.c File Reference}
+\label{vocServer_8c}\index{vocServer.c@{vocServer.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/file.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/socket.h$>$}\par
+{\tt \#include $<$sys/select.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$sys/un.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$netdb.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/uio.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+{\tt \#include \char`\"{}svrMethods.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{vocServer_8c_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{vocServer_8c_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{vocServer_8c_5ce3281e4c841e3538a1f3fb92c5659a}{
+\#define \textbf{MINI\_\-DEBUG}~(getenv(\char`\"{}MINI\_\-DBG\char`\"{})$|$$|$access(\char`\"{}/tmp/MINI\_\-DBG\char`\"{},F\_\-OK)==0)}
+\label{vocServer_8c_5ce3281e4c841e3538a1f3fb92c5659a}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+vocRes\_\-t $\ast$ \hyperlink{vocServer_8c_72a29716878eeac418a701d3824c7ea6}{svr\_\-processMsg} (vocMsg\_\-t $\ast$msg)
+\begin{CompactList}\small\item\em Process a server message. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{vocServer_8c_9d0ef080d756d9004cee4e71ea759da7}{svr\_\-getOKResult} (void)
+\item 
+vocRes\_\-t $\ast$ \hyperlink{vocServer_8c_72b788af24c9ee098811738c4063138b}{svr\_\-getERRResult} (void)
+\item 
+void \hyperlink{vocServer_8c_d257115fe5578cfb71989229211c3d0b}{svr\_\-resetHandles} (void)
+\begin{CompactList}\small\item\em Reset the handles structure. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocServer_8c_c76f93758cbe3816a8d5bfb631c20a34}{svr\_\-urlEncode} (char $\ast$str)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hyperlink{structmsgParam}{msgParam} \hyperlink{vocServer_8c_162d73393a12fe516383e0d80d3d4399}{Params} \mbox{[}MAX\_\-PARAMS\mbox{]}
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+VOCSERVER.C -- VOClient \char`\"{}Mini-Daemon\char`\"{} server.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]April 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{vocServer_8c_72b788af24c9ee098811738c4063138b}{
+\index{vocServer.c@{vocServer.c}!svr\_\-getERRResult@{svr\_\-getERRResult}}
+\index{svr\_\-getERRResult@{svr\_\-getERRResult}!vocServer.c@{vocServer.c}}
+\subsubsection[{svr\_\-getERRResult}]{\setlength{\rightskip}{0pt plus 5cm}vocRes\_\-t$\ast$ svr\_\-getERRResult (void)}}
+\label{vocServer_8c_72b788af24c9ee098811738c4063138b}
+
+
+SVR\_\-GETERRRESULT -- Create an empty 'ERR' result message. \hypertarget{vocServer_8c_9d0ef080d756d9004cee4e71ea759da7}{
+\index{vocServer.c@{vocServer.c}!svr\_\-getOKResult@{svr\_\-getOKResult}}
+\index{svr\_\-getOKResult@{svr\_\-getOKResult}!vocServer.c@{vocServer.c}}
+\subsubsection[{svr\_\-getOKResult}]{\setlength{\rightskip}{0pt plus 5cm}vocRes\_\-t$\ast$ svr\_\-getOKResult (void)}}
+\label{vocServer_8c_9d0ef080d756d9004cee4e71ea759da7}
+
+
+SVR\_\-GETOKRESULT -- Create an empty 'OK' result message. \hypertarget{vocServer_8c_72a29716878eeac418a701d3824c7ea6}{
+\index{vocServer.c@{vocServer.c}!svr\_\-processMsg@{svr\_\-processMsg}}
+\index{svr\_\-processMsg@{svr\_\-processMsg}!vocServer.c@{vocServer.c}}
+\subsubsection[{svr\_\-processMsg}]{\setlength{\rightskip}{0pt plus 5cm}vocRes\_\-t $\ast$ svr\_\-processMsg (vocMsg\_\-t $\ast$ {\em msg})}}
+\label{vocServer_8c_72a29716878eeac418a701d3824c7ea6}
+
+
+Process a server message. 
+
+Public procedures
+
+SVR\_\-PROCESSMSG -- Process a server message.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em msg}]message struct \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a pointer to a vocRes\_\-t struct or NULL \end{Desc}
+\hypertarget{vocServer_8c_d257115fe5578cfb71989229211c3d0b}{
+\index{vocServer.c@{vocServer.c}!svr\_\-resetHandles@{svr\_\-resetHandles}}
+\index{svr\_\-resetHandles@{svr\_\-resetHandles}!vocServer.c@{vocServer.c}}
+\subsubsection[{svr\_\-resetHandles}]{\setlength{\rightskip}{0pt plus 5cm}void svr\_\-resetHandles (void)}}
+\label{vocServer_8c_d257115fe5578cfb71989229211c3d0b}
+
+
+Reset the handles structure. 
+
+SVR\_\-RESETANDLES -- Reset the handles structure.
+
+\begin{Desc}
+\item[Returns:]nothing\end{Desc}
+The handles structure is reset to its initial state, freeing all resources (for example when closing down the module). \hypertarget{vocServer_8c_c76f93758cbe3816a8d5bfb631c20a34}{
+\index{vocServer.c@{vocServer.c}!svr\_\-urlEncode@{svr\_\-urlEncode}}
+\index{svr\_\-urlEncode@{svr\_\-urlEncode}!vocServer.c@{vocServer.c}}
+\subsubsection[{svr\_\-urlEncode}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ svr\_\-urlEncode (char $\ast$ {\em str})}}
+\label{vocServer_8c_c76f93758cbe3816a8d5bfb631c20a34}
+
+
+SVR\_\-URLENCODE -- Returns a url-encoded version of str. Call must free() the pointer that is returned. 
+
+\subsection{Variable Documentation}
+\hypertarget{vocServer_8c_162d73393a12fe516383e0d80d3d4399}{
+\index{vocServer.c@{vocServer.c}!Params@{Params}}
+\index{Params@{Params}!vocServer.c@{vocServer.c}}
+\subsubsection[{Params}]{\setlength{\rightskip}{0pt plus 5cm}{\bf msgParam} {\bf Params}\mbox{[}MAX\_\-PARAMS\mbox{]}}}
+\label{vocServer_8c_162d73393a12fe516383e0d80d3d4399}
+
+
+Global variable declarations. 

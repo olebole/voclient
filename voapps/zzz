@@ -1,0 +1,23 @@
+#!/bin/csh -f
+
+
+voatlas -%			|& tee out.voatlas_java
+vocatalog -%			|& tee out.vocatalog_java
+vodata -%			|& tee out.vodata_java
+voimage -%			|& tee out.voimage_java
+voiminfo -%			|& tee out.voiminfo_java
+vospectra -%			|& tee out.vospectra_java
+votopic	-%			|& tee out.votopic_java
+
+voregistry -%			|& tee out.voregistry_java
+
+vosesame -%			|& tee out.vosesame_java
+
+#vosamp -%			|& tee out.voatlas_java
+#votcnv -% data/ned.xml		|& tee out.voatlas_java
+#votget -% data/sia.xml		|& tee out.voatlas_java
+#votinfo -% data/ned.xml		|& tee out.voatlas_java
+#votpos -% data/ned.xml		|& tee out.voatlas_java
+#votsort -% data/sort.xml	|& tee out.voatlas_java
+#votstat -% data/sort.xml	|& tee out.voatlas_java
+

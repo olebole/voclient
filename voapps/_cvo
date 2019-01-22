@@ -1,0 +1,25 @@
+
+
+				Java		CVO		Runtime 
+				----		---		------- 
+
+DATA 		voatlas
+		vocatalog
+		vodata
+		voimage
+		vospectrum
+		votopic
+
+REGISTRY 	voregistry
+
+NAME RESOLVER 	vosesame
+
+MESSAGING 	vosamp		 N/A		N/A		  N/A
+
+VOTABLE 	votcnv		 N/A		N/A		  N/A
+		votget		 N/A		N/A		  N/A
+		votinfo		 N/A		N/A		  N/A
+		votpos		 N/A		N/A		  N/A
+		votsort		 N/A		N/A		  N/A
+		votstat		 N/A		N/A		  N/A
+

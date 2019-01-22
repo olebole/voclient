@@ -1,0 +1,35 @@
+\hypertarget{structdalRec}{
+\section{dalRec Struct Reference}
+\label{structdalRec}\index{dalRec@{dalRec}}
+}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+\hypertarget{structdalRec_e4ff235533ffb8d6dade7432bd5026c6}{
+handle\_\-t \textbf{dal\_\-qr}}
+\label{structdalRec_e4ff235533ffb8d6dade7432bd5026c6}
+
+\item 
+\hypertarget{structdalRec_4b5254599dbf17b05b887b88f67f7668}{
+handle\_\-t \textbf{dal\_\-rec}}
+\label{structdalRec_4b5254599dbf17b05b887b88f67f7668}
+
+\item 
+\hypertarget{structdalRec_c27c4df9a0c264f8a1d90a9c356eee96}{
+int \textbf{recnum}}
+\label{structdalRec_c27c4df9a0c264f8a1d90a9c356eee96}
+
+\item 
+\hypertarget{structdalRec_47d4b35b727086612d0adce793f1268f}{
+int \textbf{rec\_\-count}}
+\label{structdalRec_47d4b35b727086612d0adce793f1268f}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Utility structures to map between the VOClient and libdalclient interpretation of the response. VOClient refers to table columns as 'attributes' since the simple table data model is a collection of keyw=value pairs in a row. In the dalclient, an 'attribute' is an XML element attr (e.g. the 'utype' in a $<$FIELD$>$) and columns/FIELDs are accessed by column index. To resolve this we maintain a local structure so the application-facing handles behave as before with the Java daemon, but we retain enough information to call the dalcient interface as required. 
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\hyperlink{cvoDAL_8c}{cvoDAL.c}\end{CompactItemize}

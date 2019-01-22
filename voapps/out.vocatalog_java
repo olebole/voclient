@@ -1,0 +1,281 @@
+
+=============================================================================
+== Test Cmd:  vocatalog --help 
+
+
+  Usage:
+	vocatalog [<opts>] votable.xml
+
+  where
+       -%,--test		run unit tests
+       -h,--help		this message
+
+	<opts> includes all valid VODATA options
+
+  Examples:
+
+    1) Query the GSC 2.3 catalog for stars a) within the 0.1 
+	degree default search size around NGC 1234:  b) around all
+	positions contained in file 'pos.txt':  c) for the list 
+	of objects given on the command line:  d) query a list of
+	services for a list of positions: e) print a count of 
+	results that would be returned from 3 services for each
+	position in a file:
+
+	    % vocatalog gsc2.3 ngc1234                 (a)
+	    % vocatalog gsc2.3 pos.txt                 (b)
+	    % vocatalog gsc2.3 m31,m51,m93             (c)
+	    % vocatalog svcs.txt pos.txt               (d)
+	    % vocatalog hst,chandra,gsc2.3 pos.txt     (e)
+
+    2) Print a count of X-ray catalog data around Abell2712:
+
+	    % vocatalog -c -b x-ray any abell2712
+	    % vocatalog --count -b x-ray any abell2712
+
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  vocatalog gsc2.3 ngc1234 
+
+# Resolver: ngc1234              -> ngc1234    47.412500 -7.845386  (0.10)
+# Service:  GSC23
+# Title:  Guide Star Catalog 2.3
+# No. of Objects:  1
+# No. of Services: 1
+# Search size:  0.100000 (degrees)
+#
+# Service               NRec   Typ Resource Title
+# -------               ----   --- ---------------------------------------------
+
+#			   0    (Records Found)
+#			   1    (Resources Queried)
+#			   0    (Failed Requests)
+#			   1    (Completed Requests)
+#				  (1 Results w/ Data)
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  vocatalog gsc2.3 pos.txt 
+
+# Service:  GSC23
+# Title:  Guide Star Catalog 2.3
+# No. of Objects:  3
+# No. of Services: 1
+# Search size:  0.100000 (degrees)
+#
+# Rec  Service     	Source Name    	NRecs
+
+# ---  -------     	-----------    	-----
+
+#					   0    (Records Found)
+#					   3    (Resources Queried)
+#					   0    (Failed Requests)
+#					   3    (Completed Requests)
+#						  (3 Results w/ Data)
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  vocatalog gsc2.3 m31,m51,m93 
+
+# Resolver: m31                  -> m31        10.684708 41.268750  (0.10)
+# Resolver: m51                  -> m51        202.469575 47.195258  (0.10)
+# Resolver: m93                  -> m93        116.125000 -23.856700  (0.10)
+# Service:  GSC23
+# Title:  Guide Star Catalog 2.3
+# No. of Objects:  3
+# No. of Services: 1
+# Search size:  0.100000 (degrees)
+#
+# Rec  Service     	Source Name    	NRecs
+
+# ---  -------     	-----------    	-----
+
+#					   0    (Records Found)
+#					   3    (Resources Queried)
+#					   0    (Failed Requests)
+#					   3    (Completed Requests)
+#						  (3 Results w/ Data)
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  vocatalog svcs.txt pos.txt 
+
+# Service query 'hst' non-unique (2 found)...
+# Using ConeSearch Resource HST [1] -> ivo://nasa.heasarc/hstaec#1
+# No. of Objects:  3
+# No. of Services: 2
+# Search size:  0.100000 (degrees)
+#
+# Rec  Service     	Source Name    	NRecs
+
+# ---  -------     	-----------    	-----
+
+================================================================  status =  1
+Child exited with SIGNAL 11
+
+=============================================================================
+== Test Cmd:  vocatalog hst,chandra,gsc2.3 pos.txt 
+
+# Service query 'hst' non-unique (2 found)...
+# Using ConeSearch Resource HST [1] -> ivo://nasa.heasarc/hstaec#1
+# No. of Objects:  6
+# No. of Services: 4
+# Search size:  0.100000 (degrees)
+#
+# Rec  Service     	Source Name    	NRecs
+
+# ---  -------     	-----------    	-----
+
+openVOTable(): Invalid input arg ''
+#					   0    (Records Found)
+#					  24    (Resources Queried)
+#					   0    (Failed Requests)
+#					  24    (Completed Requests)
+#						  (19 Results w/ Data)
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  vocatalog -c -b x-ray any abell2712 
+
+# Resolver: abell2712            -> abell2712  1.737500 -18.071700  (0.10)
+# No. of Objects:  4
+# No. of Services: 787
+# Search size:  0.100000 (degrees)
+#
+# Rec  Service     	Source Name    	NRecs
+
+# ---  -------     	-----------    	-----
+
+    3  GSC23       	m93            	   235
+    4  GSC23       	abell2712      	   278
+    1  GSC23       	m31            	   607
+    2  GSC23       	m51            	   817
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+    2  CSC [1]     	m51            	     8
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+Error: not well-formed (invalid token) at line 37
+openVOTable(): Invalid input arg ''
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: partial character at line 51
+Error: partial character at line 51
+openVOTable(): Invalid input arg ''
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+openVOTable(): Invalid input arg ''
+Error: not well-formed (invalid token) at line 51
+Error: partial character at line 51
+Error: not well-formed (invalid token) at line 51
+Error: partial character at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 52
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: partial character at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 37
+Error: partial character at line 37
+openVOTable(): Invalid input arg ''
+Error: not well-formed (invalid token) at line 37
+Error: not well-formed (invalid token) at line 53
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+openVOTable(): Invalid input arg ''
+Error: partial character at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+Error: not well-formed (invalid token) at line 51
+#					1943    (Records Found)
+#					3148    (Resources Queried)
+#					   0    (Failed Requests)
+#					3148    (Completed Requests)
+#						  (2478 Results w/ Data)
+================================================================  status =  0
+
+=============================================================================
+== Test Cmd:  vocatalog --count -b x-ray any abell2712 
+
+# Resolver: abell2712            -> abell2712  1.737500 -18.071700  (0.10)
+# No. of Objects:  4
+# No. of Services: 787
+# Search size:  0.100000 (degrees)
+#
+# Rec  Service     	Source Name    	NRecs
+
+# ---  -------     	-----------    	-----
+
+    1  GSC23       	m31            	   607
+    2  GSC23       	m51            	   817
+    3  GSC23       	m93            	   235
+    4  GSC23       	abell2712      	   278
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+openVOTable(): Invalid input arg ''
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51
+Error: junk after document element at line 51

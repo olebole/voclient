@@ -1,0 +1,252 @@
+\hypertarget{xmlElement_8c}{
+\section{xmlElement.c File Reference}
+\label{xmlElement_8c}\index{xmlElement.c@{xmlElement.c}}
+}
+(Private) Methods to manage XML elements.  
+
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include \char`\"{}xmlParseP.h\char`\"{}}\par
+{\tt \#include \char`\"{}xmlParse.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \textbf{eTypes}
+\item 
+struct \textbf{eAttrs}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{xmlElement_8c_90be22d8acb5e625e96c4bd621873ab1}{
+\#define \textbf{outstr}(s)~strcat(XML\_\-out,s);}
+\label{xmlElement_8c_90be22d8acb5e625e96c4bd621873ab1}
+
+\item 
+\hypertarget{xmlElement_8c_f18db8ab48febb9b448b5c42bba6c8ef}{
+\#define \textbf{outattr}(a, s)~\{outstr(a);outstr(s);outstr(\char`\"{}$\backslash$\char`\"{}\char`\"{});\}}
+\label{xmlElement_8c_f18db8ab48febb9b448b5c42bba6c8ef}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{xmlElement_8c_713fb295b9d6ee231d94a4253d3b8690}{xml\_\-elemType} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Get the integer value (ID) of the \hyperlink{structElement}{Element} (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlElement_8c_f74f1de38629ea8e7debb9117a08da4e}{xml\_\-elemName} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Get the name of the \hyperlink{structElement}{Element} (private method). \item\end{CompactList}\item 
+int \hyperlink{xmlElement_8c_d53297756013ea0351f9c49539795a1f}{xml\_\-eType} (char $\ast$name)
+\begin{CompactList}\small\item\em Get the integer value (ID) of the name (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlElement_8c_897b4e34bf8692e4d81f3f9543582e54}{xml\_\-elemXMLEnd} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Build a string of the ending XML Tag (private method). \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlElement_8c_fb337d06c2c4fa879addbee8272e70c3}{xml\_\-elemXML} (\hyperlink{structElement}{Element} $\ast$e)
+\begin{CompactList}\small\item\em Builds a string of the opening XML Tag (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlElement_8c_a8720e5e357ff4f8c47adbd7e28704b6}{xml\_\-newElem} (unsigned int type)
+\begin{CompactList}\small\item\em Allocate a new structure of the given type (private method). \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlElement_8c_57d31b117e3f9b286c298c798f10931a}{xml\_\-getToplevel} (handle\_\-t root)
+\begin{CompactList}\small\item\em Get the handle to the toplevel element. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlElement_8c_e6b05441c8b6987a4f2688428ff4a87d}{xml\_\-getToplevelName} (handle\_\-t root)
+\begin{CompactList}\small\item\em Get the name of toplevel element. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlElement_8c_44e735a6741b408e050b81f9ebbeecb4}{xml\_\-getToplevelNSpace} (handle\_\-t root)
+\begin{CompactList}\small\item\em Get the name of toplevel element namespace. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{xmlElement_8c_54793ce734cf692e3d8f066cdb10aaf8}{xml\_\-elemNameByHandle} (handle\_\-t elem)
+\begin{CompactList}\small\item\em Get the name of requested element. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+(Private) Methods to manage XML elements. 
+
+XMLELEMENT.C -- (Private) Method to manage XML elements.
+
+\begin{Desc}
+\item[Author:]Mike Fitzpatrick and Eric Timmermann \end{Desc}
+\begin{Desc}
+\item[Date:]8/03/09 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{xmlElement_8c_f74f1de38629ea8e7debb9117a08da4e}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-elemName@{xml\_\-elemName}}
+\index{xml\_\-elemName@{xml\_\-elemName}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-elemName}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-elemName ({\bf Element} $\ast$ {\em e})}}
+\label{xmlElement_8c_f74f1de38629ea8e7debb9117a08da4e}
+
+
+Get the name of the \hyperlink{structElement}{Element} (private method). 
+
+xml\_\-elemName -- Get the name of the \hyperlink{structElement}{Element} (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$e}]A pointer to the \hyperlink{structElement}{Element} that you want the name of \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string pointer to the name of the element \end{Desc}
+\hypertarget{xmlElement_8c_54793ce734cf692e3d8f066cdb10aaf8}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-elemNameByHandle@{xml\_\-elemNameByHandle}}
+\index{xml\_\-elemNameByHandle@{xml\_\-elemNameByHandle}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-elemNameByHandle}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-elemNameByHandle (handle\_\-t {\em elem})}}
+\label{xmlElement_8c_54793ce734cf692e3d8f066cdb10aaf8}
+
+
+Get the name of requested element. 
+
+xml\_\-elemNameByHandle -- Get the name of requested element.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem}]element handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]name of element \end{Desc}
+\hypertarget{xmlElement_8c_713fb295b9d6ee231d94a4253d3b8690}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-elemType@{xml\_\-elemType}}
+\index{xml\_\-elemType@{xml\_\-elemType}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-elemType}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-elemType ({\bf Element} $\ast$ {\em e})}}
+\label{xmlElement_8c_713fb295b9d6ee231d94a4253d3b8690}
+
+
+Get the integer value (ID) of the \hyperlink{structElement}{Element} (private method). 
+
+xml\_\-elemType -- Get the integer value (ID) of the \hyperlink{structElement}{Element} (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em e}]A pointer to the \hyperlink{structElement}{Element} that you want the type of \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An integer corresponding to the type of the element \end{Desc}
+\hypertarget{xmlElement_8c_fb337d06c2c4fa879addbee8272e70c3}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-elemXML@{xml\_\-elemXML}}
+\index{xml\_\-elemXML@{xml\_\-elemXML}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-elemXML}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-elemXML ({\bf Element} $\ast$ {\em e})}}
+\label{xmlElement_8c_fb337d06c2c4fa879addbee8272e70c3}
+
+
+Builds a string of the opening XML Tag (private method). 
+
+xml\_\-elemXML -- Builds a string of the opening XML Tag (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$e}]A pointer to an \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string that contains the opening XML tag for e \end{Desc}
+\hypertarget{xmlElement_8c_897b4e34bf8692e4d81f3f9543582e54}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-elemXMLEnd@{xml\_\-elemXMLEnd}}
+\index{xml\_\-elemXMLEnd@{xml\_\-elemXMLEnd}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-elemXMLEnd}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ xml\_\-elemXMLEnd ({\bf Element} $\ast$ {\em e})}}
+\label{xmlElement_8c_897b4e34bf8692e4d81f3f9543582e54}
+
+
+Build a string of the ending XML Tag (private method). 
+
+xml\_\-elemXMLEnd -- Build a string of the ending XML Tag (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$e}]A pointer to an \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A string that contains the ending XML tag for e \end{Desc}
+\hypertarget{xmlElement_8c_d53297756013ea0351f9c49539795a1f}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-eType@{xml\_\-eType}}
+\index{xml\_\-eType@{xml\_\-eType}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-eType}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-eType (char $\ast$ {\em name})}}
+\label{xmlElement_8c_d53297756013ea0351f9c49539795a1f}
+
+
+Get the integer value (ID) of the name (private method). 
+
+xml\_\-eType -- Get the integer value (ID) of the name (private method).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]Name of the desired type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An integer corresponding to the type of the element \end{Desc}
+\hypertarget{xmlElement_8c_57d31b117e3f9b286c298c798f10931a}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-getToplevel@{xml\_\-getToplevel}}
+\index{xml\_\-getToplevel@{xml\_\-getToplevel}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-getToplevel}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getToplevel (handle\_\-t {\em root})}}
+\label{xmlElement_8c_57d31b117e3f9b286c298c798f10931a}
+
+
+Get the handle to the toplevel element. 
+
+xml\_\-getToplevel -- Get the handle to the toplevel element.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em root}]document root handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to toplevel element \end{Desc}
+\hypertarget{xmlElement_8c_e6b05441c8b6987a4f2688428ff4a87d}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-getToplevelName@{xml\_\-getToplevelName}}
+\index{xml\_\-getToplevelName@{xml\_\-getToplevelName}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-getToplevelName}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getToplevelName (handle\_\-t {\em root})}}
+\label{xmlElement_8c_e6b05441c8b6987a4f2688428ff4a87d}
+
+
+Get the name of toplevel element. 
+
+xml\_\-getToplevelName -- Get the name of toplevel element.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em root}]document root handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]name of toplevel element \end{Desc}
+\hypertarget{xmlElement_8c_44e735a6741b408e050b81f9ebbeecb4}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-getToplevelNSpace@{xml\_\-getToplevelNSpace}}
+\index{xml\_\-getToplevelNSpace@{xml\_\-getToplevelNSpace}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-getToplevelNSpace}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-getToplevelNSpace (handle\_\-t {\em root})}}
+\label{xmlElement_8c_44e735a6741b408e050b81f9ebbeecb4}
+
+
+Get the name of toplevel element namespace. 
+
+xml\_\-getToplevelNSpace -- Get the name of toplevel element namespace.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em root}]document root handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]toplevel element namespace \end{Desc}
+\hypertarget{xmlElement_8c_a8720e5e357ff4f8c47adbd7e28704b6}{
+\index{xmlElement.c@{xmlElement.c}!xml\_\-newElem@{xml\_\-newElem}}
+\index{xml\_\-newElem@{xml\_\-newElem}!xmlElement.c@{xmlElement.c}}
+\subsubsection[{xml\_\-newElem}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element} $\ast$ xml\_\-newElem (unsigned int {\em type})}}
+\label{xmlElement_8c_a8720e5e357ff4f8c47adbd7e28704b6}
+
+
+Allocate a new structure of the given type (private method). 
+
+xml\_\-newElem -- Allocate a new structure of the given type (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em type}]An integer that defines the type of \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]An new \hyperlink{structElement}{Element} structure \end{Desc}

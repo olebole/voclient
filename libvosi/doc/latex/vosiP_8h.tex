@@ -1,0 +1,224 @@
+\hypertarget{vosiP_8h}{
+\section{vosiP.h File Reference}
+\label{vosiP_8h}\index{vosiP.h@{vosiP.h}}
+}
+Internal LIBVOSI definitions.  
+
+
+{\tt \#include $<$expat.h$>$}\par
+{\tt \#include $<$stdbool.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structAvail}{Avail}
+\begin{CompactList}\small\item\em Information from an Availability interface. \item\end{CompactList}\item 
+struct \hyperlink{structCapabilities}{Capabilities}
+\begin{CompactList}\small\item\em Information from a \hyperlink{structCapabilities}{Capabilities} interface. \item\end{CompactList}\item 
+struct \hyperlink{structUniversalWorkerServices}{UniversalWorkerServices}
+\begin{CompactList}\small\item\em Information from a \hyperlink{structUniversalWorkerServices}{UniversalWorkerServices} interface. \item\end{CompactList}\item 
+struct \hyperlink{structvosiForeignKey}{vosiForeignKey}
+\begin{CompactList}\small\item\em Information about a \hyperlink{structvosiForeignKey}{vosiForeignKey}. \item\end{CompactList}\item 
+struct \hyperlink{structvosiColumn}{vosiColumn}
+\begin{CompactList}\small\item\em Information about a \hyperlink{structvosiColumn}{vosiColumn}. \item\end{CompactList}\item 
+struct \hyperlink{structvosiTable}{vosiTable}
+\begin{CompactList}\small\item\em Information about a \hyperlink{structvosiTable}{vosiTable}. \item\end{CompactList}\item 
+struct \hyperlink{structvosiSchema}{vosiSchema}
+\begin{CompactList}\small\item\em Information about a \hyperlink{structvosiSchema}{vosiSchema}. \item\end{CompactList}\item 
+struct \hyperlink{structvosiTableSet}{vosiTableSet}
+\begin{CompactList}\small\item\em Information about a \hyperlink{structvosiTableSet}{vosiTableSet}. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{vosiP_8h_93b643eeb3f51dd594dd32dab154bd20}{
+\#define \textbf{VOT\_\-DOC\_\-VERSION}~\char`\"{}1.2\char`\"{}}
+\label{vosiP_8h_93b643eeb3f51dd594dd32dab154bd20}
+
+\item 
+\hypertarget{vosiP_8h_a48629a668bfc21febfe4aa371c69672}{
+\#define \textbf{VOT\_\-XSI}~\char`\"{}http://www.w3.org/2001/XMLSchema-instance\char`\"{}}
+\label{vosiP_8h_a48629a668bfc21febfe4aa371c69672}
+
+\item 
+\hypertarget{vosiP_8h_20d9c55a9212a3de1fff48aa199d5720}{
+\#define \textbf{VOT\_\-SCHEMA\_\-LOC}~\char`\"{}http://www.ivoa.net/xml/VOTable/v1.1  http://www.ivoa.net/xml/VOTable/v1.1\char`\"{}}
+\label{vosiP_8h_20d9c55a9212a3de1fff48aa199d5720}
+
+\item 
+\hypertarget{vosiP_8h_6ea373a6e0c4f42058ab1c14d81a5a7d}{
+\#define \textbf{VOT\_\-XMLNS}~\char`\"{}http://www.ivoa.net/xml/VOTable/v1.1\char`\"{}}
+\label{vosiP_8h_6ea373a6e0c4f42058ab1c14d81a5a7d}
+
+\item 
+\hypertarget{vosiP_8h_9aed3a964b10f1c101be4aa024a28b65}{
+\#define \textbf{SZ\_\-ATTRNAME}~32}
+\label{vosiP_8h_9aed3a964b10f1c101be4aa024a28b65}
+
+\item 
+\hypertarget{vosiP_8h_338283392c86633c614eec7e28df2ee1}{
+\#define \textbf{SZ\_\-ATTRVAL}~2048}
+\label{vosiP_8h_338283392c86633c614eec7e28df2ee1}
+
+\item 
+\hypertarget{vosiP_8h_0eb1d3a89b93c111785ef003b0b2cba8}{
+\#define \textbf{SZ\_\-FNAME}~255}
+\label{vosiP_8h_0eb1d3a89b93c111785ef003b0b2cba8}
+
+\item 
+\hypertarget{vosiP_8h_dd63f1bab1fc0ce36a85c6333d9fea1d}{
+\#define \textbf{SZ\_\-XMLTAG}~1024}
+\label{vosiP_8h_dd63f1bab1fc0ce36a85c6333d9fea1d}
+
+\item 
+\hypertarget{vosiP_8h_32108415ff44b6f7537b9516f4a84be7}{
+\#define \textbf{SZ\_\-LINE}~4096}
+\label{vosiP_8h_32108415ff44b6f7537b9516f4a84be7}
+
+\item 
+\hypertarget{vosiP_8h_a2386e8d15f3745d278abcd17e5929d5}{
+\#define \textbf{MAX\_\-ATTR}~100}
+\label{vosiP_8h_a2386e8d15f3745d278abcd17e5929d5}
+
+\item 
+\hypertarget{vosiP_8h_6864c97be5f9c0d463c051efd2f6905b}{
+\#define \textbf{HANDLE\_\-INCREMENT}~1024000}
+\label{vosiP_8h_6864c97be5f9c0d463c051efd2f6905b}
+
+\item 
+\hypertarget{vosiP_8h_3de5eb9152efdad1ac1998c400bca627}{
+\#define \textbf{SZ\_\-CAPABILITIES}~64}
+\label{vosiP_8h_3de5eb9152efdad1ac1998c400bca627}
+
+\item 
+\hypertarget{vosiP_8h_c6afabdc09a49a433ee19d8a9486056d}{
+\#define \textbf{min}(a, b)~((a$<$b)?a:b)}
+\label{vosiP_8h_c6afabdc09a49a433ee19d8a9486056d}
+
+\item 
+\hypertarget{vosiP_8h_ffe776513b24d84b39af8ab0930fef7f}{
+\#define \textbf{max}(a, b)~((a$>$b)?a:b)}
+\label{vosiP_8h_ffe776513b24d84b39af8ab0930fef7f}
+
+\item 
+\hypertarget{vosiP_8h_3b0e3f6e2463bfe3ab40dd8377272fb6}{
+\#define \hyperlink{vosiP_8h_3b0e3f6e2463bfe3ab40dd8377272fb6}{handle\_\-t}~int}
+\label{vosiP_8h_3b0e3f6e2463bfe3ab40dd8377272fb6}
+
+\begin{CompactList}\small\item\em Handle type definition. \item\end{CompactList}\item 
+\hypertarget{vosiP_8h_27e5f57e57796a2adaa57344760747e0}{
+\#define \textbf{COL\_\-INDEXED}~0}
+\label{vosiP_8h_27e5f57e57796a2adaa57344760747e0}
+
+\item 
+\hypertarget{vosiP_8h_5a941ed8038f9aacca77456eacbc7a9c}{
+\#define \textbf{COL\_\-PRIMARY}~1}
+\label{vosiP_8h_5a941ed8038f9aacca77456eacbc7a9c}
+
+\item 
+\hypertarget{vosiP_8h_fdf09fb0e8dffc1e46ffd86376dbdaef}{
+\#define \textbf{COL\_\-NULLABLE}~2}
+\label{vosiP_8h_fdf09fb0e8dffc1e46ffd86376dbdaef}
+
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+\hypertarget{vosiP_8h_8cf85b14ebbb0412843d43d8764317ec}{
+typedef struct \hyperlink{structAvail}{Avail} $\ast$ \textbf{AvailP}}
+\label{vosiP_8h_8cf85b14ebbb0412843d43d8764317ec}
+
+\item 
+\hypertarget{vosiP_8h_ed79d31a65da09c2037ef58b0fa993f4}{
+typedef struct \hyperlink{structCapabilities}{Capabilities} $\ast$ \textbf{CapabilitiesP}}
+\label{vosiP_8h_ed79d31a65da09c2037ef58b0fa993f4}
+
+\item 
+\hypertarget{vosiP_8h_1880d5b14135428060ec9dd726edb4b1}{
+typedef struct \hyperlink{structUniversalWorkerServices}{UniversalWorkerServices} $\ast$ \textbf{UniversalWorkerServicesP}}
+\label{vosiP_8h_1880d5b14135428060ec9dd726edb4b1}
+
+\item 
+\hypertarget{vosiP_8h_e91035591711777dcd47281967920d07}{
+typedef struct \hyperlink{structvosiForeignKey}{vosiForeignKey} $\ast$ \textbf{vosiForeignKeyP}}
+\label{vosiP_8h_e91035591711777dcd47281967920d07}
+
+\item 
+\hypertarget{vosiP_8h_b01f82c823b644b151b6b0f2aef3deb3}{
+typedef struct \hyperlink{structvosiColumn}{vosiColumn} $\ast$ \textbf{vosiColumnP}}
+\label{vosiP_8h_b01f82c823b644b151b6b0f2aef3deb3}
+
+\item 
+\hypertarget{vosiP_8h_2b4b547f19860773b59ca0bf0afdc704}{
+typedef struct \hyperlink{structvosiTable}{vosiTable} $\ast$ \textbf{vosiTableP}}
+\label{vosiP_8h_2b4b547f19860773b59ca0bf0afdc704}
+
+\item 
+\hypertarget{vosiP_8h_73b391603593b8330baf9ad1498d7a14}{
+typedef struct \hyperlink{structvosiSchema}{vosiSchema} $\ast$ \textbf{vosiSchemaP}}
+\label{vosiP_8h_73b391603593b8330baf9ad1498d7a14}
+
+\item 
+\hypertarget{vosiP_8h_ea44d7953446a08d0d4a40ac5742e697}{
+typedef struct \hyperlink{structvosiTableSet}{vosiTableSet} $\ast$ \textbf{vosiTableSetP}}
+\label{vosiP_8h_ea44d7953446a08d0d4a40ac5742e697}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \hyperlink{vosiP_8h_60b10165f100efce394e239bc7061f93}{vosi\_\-initHandles} (void)
+\item 
+\hypertarget{vosiP_8h_97c8fe4788d2175fe7c1bbbd5c8c3bce}{
+int \textbf{vosi\_\-newHandleContext} (char $\ast$name, int size)}
+\label{vosiP_8h_97c8fe4788d2175fe7c1bbbd5c8c3bce}
+
+\item 
+\hypertarget{vosiP_8h_ed2c5f390361cf8f34211e88371c801f}{
+void \textbf{vosi\_\-closeHandleContext} (int context)}
+\label{vosiP_8h_ed2c5f390361cf8f34211e88371c801f}
+
+\item 
+\hypertarget{vosiP_8h_451b95f5d593ded36511d527a75a08ec}{
+handle\_\-t \textbf{vosi\_\-newHandle} (int context, void $\ast$ptr)}
+\label{vosiP_8h_451b95f5d593ded36511d527a75a08ec}
+
+\item 
+\hypertarget{vosiP_8h_d73ecca0efee96e0c3fe69eae1cd2d3e}{
+void \textbf{vosi\_\-freeHandle} (handle\_\-t handle)}
+\label{vosiP_8h_d73ecca0efee96e0c3fe69eae1cd2d3e}
+
+\item 
+\hypertarget{vosiP_8h_bc8f24488d83b5f6b795969b8e1173fa}{
+void $\ast$ \textbf{vosi\_\-H2P} (handle\_\-t handle)}
+\label{vosiP_8h_bc8f24488d83b5f6b795969b8e1173fa}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+Internal LIBVOSI definitions. 
+
+VOSIP.H -- Internal LIBVOSI definitions.
+
+\begin{Desc}
+\item[Author:]Ken Mighell and Mike Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Date:]8/11/09 
+
+8/26/14 KJM: modified \hyperlink{structCapabilities}{Capabilities} structure 
+
+9/08/14 KJM: added \hyperlink{structUniversalWorkerServices}{UniversalWorkerServices} structure  9/12/14 KJM: added Tables structures \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{vosiP_8h_60b10165f100efce394e239bc7061f93}{
+\index{vosiP.h@{vosiP.h}!vosi\_\-initHandles@{vosi\_\-initHandles}}
+\index{vosi\_\-initHandles@{vosi\_\-initHandles}!vosiP.h@{vosiP.h}}
+\subsubsection[{vosi\_\-initHandles}]{\setlength{\rightskip}{0pt plus 5cm}void vosi\_\-initHandles (void)}}
+\label{vosiP_8h_60b10165f100efce394e239bc7061f93}
+
+
+$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$
+
+Public Internal Methods. The procedures are used to implement the library, however are not part of the public interface. 

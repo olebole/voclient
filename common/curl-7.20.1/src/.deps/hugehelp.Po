@@ -1,0 +1,3 @@
+hugehelp.o: hugehelp.c ../src/hugehelp.h
+
+../src/hugehelp.h:

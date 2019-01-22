@@ -1,0 +1,948 @@
+\hypertarget{vocDAL_8c}{
+\section{vocDAL.c File Reference}
+\label{vocDAL_8c}\index{vocDAL.c@{vocDAL.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$stdarg.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{vocDAL_8c_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{vocDAL_8c_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{vocDAL_8c_b9af170d45dd1f3e6fc5ff5ccc4a3cc1}{
+\#define \textbf{SZ\_\-ERRMSG}~256}
+\label{vocDAL_8c_b9af170d45dd1f3e6fc5ff5ccc4a3cc1}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ \hyperlink{vocDAL_8c_8cbe6ba9f6666870d6f7c4f4729ac5d0}{voc\_\-coneCaller} (char $\ast$url, double ra, double dec, double sr, int otype)
+\begin{CompactList}\small\item\em Hi-level Cone Service Caller method. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_14453c34412e8882ec031d30117f9046}{voc\_\-coneCallerToFile} (char $\ast$url, double ra, double dec, double sr, int otype, char $\ast$file)
+\begin{CompactList}\small\item\em Hi-level Cone Service Caller method. \item\end{CompactList}\item 
+\hypertarget{vocDAL_8c_20b83bbd960149100c838162bd73859b}{
+char $\ast$ \textbf{voc\_\-siapCaller} (char $\ast$url, double ra, double dec, double rsize, double dsize, char $\ast$fmt, int otype)}
+\label{vocDAL_8c_20b83bbd960149100c838162bd73859b}
+
+\item 
+\hypertarget{vocDAL_8c_5d3ee72c6fe85864d6b05771f07f2553}{
+int \textbf{voc\_\-siapCallerToFile} (char $\ast$url, double ra, double dec, double rsize, double dsize, char $\ast$fmt, int otype, char $\ast$file)}
+\label{vocDAL_8c_5d3ee72c6fe85864d6b05771f07f2553}
+
+\item 
+\hypertarget{vocDAL_8c_9b646c918fa2a527cf06da21f0ff23c5}{
+char $\ast$ \textbf{voc\_\-ssapCaller} (char $\ast$url, double ra, double dec, double size, char $\ast$band, char $\ast$time, char $\ast$fmt, int otype)}
+\label{vocDAL_8c_9b646c918fa2a527cf06da21f0ff23c5}
+
+\item 
+\hypertarget{vocDAL_8c_b198af9a1309d751e34963c566ccf04d}{
+int \textbf{voc\_\-ssapCallerToFile} (char $\ast$url, double ra, double dec, double size, char $\ast$band, char $\ast$time, char $\ast$fmt, int otype, char $\ast$file)}
+\label{vocDAL_8c_b198af9a1309d751e34963c566ccf04d}
+
+\item 
+char $\ast$ \hyperlink{vocDAL_8c_38f235c4b1f26a3fde83b4e4a16b05e5}{voc\_\-getRawURL} (char $\ast$url, int $\ast$nbytes)
+\begin{CompactList}\small\item\em Get a raw URL to a returned string. \item\end{CompactList}\item 
+DAL \hyperlink{vocDAL_8c_f726405718e7ad8259c4bc6a86cd69d8}{voc\_\-openConnection} (char $\ast$service\_\-url, int type,...)
+\begin{CompactList}\small\item\em Open a new DAL context connection. \item\end{CompactList}\item 
+DAL \hyperlink{vocDAL_8c_d86dc3a16bfc91c73644d14c090254b6}{voc\_\-openConeConnection} (char $\ast$service\_\-url,...)
+\begin{CompactList}\small\item\em Open a new DAL Cone connection. \item\end{CompactList}\item 
+DAL \hyperlink{vocDAL_8c_cf25e6b23744c4391bbc09c81e59e537}{voc\_\-openSiapConnection} (char $\ast$service\_\-url,...)
+\begin{CompactList}\small\item\em Open a new DAL SIAP connection. \item\end{CompactList}\item 
+DAL \hyperlink{vocDAL_8c_764879d5e4715306d3987863eb330c65}{voc\_\-openSsapConnection} (char $\ast$service\_\-url,...)
+\begin{CompactList}\small\item\em Open a new DAL SSAP connection. \item\end{CompactList}\item 
+void \hyperlink{vocDAL_8c_b474ddec24f6e9c6334bfe5911d6a3be}{voc\_\-closeConnection} (DAL dal)
+\begin{CompactList}\small\item\em Close the requested connection. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_8ef4b1beaa4fe911df45556c13bcc199}{voc\_\-getServiceCount} (DAL dal)
+\begin{CompactList}\small\item\em Get service count associated with the DAL context. \item\end{CompactList}\item 
+void \hyperlink{vocDAL_8c_81277c76dd05215ee516d617290eb42d}{voc\_\-addServiceURL} (DAL dal, char $\ast$service\_\-url)
+\begin{CompactList}\small\item\em Add a service URL to the specified connection. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_2a26f06896c74557df89dc77cce7fde2}{voc\_\-getServiceURL} (DAL dal, int index)
+\begin{CompactList}\small\item\em Get the requested service URL for the connection. \item\end{CompactList}\item 
+\hypertarget{vocDAL_8c_06ad786f1d089cd9c1daf41c78e78c02}{
+Query \textbf{voc\_\-getQuery} (DAL dal, int type)}
+\label{vocDAL_8c_06ad786f1d089cd9c1daf41c78e78c02}
+
+\item 
+Query \hyperlink{vocDAL_8c_edd820b08aa2b157152be9b87b3e05ad}{voc\_\-getConeQuery} (DAL dal, double ra, double dec, double sr)
+\begin{CompactList}\small\item\em Get a query for a Cone service. \item\end{CompactList}\item 
+\hypertarget{vocDAL_8c_3f111dbdf0b61b2415013f3708b1504b}{
+Query \textbf{voc\_\-getSiapQuery} (DAL dal, double ra, double dec, double ra\_\-size, double dec\_\-size, char $\ast$format)}
+\label{vocDAL_8c_3f111dbdf0b61b2415013f3708b1504b}
+
+\item 
+Query \hyperlink{vocDAL_8c_bc12045bde6dee0876e3e6cf0b8df4a9}{voc\_\-getSsapQuery} (DAL dal, double ra, double dec, double size, char $\ast$band, char $\ast$tim, char $\ast$format)
+\begin{CompactList}\small\item\em Get a query for a SSAP service. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_50820d89c33879a4aaccccad55ff7310}{voc\_\-addIntParam} (Query query, char $\ast$name, int ival)
+\begin{CompactList}\small\item\em Add an integer parameter to a Query string. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_af4d64d906fcdd8dadbbee2bd4fe0ef2}{voc\_\-addFloatParam} (Query query, char $\ast$name, double dval)
+\begin{CompactList}\small\item\em Add a floating-point parameter to a Query string. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_e95380fc5a55f068af9167c146ac84d0}{voc\_\-addStringParam} (Query query, char $\ast$name, char $\ast$str)
+\begin{CompactList}\small\item\em Add a String parameter to a Query string. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_805da294b9f1f25e491f8c145f87da08}{voc\_\-getQueryString} (Query query, int type, int index)
+\begin{CompactList}\small\item\em Get the complete query string that will be executed. \item\end{CompactList}\item 
+QResponse \hyperlink{vocDAL_8c_6c6464e4c5efc86816deca6ac6459f57}{voc\_\-executeQuery} (Query query)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+QResponse \hyperlink{vocDAL_8c_33e3aab149cedeb273a74a7335a90f04}{voc\_\-getQueryResponse} (Query query)
+\begin{CompactList}\small\item\em Utility to get QResponse handle from Query. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_685fb7ab0f87528f466b0847893ab61c}{voc\_\-getErrMsg} ()
+\begin{CompactList}\small\item\em Get the last error message. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_5f0bf764598bb9d6611e17ecb69df868}{voc\_\-executeCSV} (Query query)
+\begin{CompactList}\small\item\em Execute the query and return a CSV table. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_5cf731c1030968b2ceefdc4e2024e324}{voc\_\-executeTSV} (Query query)
+\begin{CompactList}\small\item\em Execute the query and return a TSV table. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_e52257da68af57a663836a3939a8b8a2}{voc\_\-executeASCII} (Query query)
+\begin{CompactList}\small\item\em Execute the query and return an ASCII table. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_c98da2638fc40afcf5d6ce1c3e1b19f7}{voc\_\-executeVOTable} (Query query)
+\begin{CompactList}\small\item\em Execute the query and return a VOTable. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_cd1cf8737647543f511ac189374c8a6b}{voc\_\-executeQueryAs} (Query query, char $\ast$fname, int type)
+\begin{CompactList}\small\item\em Execute the query and save requested type to file. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_c27ba360052f7a4037559faf321beaf3}{voc\_\-getRecordCount} (QResponse qr)
+\begin{CompactList}\small\item\em Get a count of the records returned by the QResponse. \item\end{CompactList}\item 
+QRecord \hyperlink{vocDAL_8c_c8fb3803b26fb6205424464d9f4b7dba}{voc\_\-getRecord} (QResponse qr, int recnum)
+\begin{CompactList}\small\item\em Get the response record by number. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_ad4fcbe416ba9b73ccbd4472effb9bcd}{voc\_\-getAttrCount} (QRecord rec)
+\begin{CompactList}\small\item\em Get the attribute record count. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_af440fcc260231543cc88abc027fca03}{voc\_\-getFieldAttr} (QResponse qr, int index, char $\ast$attr)
+\begin{CompactList}\small\item\em Get the field attribute string. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_28b7360a3b09c31bb384b1209e1b7be7}{voc\_\-getAttrList} (QRecord rec)
+\begin{CompactList}\small\item\em Get the response record by number. \item\end{CompactList}\item 
+QRAttribute \hyperlink{vocDAL_8c_8a22d335db401ce97e9361169d9f257a}{voc\_\-getAttribute} (QRecord rec, char $\ast$attrname)
+\begin{CompactList}\small\item\em Get response record attribute object. \item\end{CompactList}\item 
+void \hyperlink{vocDAL_8c_d4c113c772614837d985abf896e81455}{voc\_\-setIntAttr} (QRecord rec, char $\ast$attrname, int ival)
+\begin{CompactList}\small\item\em Set an integer attribute value in a record. \item\end{CompactList}\item 
+void \hyperlink{vocDAL_8c_2a258a7bb239ac643d561859f0fc249b}{voc\_\-setFloatAttr} (QRecord rec, char $\ast$attrname, double dval)
+\begin{CompactList}\small\item\em Set a floating-point attribute value in a record. \item\end{CompactList}\item 
+void \hyperlink{vocDAL_8c_a780b1542ffe92f83c141b132279080a}{voc\_\-setStringAttr} (QRecord rec, char $\ast$attrname, char $\ast$str)
+\begin{CompactList}\small\item\em Set a string attribute value in a record. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_a57e1d9230b9aa73a17d30de5da2537d}{voc\_\-getIntAttr} (QRecord rec, char $\ast$attrname)
+\begin{CompactList}\small\item\em Get an integer attribute value from a record. \item\end{CompactList}\item 
+double \hyperlink{vocDAL_8c_492e176f6fd6ddc7601ca867864396c9}{voc\_\-getFloatAttr} (QRecord rec, char $\ast$attrname)
+\begin{CompactList}\small\item\em Get a floating-point attribute value from a record. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_2581dc57cd2f6ae0006b73c495fcc55a}{voc\_\-getStringAttr} (QRecord rec, char $\ast$attrname)
+\begin{CompactList}\small\item\em Get a string attribute value from a record. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_821243e15ab03f81ed3d70b27a6d9279}{voc\_\-intValue} (QRAttribute v)
+\begin{CompactList}\small\item\em Get an integer value from an attribute. \item\end{CompactList}\item 
+double \hyperlink{vocDAL_8c_bd915f02cdd534670088f5a8878d96aa}{voc\_\-floatValue} (QRAttribute v)
+\begin{CompactList}\small\item\em Get a floating-point value from an attribute. \item\end{CompactList}\item 
+char $\ast$ \hyperlink{vocDAL_8c_d0b2ba8ec247ab1361ecf9dd85d182a4}{voc\_\-stringValue} (QRAttribute v)
+\begin{CompactList}\small\item\em Get a string value from an attribute. \item\end{CompactList}\item 
+int \hyperlink{vocDAL_8c_84123e3ee5871048eb63cca19a4c4939}{voc\_\-getDataset} (QRecord rec, char $\ast$acref, char $\ast$fname)
+\begin{CompactList}\small\item\em Download the AccessReference dataset. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\hypertarget{vocDAL_8c_e8b9013ac3d6a8f93991444d8c8c5919}{
+VOClient $\ast$ \textbf{vo}}
+\label{vocDAL_8c_e8b9013ac3d6a8f93991444d8c8c5919}
+
+\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+VOCLient Library -- Client interface library to the DAL Server application. This API allows non-Java programs to make use of the DAL client interface by means of a remote procedure call between this interface and the DAL server. State is maintained in the server and values passed back are language-neutral integer 'handles' on the remote objects, or simple int/double/string values.
+
+All tasks must initialize the VO Client and establish a connection to the DAL server by calling voc\_\-initVOClient() before making any service connections, thereafter new connections may be opened/closed at will. Convenience procedures allow for easy use of specific services, e.g. Cone or Siap. Service-specific parameters may be added to a query using the voc\_\-add$<$type$>$Param() calls. No action is taken until an execute of the query is performed, applications may get back a handle on the result and interrogate attributes directly, the raw VOTable or a CSV/TSV/ASCII representation of the result may also be returned.
+
+High-Level Functions: ---------------------
+
+voc\_\-initVOClient (config\_\-opts) voc\_\-closeVOClient (shutdown\_\-flag) voc\_\-abortVOClient (errcode, errmsg)
+
+string = voc\_\-coneCaller (url, ra, dec, sr, otype) status = voc\_\-coneCallerToFile (url, ra, dec, sr, otype, file) string = voc\_\-siapCaller (url, ra, dec, rsize, dsize, fmt, otype) status = voc\_\-siapCallerToFile (url, ra, dec, rsize, dsize, fmt, otype, file) string = voc\_\-ssapCaller (url, ra, dec, size, band, time, fmt) status = voc\_\-ssapCallerToFile (url, ra, dec, size, band, time, fmt, file)
+
+string = voc\_\-getRawURL (url, buflen)
+
+Main DAL Interface Procedures: ------------------------------
+
+dal = voc\_\-openConnection (svc\_\-url, type, \mbox{[}version\mbox{]}) dal = voc\_\-openConeConnection (svc\_\-url, \mbox{[}version\mbox{]}) \# Utility aliases dal = voc\_\-openSiapConnection (svc\_\-url, \mbox{[}version\mbox{]}) dal = voc\_\-openSsapConnection (svc\_\-url, \mbox{[}version\mbox{]}) voc\_\-closeConnection (dal)
+
+count = voc\_\-getServiceCount (dal) voc\_\-addServiceURL (dal, svc\_\-url) url = voc\_\-getServiceURL (dal, index)
+
+query = voc\_\-getQuery (dal, type) query = voc\_\-getConeQuery (dal, ra, dec, sr) query = voc\_\-getSiapQuery (dal, ra, dec, ra\_\-size, dec\_\-size, format) query = voc\_\-getSsapQuery (dal, ra, dec, size, band, time, format)
+
+stat = voc\_\-addIntParam (query, pname, ival) stat = voc\_\-addFloatParam (query, pname, dval) stat = voc\_\-addStringParam (query, pname, str)
+
+url\_\-str = voc\_\-getQueryString (query, type, index)
+
+qr = voc\_\-executeQuery (query) qr = voc\_\-getQueryResponse (query) stat = voc\_\-executeQueryAs (query, fname, type) (Not Yet Implemented) csv\_\-tab = voc\_\-executeCSV (query) tsv\_\-tab = voc\_\-executeTSV (query) ascii = voc\_\-executeASCII (query) vot\_\-str = voc\_\-executeVOTable (query)
+
+count = voc\_\-getRecordCount (qr) rec = voc\_\-getRecord (qr, recnum) str = voc\_\-getFieldAttr (qr, fieldnum, attr)
+
+attr = voc\_\-getAttribute (rec, char $\ast$attrname) count = voc\_\-getAttrCount (rec) list\_\-str = voc\_\-getAttrList (rec)
+
+ival = voc\_\-intValue (attr) dval = voc\_\-floatValue (attr) str = voc\_\-stringValue (attr)
+
+voc\_\-setIntAttr (rec, attrname, ival) (Not Yet Implemented) voc\_\-setFloatAttr (rec, attrname, dval) ( \char`\"{}   \char`\"{} \char`\"{} ) voc\_\-setStringAttr (rec, attrname, str) ( \char`\"{}   \char`\"{} \char`\"{} )
+
+stat = voc\_\-getDataset (rec, acref, fname)
+
+Sesame Name Resolver Interface: -------------------------------
+
+sr = voc\_\-nameResolver (target) pos\_\-str = voc\_\-resolverPos (sr) radeg = voc\_\-resolverRA (sr) decdeg = voc\_\-resolverDEC (sr)
+
+Client programs may be written in any language that can interface to C code. Sample programs using the interface are provided as is a SWIG interface definition file.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick, NOAO \end{Desc}
+\begin{Desc}
+\item[Version:]December 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{vocDAL_8c_af4d64d906fcdd8dadbbee2bd4fe0ef2}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-addFloatParam@{voc\_\-addFloatParam}}
+\index{voc\_\-addFloatParam@{voc\_\-addFloatParam}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-addFloatParam}]{\setlength{\rightskip}{0pt plus 5cm}stat voc\_\-addFloatParam (Query {\em query}, \/  char $\ast$ {\em name}, \/  double {\em dval})}}
+\label{vocDAL_8c_af4d64d906fcdd8dadbbee2bd4fe0ef2}
+
+
+Add a floating-point parameter to a Query string. 
+
+VOC\_\-ADDFLOATPARAM -- Add a floating-point parameter to a Query string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Query object handle \item[{\em name}]parameter name \item[{\em dval}]double-precision value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]status (OK or ERR) \end{Desc}
+\hypertarget{vocDAL_8c_50820d89c33879a4aaccccad55ff7310}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-addIntParam@{voc\_\-addIntParam}}
+\index{voc\_\-addIntParam@{voc\_\-addIntParam}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-addIntParam}]{\setlength{\rightskip}{0pt plus 5cm}stat voc\_\-addIntParam (Query {\em query}, \/  char $\ast$ {\em name}, \/  int {\em ival})}}
+\label{vocDAL_8c_50820d89c33879a4aaccccad55ff7310}
+
+
+Add an integer parameter to a Query string. 
+
+VOC\_\-ADDINTPARAM -- Add an integer parameter to a Query string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Query object handle \item[{\em name}]parameter name \item[{\em ival}]integer value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]status (OK or ERR) \end{Desc}
+\hypertarget{vocDAL_8c_81277c76dd05215ee516d617290eb42d}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-addServiceURL@{voc\_\-addServiceURL}}
+\index{voc\_\-addServiceURL@{voc\_\-addServiceURL}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-addServiceURL}]{\setlength{\rightskip}{0pt plus 5cm}voc\_\-addServiceURL (DAL {\em dal}, \/  char $\ast$ {\em service\_\-url})}}
+\label{vocDAL_8c_81277c76dd05215ee516d617290eb42d}
+
+
+Add a service URL to the specified connection. 
+
+VOC\_\-ADDSERVICEURL -- Add a service URL to the specified connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dal}]DAL connection object handle \item[{\em svc\_\-url}]base service url \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{vocDAL_8c_e95380fc5a55f068af9167c146ac84d0}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-addStringParam@{voc\_\-addStringParam}}
+\index{voc\_\-addStringParam@{voc\_\-addStringParam}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-addStringParam}]{\setlength{\rightskip}{0pt plus 5cm}stat voc\_\-addStringParam (Query {\em query}, \/  char $\ast$ {\em name}, \/  char $\ast$ {\em str})}}
+\label{vocDAL_8c_e95380fc5a55f068af9167c146ac84d0}
+
+
+Add a String parameter to a Query string. 
+
+VOC\_\-ADDSTRINGPARAM -- Add a String parameter to a Query string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Query object handle \item[{\em name}]parameter name \item[{\em str}]string parameter \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]status (OK or ERR) \end{Desc}
+\hypertarget{vocDAL_8c_b474ddec24f6e9c6334bfe5911d6a3be}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-closeConnection@{voc\_\-closeConnection}}
+\index{voc\_\-closeConnection@{voc\_\-closeConnection}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-closeConnection}]{\setlength{\rightskip}{0pt plus 5cm}voc\_\-closeConnection (DAL {\em dal})}}
+\label{vocDAL_8c_b474ddec24f6e9c6334bfe5911d6a3be}
+
+
+Close the requested connection. 
+
+VOC\_\-CLOSECONNETION -- Close the requested connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dal}]DAL connection object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{vocDAL_8c_8cbe6ba9f6666870d6f7c4f4729ac5d0}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-coneCaller@{voc\_\-coneCaller}}
+\index{voc\_\-coneCaller@{voc\_\-coneCaller}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-coneCaller}]{\setlength{\rightskip}{0pt plus 5cm}res voc\_\-coneCaller (char $\ast$ {\em url}, \/  double {\em ra}, \/  double {\em dec}, \/  double {\em sr}, \/  int {\em otype})}}
+\label{vocDAL_8c_8cbe6ba9f6666870d6f7c4f4729ac5d0}
+
+
+Hi-level Cone Service Caller method. 
+
+VOC\_\-CONECALLER -- Hi-level Cone Service Caller method.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em url}]Base service URL \item[{\em ra}]RA position (ICRS degrees) \item[{\em dec}]Dec position (ICRS degrees) \item[{\em sr}]Search radius (degrees) \item[{\em otype}]Output result type (VOTable, CSV, etc) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg\end{Desc}
+Simple all-in-one interface to call a Cone service and return the results as a text string of either the raw VOTable or a CSV/TSV/Ascii table.
+
+Result string is allocated here and must be freed by the caller. \hypertarget{vocDAL_8c_14453c34412e8882ec031d30117f9046}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-coneCallerToFile@{voc\_\-coneCallerToFile}}
+\index{voc\_\-coneCallerToFile@{voc\_\-coneCallerToFile}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-coneCallerToFile}]{\setlength{\rightskip}{0pt plus 5cm}res voc\_\-coneCallerToFile (char $\ast$ {\em url}, \/  double {\em ra}, \/  double {\em dec}, \/  double {\em sr}, \/  int {\em otype}, \/  char $\ast$ {\em file})}}
+\label{vocDAL_8c_14453c34412e8882ec031d30117f9046}
+
+
+Hi-level Cone Service Caller method. 
+
+VOC\_\-CONECALLERTOFILE -- Hi-level Cone Service Caller method.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em url}]Base service URL \item[{\em ra}]RA position (ICRS degrees) \item[{\em dec}]Dec position (ICRS degrees) \item[{\em sr}]Search radius (degrees) \item[{\em otype}]Output result type (VOTable, CSV, etc) \item[{\em file}]Output file name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg\end{Desc}
+Simple all-in-one interface to call a Cone service and return the results as a text string of either the raw VOTable or a CSV/TSV/Ascii table.
+
+Result string is allocated here and must be freed by the caller. \hypertarget{vocDAL_8c_e52257da68af57a663836a3939a8b8a2}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-executeASCII@{voc\_\-executeASCII}}
+\index{voc\_\-executeASCII@{voc\_\-executeASCII}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-executeASCII}]{\setlength{\rightskip}{0pt plus 5cm}result voc\_\-executeASCII (Query {\em query})}}
+\label{vocDAL_8c_e52257da68af57a663836a3939a8b8a2}
+
+
+Execute the query and return an ASCII table. 
+
+VOC\_\-EXECUTEASCII -- Execute the query and return an ASCII table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]DAL query object \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The query result in ASCII format \end{Desc}
+\hypertarget{vocDAL_8c_5f0bf764598bb9d6611e17ecb69df868}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-executeCSV@{voc\_\-executeCSV}}
+\index{voc\_\-executeCSV@{voc\_\-executeCSV}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-executeCSV}]{\setlength{\rightskip}{0pt plus 5cm}result voc\_\-executeCSV (Query {\em query})}}
+\label{vocDAL_8c_5f0bf764598bb9d6611e17ecb69df868}
+
+
+Execute the query and return a CSV table. 
+
+VOC\_\-EXECUTECSV -- Execute the query and return a CSV table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]DAL query object \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The query result in CSV format \end{Desc}
+\hypertarget{vocDAL_8c_6c6464e4c5efc86816deca6ac6459f57}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-executeQuery@{voc\_\-executeQuery}}
+\index{voc\_\-executeQuery@{voc\_\-executeQuery}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-executeQuery}]{\setlength{\rightskip}{0pt plus 5cm}qr voc\_\-executeQuery (Query {\em query})}}
+\label{vocDAL_8c_6c6464e4c5efc86816deca6ac6459f57}
+
+
+Method description. 
+
+VOC\_\-EXECUTEQUERY -- Execute the specified query in the DAL server. the QResponse object handle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Query object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]QResponse object handle \end{Desc}
+\hypertarget{vocDAL_8c_cd1cf8737647543f511ac189374c8a6b}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-executeQueryAs@{voc\_\-executeQueryAs}}
+\index{voc\_\-executeQueryAs@{voc\_\-executeQueryAs}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-executeQueryAs}]{\setlength{\rightskip}{0pt plus 5cm}stat voc\_\-executeQueryAs (Query {\em query}, \/  char $\ast$ {\em fname}, \/  int {\em type})}}
+\label{vocDAL_8c_cd1cf8737647543f511ac189374c8a6b}
+
+
+Execute the query and save requested type to file. 
+
+VOC\_\-EXECUTEQUERYAS -- Execute the query and save requested type to file.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]DAL query object \item[{\em fname}]Saved-results file name \item[{\em type}]Output file type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]handle to Registry result object \end{Desc}
+\hypertarget{vocDAL_8c_5cf731c1030968b2ceefdc4e2024e324}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-executeTSV@{voc\_\-executeTSV}}
+\index{voc\_\-executeTSV@{voc\_\-executeTSV}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-executeTSV}]{\setlength{\rightskip}{0pt plus 5cm}result voc\_\-executeTSV (Query {\em query})}}
+\label{vocDAL_8c_5cf731c1030968b2ceefdc4e2024e324}
+
+
+Execute the query and return a TSV table. 
+
+VOC\_\-EXECUTETSV -- Execute the query and return a TSV table.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]DAL query object \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The query result in TSV format \end{Desc}
+\hypertarget{vocDAL_8c_c98da2638fc40afcf5d6ce1c3e1b19f7}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-executeVOTable@{voc\_\-executeVOTable}}
+\index{voc\_\-executeVOTable@{voc\_\-executeVOTable}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-executeVOTable}]{\setlength{\rightskip}{0pt plus 5cm}result voc\_\-executeVOTable (Query {\em query})}}
+\label{vocDAL_8c_c98da2638fc40afcf5d6ce1c3e1b19f7}
+
+
+Execute the query and return a VOTable. 
+
+VOC\_\-EXECUTEVOTABLE -- Execute the query and return a VOTable.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]DAL query object \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The query result in VOTable format \end{Desc}
+\hypertarget{vocDAL_8c_bd915f02cdd534670088f5a8878d96aa}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-floatValue@{voc\_\-floatValue}}
+\index{voc\_\-floatValue@{voc\_\-floatValue}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-floatValue}]{\setlength{\rightskip}{0pt plus 5cm}dval voc\_\-floatValue (QRAttribute {\em v})}}
+\label{vocDAL_8c_bd915f02cdd534670088f5a8878d96aa}
+
+
+Get a floating-point value from an attribute. 
+
+VOC\_\-FLOATVALUE -- Get a floating-point value from an attribute.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRAttribute object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]double-precision value \end{Desc}
+\hypertarget{vocDAL_8c_ad4fcbe416ba9b73ccbd4472effb9bcd}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getAttrCount@{voc\_\-getAttrCount}}
+\index{voc\_\-getAttrCount@{voc\_\-getAttrCount}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getAttrCount}]{\setlength{\rightskip}{0pt plus 5cm}count voc\_\-getAttrCount (QRecord {\em rec})}}
+\label{vocDAL_8c_ad4fcbe416ba9b73ccbd4472effb9bcd}
+
+
+Get the attribute record count. 
+
+VOC\_\-GETATTRCOUNT -- Get attribute record count.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]count of attributes \end{Desc}
+\hypertarget{vocDAL_8c_8a22d335db401ce97e9361169d9f257a}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getAttribute@{voc\_\-getAttribute}}
+\index{voc\_\-getAttribute@{voc\_\-getAttribute}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getAttribute}]{\setlength{\rightskip}{0pt plus 5cm}attr voc\_\-getAttribute (QRecord {\em rec}, \/  char $\ast$ {\em attrname})}}
+\label{vocDAL_8c_8a22d335db401ce97e9361169d9f257a}
+
+
+Get response record attribute object. 
+
+VOC\_\-GETATTRIBUTE -- Get a response record attribute object.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]QRAttribute object handle \end{Desc}
+\hypertarget{vocDAL_8c_28b7360a3b09c31bb384b1209e1b7be7}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getAttrList@{voc\_\-getAttrList}}
+\index{voc\_\-getAttrList@{voc\_\-getAttrList}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getAttrList}]{\setlength{\rightskip}{0pt plus 5cm}str voc\_\-getAttrList (QRecord {\em rec})}}
+\label{vocDAL_8c_28b7360a3b09c31bb384b1209e1b7be7}
+
+
+Get the response record by number. 
+
+VOC\_\-GETATTRLISST -- Get a list of attributes for the record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em qr}]QResponse object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]QRecord object handle \end{Desc}
+\hypertarget{vocDAL_8c_edd820b08aa2b157152be9b87b3e05ad}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getConeQuery@{voc\_\-getConeQuery}}
+\index{voc\_\-getConeQuery@{voc\_\-getConeQuery}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getConeQuery}]{\setlength{\rightskip}{0pt plus 5cm}query voc\_\-getConeQuery (DAL {\em dal}, \/  double {\em ra}, \/  double {\em dec}, \/  double {\em sr})}}
+\label{vocDAL_8c_edd820b08aa2b157152be9b87b3e05ad}
+
+
+Get a query for a Cone service. 
+
+VOC\_\-GETCONEQUERY -- Get a query for a Cone service.
+
+We take the typical Cone arguments in the interface routine but break it down into a series of messages to get a general Query object and then add parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dal}]DAL connection object handle \item[{\em ra}]RA of position (ICRS degrees) \item[{\em dec}]Dec of position (ICRS degrees) \item[{\em sr}]Search radius (degrees) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{vocDAL_8c_84123e3ee5871048eb63cca19a4c4939}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getDataset@{voc\_\-getDataset}}
+\index{voc\_\-getDataset@{voc\_\-getDataset}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getDataset}]{\setlength{\rightskip}{0pt plus 5cm}stat voc\_\-getDataset (QRecord {\em rec}, \/  char $\ast$ {\em acref}, \/  char $\ast$ {\em fname})}}
+\label{vocDAL_8c_84123e3ee5871048eb63cca19a4c4939}
+
+
+Download the AccessReference dataset. 
+
+VOC\_\-GETDATASET -- Download the AccessReference dataset object to the named file. If fname is NULL, a temp file will be created and the fname pointer allocated with a string containing the name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em acref}]access reference URL \item[{\em fname}]saved output filename \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{vocDAL_8c_685fb7ab0f87528f466b0847893ab61c}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getErrMsg@{voc\_\-getErrMsg}}
+\index{voc\_\-getErrMsg@{voc\_\-getErrMsg}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getErrMsg}]{\setlength{\rightskip}{0pt plus 5cm}msg voc\_\-getErrMsg (void)}}
+\label{vocDAL_8c_685fb7ab0f87528f466b0847893ab61c}
+
+
+Get the last error message. 
+
+VOC\_\-GETERRMSG -- Get the last error message.
+
+\begin{Desc}
+\item[Returns:]The last error message. \end{Desc}
+\hypertarget{vocDAL_8c_af440fcc260231543cc88abc027fca03}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getFieldAttr@{voc\_\-getFieldAttr}}
+\index{voc\_\-getFieldAttr@{voc\_\-getFieldAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getFieldAttr}]{\setlength{\rightskip}{0pt plus 5cm}attr voc\_\-getFieldAttr (QResponse {\em qr}, \/  int {\em index}, \/  char $\ast$ {\em attr})}}
+\label{vocDAL_8c_af440fcc260231543cc88abc027fca03}
+
+
+Get the field attribute string. 
+
+VOC\_\-GETFIELDATTR -- Get the field attribute string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em qr}]QResponse object handle \item[{\em index}]response index record number \item[{\em attr}]attribute to retrieve \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]value of attribute \end{Desc}
+\hypertarget{vocDAL_8c_492e176f6fd6ddc7601ca867864396c9}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getFloatAttr@{voc\_\-getFloatAttr}}
+\index{voc\_\-getFloatAttr@{voc\_\-getFloatAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getFloatAttr}]{\setlength{\rightskip}{0pt plus 5cm}dval voc\_\-getFloatAttr (QRecord {\em rec}, \/  char $\ast$ {\em attrname})}}
+\label{vocDAL_8c_492e176f6fd6ddc7601ca867864396c9}
+
+
+Get a floating-point attribute value from a record. 
+
+VOC\_\-GETFLOATATTR -- Get a floating-point attribute value from a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]double-precision value \end{Desc}
+\hypertarget{vocDAL_8c_a57e1d9230b9aa73a17d30de5da2537d}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getIntAttr@{voc\_\-getIntAttr}}
+\index{voc\_\-getIntAttr@{voc\_\-getIntAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getIntAttr}]{\setlength{\rightskip}{0pt plus 5cm}ival voc\_\-getIntAttr (QRecord {\em rec}, \/  char $\ast$ {\em attrname})}}
+\label{vocDAL_8c_a57e1d9230b9aa73a17d30de5da2537d}
+
+
+Get an integer attribute value from a record. 
+
+VOC\_\-GETINTATTR -- Get an integer attribute value from a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]integer value \end{Desc}
+\hypertarget{vocDAL_8c_33e3aab149cedeb273a74a7335a90f04}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getQueryResponse@{voc\_\-getQueryResponse}}
+\index{voc\_\-getQueryResponse@{voc\_\-getQueryResponse}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getQueryResponse}]{\setlength{\rightskip}{0pt plus 5cm}qr voc\_\-getQueryResponse (Query {\em query})}}
+\label{vocDAL_8c_33e3aab149cedeb273a74a7335a90f04}
+
+
+Utility to get QResponse handle from Query. 
+
+VOC\_\-GETQUERYRESPONSE -- Utility to get QResponse handle from Query.
+
+We use this when the query itself was executed by a routine that doesn't directly return it (e.g. \hyperlink{vocDAL_8c_5f0bf764598bb9d6611e17ecb69df868}{voc\_\-executeCSV()}).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Query object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]QResponse object handle \end{Desc}
+\hypertarget{vocDAL_8c_805da294b9f1f25e491f8c145f87da08}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getQueryString@{voc\_\-getQueryString}}
+\index{voc\_\-getQueryString@{voc\_\-getQueryString}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getQueryString}]{\setlength{\rightskip}{0pt plus 5cm}str voc\_\-getQueryString (Query {\em query}, \/  int {\em type}, \/  int {\em index})}}
+\label{vocDAL_8c_805da294b9f1f25e491f8c145f87da08}
+
+
+Get the complete query string that will be executed. 
+
+VOC\_\-GETQUERYSTRING -- Get the complete query string that will be executed.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em query}]Query object handle \item[{\em type}]query type (not used) \item[{\em index}]service index (not used) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]query URL to be executed \end{Desc}
+\hypertarget{vocDAL_8c_38f235c4b1f26a3fde83b4e4a16b05e5}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getRawURL@{voc\_\-getRawURL}}
+\index{voc\_\-getRawURL@{voc\_\-getRawURL}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getRawURL}]{\setlength{\rightskip}{0pt plus 5cm}raw voc\_\-getRawURL (char $\ast$ {\em url}, \/  int $\ast$ {\em nbytes})}}
+\label{vocDAL_8c_38f235c4b1f26a3fde83b4e4a16b05e5}
+
+
+Get a raw URL to a returned string. 
+
+VOC\_\-GETRAWURL -- Get a raw URL to a returned string.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em url}]URL to retrieve \item[{\em nbytes}]number of bytes read \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Result string from URL\end{Desc}
+Note this is only for text files because of the assumed use of EOF that may actually be a NULL byte in a binary data stream. \hypertarget{vocDAL_8c_c8fb3803b26fb6205424464d9f4b7dba}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getRecord@{voc\_\-getRecord}}
+\index{voc\_\-getRecord@{voc\_\-getRecord}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getRecord}]{\setlength{\rightskip}{0pt plus 5cm}rec voc\_\-getRecord (QResponse {\em qr}, \/  int {\em recnum})}}
+\label{vocDAL_8c_c8fb3803b26fb6205424464d9f4b7dba}
+
+
+Get the response record by number. 
+
+VOC\_\-GETRECORD -- Get the response record by number.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em qr}]QResponse object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]QRecord object handle \end{Desc}
+\hypertarget{vocDAL_8c_c27ba360052f7a4037559faf321beaf3}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getRecordCount@{voc\_\-getRecordCount}}
+\index{voc\_\-getRecordCount@{voc\_\-getRecordCount}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getRecordCount}]{\setlength{\rightskip}{0pt plus 5cm}count voc\_\-getRecordCount (QResponse {\em qr})}}
+\label{vocDAL_8c_c27ba360052f7a4037559faf321beaf3}
+
+
+Get a count of the records returned by the QResponse. 
+
+VOC\_\-GETRECORDCOUNT -- Get a count of the records returned by the QResponse.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em qr}]QResponse object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]count of records in the response \end{Desc}
+\hypertarget{vocDAL_8c_8ef4b1beaa4fe911df45556c13bcc199}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getServiceCount@{voc\_\-getServiceCount}}
+\index{voc\_\-getServiceCount@{voc\_\-getServiceCount}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getServiceCount}]{\setlength{\rightskip}{0pt plus 5cm}count voc\_\-getServiceCount (DAL {\em dal})}}
+\label{vocDAL_8c_8ef4b1beaa4fe911df45556c13bcc199}
+
+
+Get service count associated with the DAL context. 
+
+VOC\_\-GETSERVICECOUNT -- Get a count of the number of services associated with the given DAL connection context.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dal}]DAL connection object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of services associated with the DAL handle \end{Desc}
+\hypertarget{vocDAL_8c_2a26f06896c74557df89dc77cce7fde2}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getServiceURL@{voc\_\-getServiceURL}}
+\index{voc\_\-getServiceURL@{voc\_\-getServiceURL}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getServiceURL}]{\setlength{\rightskip}{0pt plus 5cm}str voc\_\-getServiceURL (DAL {\em dal}, \/  int {\em index})}}
+\label{vocDAL_8c_2a26f06896c74557df89dc77cce7fde2}
+
+
+Get the requested service URL for the connection. 
+
+VOC\_\-GETSERVICEURL -- Get the requested service URL for the connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dal}]DAL connection object handle \item[{\em index}]service index (0-based) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]requested service URL \end{Desc}
+\hypertarget{vocDAL_8c_bc12045bde6dee0876e3e6cf0b8df4a9}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getSsapQuery@{voc\_\-getSsapQuery}}
+\index{voc\_\-getSsapQuery@{voc\_\-getSsapQuery}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getSsapQuery}]{\setlength{\rightskip}{0pt plus 5cm}query voc\_\-getSsapQuery (DAL {\em dal}, \/  double {\em ra}, \/  double {\em dec}, \/  double {\em size}, \/  char $\ast$ {\em band}, \/  char $\ast$ {\em tim}, \/  char $\ast$ {\em format})}}
+\label{vocDAL_8c_bc12045bde6dee0876e3e6cf0b8df4a9}
+
+
+Get a query for a SSAP service. 
+
+VOC\_\-GETSSAPQUERY -- Get a query for a SSAP service.
+
+We take the typical SSA arguments in the interface routine but break it down into a series of messages to get a general Query object and then add parameters.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em dal}]DAL connection object handle \item[{\em ra}]RA of position (ICRS degrees) \item[{\em dec}]Dec of position (ICRS degrees) \item[{\em size}]Search size (degrees) \item[{\em band}]BAND search string \item[{\em tim}]TIME search string \item[{\em format}]Requested format \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{vocDAL_8c_2581dc57cd2f6ae0006b73c495fcc55a}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-getStringAttr@{voc\_\-getStringAttr}}
+\index{voc\_\-getStringAttr@{voc\_\-getStringAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-getStringAttr}]{\setlength{\rightskip}{0pt plus 5cm}str voc\_\-getStringAttr (QRecord {\em rec}, \/  char $\ast$ {\em attrname})}}
+\label{vocDAL_8c_2581dc57cd2f6ae0006b73c495fcc55a}
+
+
+Get a string attribute value from a record. 
+
+VOC\_\-GETSTRINGATTR -- Get a string attribute value from a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string value \end{Desc}
+\hypertarget{vocDAL_8c_821243e15ab03f81ed3d70b27a6d9279}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-intValue@{voc\_\-intValue}}
+\index{voc\_\-intValue@{voc\_\-intValue}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-intValue}]{\setlength{\rightskip}{0pt plus 5cm}ival voc\_\-intValue (QRAttribute {\em v})}}
+\label{vocDAL_8c_821243e15ab03f81ed3d70b27a6d9279}
+
+
+Get an integer value from an attribute. 
+
+VOC\_\-INTVALUE -- Get an integer value from an attribute.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em v}]QRAttribute object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]integer value \end{Desc}
+\hypertarget{vocDAL_8c_d86dc3a16bfc91c73644d14c090254b6}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-openConeConnection@{voc\_\-openConeConnection}}
+\index{voc\_\-openConeConnection@{voc\_\-openConeConnection}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-openConeConnection}]{\setlength{\rightskip}{0pt plus 5cm}dal voc\_\-openConeConnection (char $\ast$ {\em svc\_\-url}, \/   {\em ...})}}
+\label{vocDAL_8c_d86dc3a16bfc91c73644d14c090254b6}
+
+
+Open a new DAL Cone connection. 
+
+VOC\_\-OPENCONECONNECTION -- Open a new DAL Cone connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em svc\_\-url}]base service URL \item[{\em type}]DAL connection type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to new DAL connection object \end{Desc}
+\hypertarget{vocDAL_8c_f726405718e7ad8259c4bc6a86cd69d8}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-openConnection@{voc\_\-openConnection}}
+\index{voc\_\-openConnection@{voc\_\-openConnection}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-openConnection}]{\setlength{\rightskip}{0pt plus 5cm}dal voc\_\-openConnection (char $\ast$ {\em svc\_\-url}, \/  int {\em type}, \/   {\em ...})}}
+\label{vocDAL_8c_f726405718e7ad8259c4bc6a86cd69d8}
+
+
+Open a new DAL context connection. 
+
+VOC\_\-OPENCONNECTION -- Open a new DAL context connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em svc\_\-url}]base service URL \item[{\em type}]DAL connection type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to new DAL connection object \end{Desc}
+\hypertarget{vocDAL_8c_cf25e6b23744c4391bbc09c81e59e537}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-openSiapConnection@{voc\_\-openSiapConnection}}
+\index{voc\_\-openSiapConnection@{voc\_\-openSiapConnection}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-openSiapConnection}]{\setlength{\rightskip}{0pt plus 5cm}dal voc\_\-openSiapConnection (char $\ast$ {\em svc\_\-url}, \/   {\em ...})}}
+\label{vocDAL_8c_cf25e6b23744c4391bbc09c81e59e537}
+
+
+Open a new DAL SIAP connection. 
+
+VOC\_\-OPENSIAPCONNECTION -- Open a new DAL SIAP connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em svc\_\-url}]base service URL \item[{\em type}]DAL connection type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to new DAL connection object \end{Desc}
+\hypertarget{vocDAL_8c_764879d5e4715306d3987863eb330c65}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-openSsapConnection@{voc\_\-openSsapConnection}}
+\index{voc\_\-openSsapConnection@{voc\_\-openSsapConnection}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-openSsapConnection}]{\setlength{\rightskip}{0pt plus 5cm}dal voc\_\-openSsapConnection (char $\ast$ {\em svc\_\-url}, \/   {\em ...})}}
+\label{vocDAL_8c_764879d5e4715306d3987863eb330c65}
+
+
+Open a new DAL SSAP connection. 
+
+VOC\_\-OPENSSAPCONNECTION -- Open a new DAL SSAP connection.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em svc\_\-url}]base service URL \item[{\em type}]DAL connection type \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Handle to new DAL connection object \end{Desc}
+\hypertarget{vocDAL_8c_2a258a7bb239ac643d561859f0fc249b}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-setFloatAttr@{voc\_\-setFloatAttr}}
+\index{voc\_\-setFloatAttr@{voc\_\-setFloatAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-setFloatAttr}]{\setlength{\rightskip}{0pt plus 5cm}voc\_\-setFloatAttr (QRecord {\em rec}, \/  char $\ast$ {\em attrname}, \/  double {\em dval})}}
+\label{vocDAL_8c_2a258a7bb239ac643d561859f0fc249b}
+
+
+Set a floating-point attribute value in a record. 
+
+VOC\_\-SETFLOATATTR -- Set a floating-point attribute value in a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \item[{\em dval}]double-precision value to set \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{vocDAL_8c_d4c113c772614837d985abf896e81455}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-setIntAttr@{voc\_\-setIntAttr}}
+\index{voc\_\-setIntAttr@{voc\_\-setIntAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-setIntAttr}]{\setlength{\rightskip}{0pt plus 5cm}voc\_\-setIntAttr (QRecord {\em rec}, \/  char $\ast$ {\em attrname}, \/  int {\em ival})}}
+\label{vocDAL_8c_d4c113c772614837d985abf896e81455}
+
+
+Set an integer attribute value in a record. 
+
+VOC\_\-SETINTATTR -- Set an integer attribute value in a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \item[{\em ival}]integer value to set \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{vocDAL_8c_a780b1542ffe92f83c141b132279080a}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-setStringAttr@{voc\_\-setStringAttr}}
+\index{voc\_\-setStringAttr@{voc\_\-setStringAttr}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-setStringAttr}]{\setlength{\rightskip}{0pt plus 5cm}voc\_\-setStringAttr (QRecord {\em rec}, \/  char $\ast$ {\em attrname}, \/  char $\ast$ {\em str})}}
+\label{vocDAL_8c_a780b1542ffe92f83c141b132279080a}
+
+
+Set a string attribute value in a record. 
+
+VOC\_\-SETSTRINGATTR -- Set a string attribute value in a record.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rec}]QRecord object handle \item[{\em attrname}]attribute name \item[{\em str}]string value to set \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{vocDAL_8c_d0b2ba8ec247ab1361ecf9dd85d182a4}{
+\index{vocDAL.c@{vocDAL.c}!voc\_\-stringValue@{voc\_\-stringValue}}
+\index{voc\_\-stringValue@{voc\_\-stringValue}!vocDAL.c@{vocDAL.c}}
+\subsubsection[{voc\_\-stringValue}]{\setlength{\rightskip}{0pt plus 5cm}str voc\_\-stringValue (QRAttribute {\em v})}}
+\label{vocDAL_8c_d0b2ba8ec247ab1361ecf9dd85d182a4}
+
+
+Get a string value from an attribute. 
+
+VOC\_\-STRINGVALUE -- Get a string value from an attribute.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em v}]QRAttribute object handle \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string value \end{Desc}

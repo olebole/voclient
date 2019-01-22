@@ -1,0 +1,49 @@
+.\" @(#)voobslog.1 1.0 Feb-2013 MJF
+.TH VOOBSLOG 1 "Feb 2013" "VOClient Package"
+.SH NAME
+voobslog \- short description
+.SH SYNOPSIS
+\fBvoobslog\fP [\-\fopts\fP] file
+
+.SH OPTIONS
+The \fIvoobslog\fP application accepts the following options:
+.TP 6
+.B \-h, --help
+Print a help summary to the terminal and exit.  No processing is done 
+following this flag.
+
+.SH DESCRIPTION
+The \fIvoobslog\fP application ......
+.PP
+More descriptions .....
+
+.SH SUB-DESCRIPTION
+More useful stuff .......
+
+
+.SH RETURN STATUS
+On exit the voobslog will return the following status codes:
+.nf
+     0 Success
+     1 Error code
+.fi
+
+
+.SH EXAMPLES
+.TP 6
+1) Queue a file for transport:
+.nf
+	% voobslog .....
+.fi
+
+
+.SH BUGS
+The VOOBSLOG .....
+
+
+.SH Revision History
+Feb 2013 - First public release
+.SH Author
+Michael Fitzpatrick (fitz@noao.edu), Feb 2013
+.SH "SEE ALSO"
+

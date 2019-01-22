@@ -1,0 +1,75 @@
+
+Module Globals and Functions
+
+
+    VOPackagePath	= None
+
+           setPkgDirs  (dirs)			// set absolute path
+        appendPkgDirs  (dir)			// append dir to path
+    dirs = getPkgDirs  (dirs)			// get search path 
+       list = pkgList  ([pattern])		// get available package list
+
+    pkg = loadPackage  (name,file=None) // load the package tasks
+
+     tuple = taskList  (pkg, [pattern])	// list the tasks in a package
+      dict = pkgAttrs  (pkg)		    // get the attributes of a package
+     dict = taskAttrs  (pkg, task)
+
+
+VOPackage
+		name    = None              // package name
+		descr   = None              // description string
+		author  = None              // package author
+		contact = None              // contact email address
+		iconUrl = None              // URL to package icon
+		version = None              // package version string
+		dir     = None              // the directory containing the pkg binary
+		binfile = None              // the name of the package binary
+
+     attrs = pkgAttrs  ()			// get package attrs as a dict
+      list = taskList  ([pattern])	// get list of tasks in package 
+
+
+VOTask
+           name = None				// context name
+            pkg = None				// package name
+         status = None				// task execution status
+            msg = None				// execution error message
+
+    attrs = taskAttrs  ()			// get dict of task attrs 
+       pset = getPset  ()		    // get the task PSet
+              setPset  (pset)		// set the task PSet
+
+          setCallback  (pattern, func)  // set result parameter callback
+ result = executeSync  ()		    // execute synch, return result pset
+result = executeAsync  ()		    // execute asynch, return result pset
+   status, msg = wait  ()		    // wait for async execution to finish
+
+
+VOPset
+           name = None				// pset name
+            pkg = None				// package name
+           task = None				// task name  ??
+    description = None				// pset description name
+
+             loadPset  (pkg=None, task=None, saveFile=None)
+             savePset  (saveFile)	// save PSet to a file
+     params = getPset  (pattern)    // create pset from params matching pattern
+
+    tuple = paramList  (pattern)    // get list of param names matching pattern
+     param = addParam  (name, type, description, attrs=None)
+     param = delParam  (name)		// delete the named parameter from the pset
+     param = getParam  (name)	    // get parameters with the given name
+
+
+VOParam
+		name	 = None			// parameter name
+		type	 = None			// parameter type (string/int/real/bool/blob)
+		encoding = None			// encoding of param (i.e. mime type)
+		desc	 = None			// parameter description string
+    
+		paramAttrs  ()			// return dict of param attributes
+		  getValue  ()			// Get the value of the parameter (may be list)
+		  setValue  (val)		// Set the value of a parameter
+
+

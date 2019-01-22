@@ -1,0 +1,5 @@
+#!/bin/csh -f
+
+scp -p $1 tucana:voc/doc/
+scp -p $1 tucana:vao/voc.svn/doc/
+scp -p $1 tucana:vao/voc.svn/../rel/1.0/doc/

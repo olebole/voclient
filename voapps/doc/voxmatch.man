@@ -1,0 +1,49 @@
+.\" @(#)voxmatch.1 1.0 July-2012 MJF
+.TH VOXMATCH 1 "July 2012" "VOClient Package"
+.SH NAME
+voxmatch \- short description
+.SH SYNOPSIS
+\fBvoxmatch\fP [\-\fopts\fP] file
+
+.SH OPTIONS
+The \fIvoxmatch\fP application accepts the following options:
+.TP 8
+.B \-h, --help
+Print a help summary to the terminal and exit.  No processing is done 
+following this flag.
+
+.SH DESCRIPTION
+The \fIvoxmatch\fP application ......
+.PP
+More descriptions .....
+
+.SH SUB-DESCRIPTION
+More useful stuff .......
+
+
+.SH RETURN STATUS
+On exit the voxmatch will return the following status codes:
+.nf
+     0 Success
+     1 Error code
+.fi
+
+
+.SH EXAMPLES
+.TP 4
+1) Queue a file for transport:
+.nf
+	% voxmatch .....
+.fi
+
+
+.SH BUGS
+The VOXMATCH .....
+
+
+.SH Revision History
+July 2012 - First public release
+.SH Author
+Michael Fitzpatrick (fitz@noao.edu), July 2012
+.SH "SEE ALSO"
+

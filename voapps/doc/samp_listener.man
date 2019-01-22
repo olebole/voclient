@@ -1,0 +1,49 @@
+.\" @(#)samp_listener.1 1.0 July-2012 MJF
+.TH SAMP_LISTENER 1 "July 2012" "VOClient Package"
+.SH NAME
+samp_listener \- short description
+.SH SYNOPSIS
+\fBsamp_listener\fP [\-\fopts\fP] file
+
+.SH OPTIONS
+The \fIsamp_listener\fP application accepts the following options:
+.TP 8
+.B \-h, --help
+Print a help summary to the terminal and exit.  No processing is done 
+following this flag.
+
+.SH DESCRIPTION
+The \fIsamp_listener\fP application ......
+.PP
+More descriptions .....
+
+.SH SUB-DESCRIPTION
+More useful stuff .......
+
+
+.SH RETURN STATUS
+On exit the samp_listener will return the following status codes:
+.nf
+     0 Success
+     1 Error code
+.fi
+
+
+.SH EXAMPLES
+.TP 4
+1) Queue a file for transport:
+.nf
+	% samp_listener .....
+.fi
+
+
+.SH BUGS
+The SAMP_LISTENER .....
+
+
+.SH Revision History
+July 2012 - First public release
+.SH Author
+Michael Fitzpatrick (fitz@noao.edu), July 2012
+.SH "SEE ALSO"
+

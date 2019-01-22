@@ -1,0 +1,105 @@
+
+
+
+	All CLI tasks are written to accept both the standard unix cmdline
+'short-form' option (e.g. "-h"), or a more verbose 'long-form' as in
+"--help".  Furthermore, options may be specified as "param=value" strings
+on the commandline where 'param' is the long name of the option, providing
+a direct mapping from the cmdline option to the name of a PSet parameter.
+
+    Parameters are passed to the task using the 'param=value' model using
+the long option name and the appropriate value (e.g. a '1' for an enabled
+boolean option), the compiled task does the argument parsing in the same
+way it would as if received from the host command prompt.  All parameters
+in the task pset are encoded and passed to the task when executed, in many
+cases resulting the the compiled task code processing the default
+parameters but allowing the API full control over which options to reset.
+
+	When the API loadPackage() method is called, the package binary is
+started as a subprocess and the tasking layer methods are called to get
+the package metadata, get the task list, get the metadata and parameters
+for each task in the package.  This information is stored in the API
+instantiation of the VOPackage object.  The API creates dynamic bindings 
+for each of the tasks in the package.
+
+	In the python code, a task can be called using something like
+
+       vop = loadPackage ("vo-cli")
+       results = vop.voregistry (keyw="quasar", list=True)
+
+where 'vo-cli' is the name of the package containing the 'voregistry' task,
+'quasar' is the search term and 'list' is a boolean option.  This is 
+equivalent to calling the task from the commandline as
+
+		% voregistry list=1 quasar
+		% voregistry list=1 keyw=quasar
+
+In the first example the search term 'quasar' does not require a parameter
+name, however the compiled tasks will implement a parameter name for all 
+options so that the second example is equivalent.
+
+
+
+The following options are implemented in the VOREGISTRY unix task interface:
+
+    Usage:   voregistry [-<flags>] [ [<keyword>] | [<term>] ]
+  
+      -h,--help                print this help
+      -v,--verbose             verbose mode
+         --vverbose            very-verbose mode
+  
+      -c,--count               print a count of matching records
+      -e,--exact               print exactly matching records (resolve)
+      -l,--list                list full resource record
+      -m,--meta                list table metadata
+      -r,--resolve             resolution mode
+      -s,--search              search mode (default)
+  
+      -b,--bandpass <bandpass> constrain by bandpass
+      -C,--clevel <level>      constrain by content level
+      -t,--type <type>         constrain by service type
+  
+      -a,--all                 print all results (default)
+      -f,--fields <fields>     output only specified fields
+      -o,--or                  logically OR the search terms
+      -n,--index <index>       set index of result (-1 => list, 0 => all)
+  
+      -I,--Id                  print only the Identifier (resolve mode)
+      -L,--long                print long lines of output (no wrapping)
+      -R,--Resolve             print the ShortName, ServiceType and ID
+      -S,--SName               print only the ShortName (resolve mode)
+      -T,--Title               print only the Title string (resolve mode)
+  
+
+The corresponding task PSet is defined as:
+
+   name      type   description
+   ----      ----   -------------
+   help      B      print this help
+   verbose   B      verbose mode
+   vverbose  B      very-verbose mode
+  
+   count     B      print a count of matching records
+   exact     B      print exactly matching records (resolve)
+   list      B      list full resource record
+   meta      B      list table metadata
+   resolve   B      resolution mode
+   search    B      search mode (default)
+  
+   bandpass  S		constrain by bandpass
+   clevel    I		constrain by content level
+   type		 S      constrain by service type
+  
+   all       B      print all results (default)
+   fields	 S      output only specified fields
+   or        B      logically OR the search terms
+   index     I      set index of result (-1 => list, 0 => all)
+  
+   Id        B      print only the Identifier (resolve mode)
+   long      B      print long lines of output (no wrapping)
+   Resolve   B      print the ShortName, ServiceType and ID
+   SName     B      print only the ShortName (resolve mode)
+   Title     B      print only the Title string (resolve mode)
+
+   keyw		 S		search term (multiple allowed)
+

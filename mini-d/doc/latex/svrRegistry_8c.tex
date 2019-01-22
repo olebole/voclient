@@ -1,0 +1,428 @@
+\hypertarget{svrRegistry_8c}{
+\section{svrRegistry.c File Reference}
+\label{svrRegistry_8c}\index{svrRegistry.c@{svrRegistry.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stddef.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$sys/file.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$sys/socket.h$>$}\par
+{\tt \#include $<$sys/select.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$sys/un.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$netdb.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$sys/uio.h$>$}\par
+{\tt \#include \char`\"{}VOClient.h\char`\"{}}\par
+{\tt \#include \char`\"{}vocServer.h\char`\"{}}\par
+{\tt \#include \char`\"{}cvoRegistry.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\hypertarget{svrRegistry_8c_96522681f45fae55d1e17bcb63620e45}{
+\#define \textbf{\_\-VOCLIENT\_\-LIB\_\-}}
+\label{svrRegistry_8c_96522681f45fae55d1e17bcb63620e45}
+
+\item 
+\hypertarget{svrRegistry_8c_d72dbcf6d0153db1b8d8a58001feed83}{
+\#define \textbf{DEBUG}~FALSE}
+\label{svrRegistry_8c_d72dbcf6d0153db1b8d8a58001feed83}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+handle\_\-t \hyperlink{svrRegistry_8c_5e691e19072cab5d20b69ebb28a9f059}{svr\_\-newHandle} (void $\ast$p)
+\begin{CompactList}\small\item\em Get an unused object handle\item\end{CompactList}\item 
+\hypertarget{svrRegistry_8c_2d386fb90bae443bb36b6fcb6bc80796}{
+void $\ast$ \textbf{svr\_\-H2P} (handle\_\-t h)}
+\label{svrRegistry_8c_2d386fb90bae443bb36b6fcb6bc80796}
+
+\item 
+\hypertarget{svrRegistry_8c_01928130c54d9a765dfd2b95e22837a8}{
+handle\_\-t \textbf{svr\_\-P2H} (void $\ast$p)}
+\label{svrRegistry_8c_01928130c54d9a765dfd2b95e22837a8}
+
+\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_d40694ce70e222dcce5da96385ba5ba6}{sm\_\-regSearch} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_7d45b6f87a5003ebb242bb74a7190908}{sm\_\-resSearchBySvc} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_e0377c5daacf918cace79dec72d99506}{sm\_\-regQuery} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_53396ba764ed7e5c2530091d565fedd0}{sm\_\-regAddSearchTerm} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_00c1e0befc14899db7e19f0cc1557c3d}{sm\_\-removeSearchTerm} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_a5624bb00b074e1d0ae2fa772d4bedd1}{sm\_\-regConstWaveband} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_dafac36c9e471266744d6d7e3ab7f367}{sm\_\-regConstSvcType} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_9fc6062fb02de29159b6b5970ef7965f}{sm\_\-regDALOnly} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_f8b47909a4ff24fdd55cdaa250da5dc8}{sm\_\-regSortRes} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_a6df4c3398da761e40f1827f9d9f7d50}{sm\_\-regGetSTCount} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_b25af4d70f97aba6a4aed8fa7b5b6506}{sm\_\-regGetQueryString} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_af3f79001b1a9cc3a6c3f6e06f5cdaf6}{sm\_\-regExecute} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_4e03f4ea9b1fc36916fe459e2cc11961}{sm\_\-regExecuteRaw} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_74b987404b43300d1f9577b891dff2fc}{sm\_\-resGetCount} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_e92419b2eef73f3f233e1e474492784f}{sm\_\-resGetStr} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_5c81e212ec681ecba1e555423d022b86}{sm\_\-resGetFloat} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\item 
+vocRes\_\-t $\ast$ \hyperlink{svrRegistry_8c_31924c39184c6a5f1be4596452aa621a}{sm\_\-resGetInt} (int objid, \hyperlink{structmsgParam}{msgParam} $\ast$pars, int npars)
+\begin{CompactList}\small\item\em Method description. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+SVRREGISTRY.C -- VOClient Mini-Daemon server methods for Registry queries.
+
+\begin{Desc}
+\item[Author:]Michael Fitzpatrick \end{Desc}
+\begin{Desc}
+\item[Version:]April 2013 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{svrRegistry_8c_53396ba764ed7e5c2530091d565fedd0}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regAddSearchTerm@{sm\_\-regAddSearchTerm}}
+\index{sm\_\-regAddSearchTerm@{sm\_\-regAddSearchTerm}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regAddSearchTerm}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regAddSearchTerm (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_53396ba764ed7e5c2530091d565fedd0}
+
+
+Method description. 
+
+SM\_\-REGADDSEARCHTERM -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_dafac36c9e471266744d6d7e3ab7f367}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regConstSvcType@{sm\_\-regConstSvcType}}
+\index{sm\_\-regConstSvcType@{sm\_\-regConstSvcType}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regConstSvcType}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regConstSvcType (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_dafac36c9e471266744d6d7e3ab7f367}
+
+
+Method description. 
+
+SM\_\-REGCONSTSVCTYPE -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_a5624bb00b074e1d0ae2fa772d4bedd1}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regConstWaveband@{sm\_\-regConstWaveband}}
+\index{sm\_\-regConstWaveband@{sm\_\-regConstWaveband}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regConstWaveband}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regConstWaveband (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_a5624bb00b074e1d0ae2fa772d4bedd1}
+
+
+Method description. 
+
+SM\_\-REGCONSTWAVEBAND -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_9fc6062fb02de29159b6b5970ef7965f}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regDALOnly@{sm\_\-regDALOnly}}
+\index{sm\_\-regDALOnly@{sm\_\-regDALOnly}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regDALOnly}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regDALOnly (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_9fc6062fb02de29159b6b5970ef7965f}
+
+
+Method description. 
+
+SM\_\-REGDALONLY -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_af3f79001b1a9cc3a6c3f6e06f5cdaf6}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regExecute@{sm\_\-regExecute}}
+\index{sm\_\-regExecute@{sm\_\-regExecute}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regExecute}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regExecute (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_af3f79001b1a9cc3a6c3f6e06f5cdaf6}
+
+
+Method description. 
+
+SM\_\-REGEXECUTE -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_4e03f4ea9b1fc36916fe459e2cc11961}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regExecuteRaw@{sm\_\-regExecuteRaw}}
+\index{sm\_\-regExecuteRaw@{sm\_\-regExecuteRaw}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regExecuteRaw}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regExecuteRaw (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_4e03f4ea9b1fc36916fe459e2cc11961}
+
+
+Method description. 
+
+SM\_\-RESEXEVUTERAW -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_b25af4d70f97aba6a4aed8fa7b5b6506}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regGetQueryString@{sm\_\-regGetQueryString}}
+\index{sm\_\-regGetQueryString@{sm\_\-regGetQueryString}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regGetQueryString}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regGetQueryString (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_b25af4d70f97aba6a4aed8fa7b5b6506}
+
+
+Method description. 
+
+SM\_\-REGGETQUERYSTRING -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_a6df4c3398da761e40f1827f9d9f7d50}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regGetSTCount@{sm\_\-regGetSTCount}}
+\index{sm\_\-regGetSTCount@{sm\_\-regGetSTCount}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regGetSTCount}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regGetSTCount (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_a6df4c3398da761e40f1827f9d9f7d50}
+
+
+Method description. 
+
+SM\_\-REGGETSTCOUNT -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_e0377c5daacf918cace79dec72d99506}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regQuery@{sm\_\-regQuery}}
+\index{sm\_\-regQuery@{sm\_\-regQuery}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regQuery}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regQuery (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_e0377c5daacf918cace79dec72d99506}
+
+
+Method description. 
+
+SM\_\-REGQUERY -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_d40694ce70e222dcce5da96385ba5ba6}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regSearch@{sm\_\-regSearch}}
+\index{sm\_\-regSearch@{sm\_\-regSearch}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regSearch}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regSearch (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_d40694ce70e222dcce5da96385ba5ba6}
+
+
+Method description. 
+
+Private procedures SM\_\-REGSEARCH -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_f8b47909a4ff24fdd55cdaa250da5dc8}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-regSortRes@{sm\_\-regSortRes}}
+\index{sm\_\-regSortRes@{sm\_\-regSortRes}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-regSortRes}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-regSortRes (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_f8b47909a4ff24fdd55cdaa250da5dc8}
+
+
+Method description. 
+
+SM\_\-REGSORTRES -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_00c1e0befc14899db7e19f0cc1557c3d}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-removeSearchTerm@{sm\_\-removeSearchTerm}}
+\index{sm\_\-removeSearchTerm@{sm\_\-removeSearchTerm}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-removeSearchTerm}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-removeSearchTerm (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_00c1e0befc14899db7e19f0cc1557c3d}
+
+
+Method description. 
+
+SM\_\-REMOVESEARCHTERM -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_74b987404b43300d1f9577b891dff2fc}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-resGetCount@{sm\_\-resGetCount}}
+\index{sm\_\-resGetCount@{sm\_\-resGetCount}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-resGetCount}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-resGetCount (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_74b987404b43300d1f9577b891dff2fc}
+
+
+Method description. 
+
+SM\_\-RESGETCOUNT -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_5c81e212ec681ecba1e555423d022b86}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-resGetFloat@{sm\_\-resGetFloat}}
+\index{sm\_\-resGetFloat@{sm\_\-resGetFloat}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-resGetFloat}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-resGetFloat (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_5c81e212ec681ecba1e555423d022b86}
+
+
+Method description. 
+
+SM\_\-RESGETFLOAT -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_31924c39184c6a5f1be4596452aa621a}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-resGetInt@{sm\_\-resGetInt}}
+\index{sm\_\-resGetInt@{sm\_\-resGetInt}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-resGetInt}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-resGetInt (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_31924c39184c6a5f1be4596452aa621a}
+
+
+Method description. 
+
+SM\_\-RESGETINT -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_e92419b2eef73f3f233e1e474492784f}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-resGetStr@{sm\_\-resGetStr}}
+\index{sm\_\-resGetStr@{sm\_\-resGetStr}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-resGetStr}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-resGetStr (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_e92419b2eef73f3f233e1e474492784f}
+
+
+Method description. 
+
+SM\_\-RESGETSTRING -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_7d45b6f87a5003ebb242bb74a7190908}{
+\index{svrRegistry.c@{svrRegistry.c}!sm\_\-resSearchBySvc@{sm\_\-resSearchBySvc}}
+\index{sm\_\-resSearchBySvc@{sm\_\-resSearchBySvc}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{sm\_\-resSearchBySvc}]{\setlength{\rightskip}{0pt plus 5cm}stat sm\_\-resSearchBySvc (int {\em objid}, \/  {\bf msgParam} $\ast$ {\em pars}, \/  int {\em npars})}}
+\label{svrRegistry_8c_7d45b6f87a5003ebb242bb74a7190908}
+
+
+Method description. 
+
+SM\_\-RESSEARCHBYSVC -- Method description.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em objid}]object id handle \item[{\em pars}]message parameter struct \item[{\em npars}]number of parameters \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]ERR or number of bytes in return msg \end{Desc}
+\hypertarget{svrRegistry_8c_5e691e19072cab5d20b69ebb28a9f059}{
+\index{svrRegistry.c@{svrRegistry.c}!svr\_\-newHandle@{svr\_\-newHandle}}
+\index{svr\_\-newHandle@{svr\_\-newHandle}!svrRegistry.c@{svrRegistry.c}}
+\subsubsection[{svr\_\-newHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t svr\_\-newHandle (void $\ast$ {\em ptr})}}
+\label{svrRegistry_8c_5e691e19072cab5d20b69ebb28a9f059}
+
+
+Get an unused object handle
+
+Public procedures
+
+SVR\_\-NEWHANDLE -- Get an unused object handle.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em context}]context number \item[{\em ptr}]pointer to object to be stored \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]new object handle\end{Desc}
+A new object handle is allocated within the specified handle context. The context must have been allocated earlier. This implementation merely allocates handle slots sequentially, assuming that there are a limited number of active resource pointers for a context. 

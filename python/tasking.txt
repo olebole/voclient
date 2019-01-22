@@ -1,0 +1,100 @@
+
+
+CLI Task Structure
+
+	All CLI tasks are (currently) implemented as C procedures sharing 
+a common signature:
+
+    int <taskname> (int argc, char **argv, size_t *len, void **result);
+
+where argc/argv have the standard meaning for argument parsing, 'len' is
+the length of the 'result' data (which may be encoded internally to contain
+multiple result objects or a parameter stream).  The task function parses
+the argv vector to get the task options, using a custom interface to
+process a familiar short-form option (e.g. "-h" or a GNU-like "--help") or
+a 'param=value' syntax (e.g.  "help=1") interchangeably.
+
+	When a task like VODATA is built as a unix CLI tool, a small main()
+procedure (common to all tasks) is used to pass the arguments unchanged
+from the calling shell/prompt to the vodata() function, the result data
+object is normally never generated in this case but is ignored regaardless
+and the task process simply exits when complete.  As unix tools, one
+executable is created for each of the CLI tasks.
+
+	When a task is built as part of a VO Package binary, a
+single executable is created and all task functions are available from the
+command interface.  In this case however, the above simple main() is
+replaced with one that does the normal process startup/shutdown and
+additionally processes commands sent over an IPC channel from the python
+API to reply to queries about package metadata, set task parameters,
+control task execution, etc.  Similarly, result data objects created by the
+task function can be returned over the same IPC channels to the calling
+python API tasking code.  Special parameters or options may be implemented
+that control the task behavior in one mode or the other (e.g. a parameter
+indicating what to return to the python API that might be never be used in
+a unix tool), but the task code itself is ignorant of whether it is being
+called as a unix CLI tool or as part of a package binary.  (One could
+imagine other front-ends used to integrate the task more tightly into some
+other environment in the future).
+
+	When used in the Python API, the voclient tasks will execute in a
+separate VO Package binary process.  This package binary is started from
+the API, thereafter the IPC channels are used to communicate with the
+package and return result data.  Having a separate process means that any
+memory or threading issues in the voclient task are separate from the
+python script andtural can be managed accordingly.
+
+
+[NOTE:  The remained of this doc refers to use of the VOClient tasks from
+	the python API, specifically how VODATA might be used.]
+
+
+Passing Data In and Out
+
+	Most parameters of the form 'param=value' are adequate for passing
+bool/int/float/string input options or getting output results.  Because the
+tasks were designed originally as CLI tools, bulk data (e.g. VOTable docs,
+FITS images, etc) are expected to be passed to the task (or are created)
+using filenames (e.g. lists of resources or objects/positions for input
+which generate multiple result tables as new files).  While the tasking
+interface and packaging scheme is a more advanced method of executing a 
+task than a os.system() command, the interaction with a script is
+essentially the same.
+
+	The CLI tasks are meant to provide a high-level functionality to
+the python environment:  for casual scripters this file-based data exchange
+is probably adequate, but if what we want to provide is a VODATA task
+function that serves as a general multi-threaded data query engine the
+interface is clumsy from the Python perspective.  For example, applications
+may generate their own lists of resources/objects and expect to pass them
+into the task directly rather than write an intermediate file.  
+
+
+Similarly,
+the dalQuery interface provides a cursor for immediate interaction with the
+results and in a multi-object query th python programmer would want to simply
+walk the list of results in the same way.
+
+
+
+
+	The voclient daemon architecture (either the Java-based implementation
+or the mini-voclientd) also means that it is possible for a python script
+to e.g. execute a DAL query and pass a reference to the result to the task
+process so that both the script and the task can share the resultant VOTable
+held in the voclient daemon.  When a DAL/Registry query executes, what the 
+voclient API gets back (and thus what a python dalQuery interface built on
+the voclient C API gets) is a language-independent 'handle' to that object
+in the daemon;  this reference can be passed from the script to the task
+via a parameter (it is basically just an integer) allowing the task
+process access to the result produced by the python script without having
+to resort to an intermediate disk file or transferring the text of the
+VOTable over IPC between tasks.
+
+**********
+
+Input Parameter Mappings
+
+	Parameters (as in the API 'PSet' and 'Param' objects) are used to
+send inputs to the task (set options, pass data files, etc) as well as to
+retrieve results.

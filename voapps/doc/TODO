@@ -1,0 +1,34 @@
+
+			      Task    Help    Examples  Tests
+			      ----    ----    --------  -----
+Data Access Tasks:
+    voatlas    			-	-	 -	  -
+    vocatalog    		-	-	 -	  -
+    vodata    			-	-	 -	  -
+    voimage    			-	-	 -	  -
+    voobslog    		-	-	 -	  -
+    vospectrum    		-	-	 -	  -
+
+Registry Tasks:
+    vodirectory    		-	-	 -	  -
+
+VOTable Utility Tasks:
+    votcnv    			Y	Y	 Y	  -
+    votget    			Y	Y	 Y	  -
+    votinfo    			-	-	 -	  -
+    votpos    			-	-	 -	  -
+    votsort    			-	-	 -	  -
+    votstat    			-	-	 -	  -
+
+SAMP Tasks:
+    vosamp    			-	-	 -	  -
+
+Moving Object Tasks:
+    voskybot    		-	-	 -	  -
+
+
+  (1)  Online help missing examples
+  (2)  Online help missing options
+  (3)  Help page missing examples
+  (4)  Help page missing options
+  (5)  No test cases in task source

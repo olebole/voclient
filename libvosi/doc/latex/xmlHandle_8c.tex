@@ -1,0 +1,170 @@
+\hypertarget{xmlHandle_8c}{
+\section{xmlHandle.c File Reference}
+\label{xmlHandle_8c}\index{xmlHandle.c@{xmlHandle.c}}
+}
+(Private) Methods to manage interface handles.  
+
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include \char`\"{}xmlParseP.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int \hyperlink{xmlHandle_8c_19ae70ebe0f34c01203b516ae545e7ec}{xml\_\-handleCount} ()
+\begin{CompactList}\small\item\em Get the number of handle\_\-t used (private method). \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlHandle_8c_d5ca7efb386c9b20346ac930977f75ea}{xml\_\-lookupHandle} (\hyperlink{structElement}{Element} $\ast$elem)
+\begin{CompactList}\small\item\em Lookup the handle\_\-t to an \hyperlink{structElement}{Element} (private method). \item\end{CompactList}\item 
+handle\_\-t \hyperlink{xmlHandle_8c_614c66671b635649879784907b198795}{xml\_\-setHandle} (\hyperlink{structElement}{Element} $\ast$elem)
+\begin{CompactList}\small\item\em Assign the \hyperlink{structElement}{Element} a handle\_\-t (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlHandle_8c_3acd4d4795d960518da5d3cc7e7e8f55}{xml\_\-freeHandle} (handle\_\-t handle)
+\begin{CompactList}\small\item\em Free a handle for use (private method). \item\end{CompactList}\item 
+\hyperlink{structElement}{Element} $\ast$ \hyperlink{xmlHandle_8c_ed723d32576e20031c158f981cd19d91}{xml\_\-getElement} (handle\_\-t handle)
+\begin{CompactList}\small\item\em Get the \hyperlink{structElement}{Element} refered to by handle\_\-t (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlHandle_8c_11d60ade403d23b487c12fc1b16fe813}{xml\_\-handleCleanup} (void)
+\begin{CompactList}\small\item\em Free all the handle nodes (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlHandle_8c_08d856527676292b4749947caa04e4d1}{xml\_\-newHandleTable} (void)
+\begin{CompactList}\small\item\em Initialize a handle table (private method). \item\end{CompactList}\item 
+void \hyperlink{xmlHandle_8c_630eac200b4c1691f13376e00596cce1}{xml\_\-handleError} (char $\ast$msg)
+\begin{CompactList}\small\item\em Print an error message. \item\end{CompactList}\end{CompactItemize}
+
+
+\label{_details}
+\hypertarget{_details}{}
+\subsection{Detailed Description}
+(Private) Methods to manage interface handles. 
+
+XMLHANDLE.C -- (Private) Methods to manage interface handles.
+
+\begin{Desc}
+\item[Author:]Mike Fitzpatrick and Eric Timmermann \end{Desc}
+\begin{Desc}
+\item[Date:]8/03/09 \end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{xmlHandle_8c_3acd4d4795d960518da5d3cc7e7e8f55}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-freeHandle@{xml\_\-freeHandle}}
+\index{xml\_\-freeHandle@{xml\_\-freeHandle}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-freeHandle}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-freeHandle (handle\_\-t {\em handle})}}
+\label{xmlHandle_8c_3acd4d4795d960518da5d3cc7e7e8f55}
+
+
+Free a handle for use (private method). 
+
+xml\_\-freeHandle -- Free a handle for use (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]A handle\_\-t to the \hyperlink{structElement}{Element} you wish to free \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlHandle_8c_ed723d32576e20031c158f981cd19d91}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-getElement@{xml\_\-getElement}}
+\index{xml\_\-getElement@{xml\_\-getElement}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-getElement}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Element} $\ast$ xml\_\-getElement (handle\_\-t {\em handle})}}
+\label{xmlHandle_8c_ed723d32576e20031c158f981cd19d91}
+
+
+Get the \hyperlink{structElement}{Element} refered to by handle\_\-t (private method). 
+
+xml\_\-getElement -- Get the \hyperlink{structElement}{Element} refered to by handle\_\-t (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em handle}]A handle\_\-t to the \hyperlink{structElement}{Element}. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the requested \hyperlink{structElement}{Element}. \end{Desc}
+\hypertarget{xmlHandle_8c_11d60ade403d23b487c12fc1b16fe813}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-handleCleanup@{xml\_\-handleCleanup}}
+\index{xml\_\-handleCleanup@{xml\_\-handleCleanup}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-handleCleanup}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-handleCleanup (void)}}
+\label{xmlHandle_8c_11d60ade403d23b487c12fc1b16fe813}
+
+
+Free all the handle nodes (private method). 
+
+xml\_\-handleCleanup -- Free all the handle nodes (private method)
+
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlHandle_8c_19ae70ebe0f34c01203b516ae545e7ec}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-handleCount@{xml\_\-handleCount}}
+\index{xml\_\-handleCount@{xml\_\-handleCount}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-handleCount}]{\setlength{\rightskip}{0pt plus 5cm}int xml\_\-handleCount (void)}}
+\label{xmlHandle_8c_19ae70ebe0f34c01203b516ae545e7ec}
+
+
+Get the number of handle\_\-t used (private method). 
+
+count of current used handles xml\_\-handleCount -- Get the number of handle\_\-t used (private method)
+
+\begin{Desc}
+\item[Returns:]The number of handle\_\-t types currently stored \end{Desc}
+\hypertarget{xmlHandle_8c_630eac200b4c1691f13376e00596cce1}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-handleError@{xml\_\-handleError}}
+\index{xml\_\-handleError@{xml\_\-handleError}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-handleError}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-handleError (char $\ast$ {\em msg})}}
+\label{xmlHandle_8c_630eac200b4c1691f13376e00596cce1}
+
+
+Print an error message. 
+
+xml\_\-handleError -- Print an error message.
+
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlHandle_8c_d5ca7efb386c9b20346ac930977f75ea}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-lookupHandle@{xml\_\-lookupHandle}}
+\index{xml\_\-lookupHandle@{xml\_\-lookupHandle}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-lookupHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-lookupHandle ({\bf Element} $\ast$ {\em elem})}}
+\label{xmlHandle_8c_d5ca7efb386c9b20346ac930977f75ea}
+
+
+Lookup the handle\_\-t to an \hyperlink{structElement}{Element} (private method). 
+
+xml\_\-lookupHandle -- Lookup the handle\_\-t to an \hyperlink{structElement}{Element} (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$elem}]A pointer to an \hyperlink{structElement}{Element} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle\_\-t to the \hyperlink{structElement}{Element} \end{Desc}
+\hypertarget{xmlHandle_8c_08d856527676292b4749947caa04e4d1}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-newHandleTable@{xml\_\-newHandleTable}}
+\index{xml\_\-newHandleTable@{xml\_\-newHandleTable}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-newHandleTable}]{\setlength{\rightskip}{0pt plus 5cm}xml\_\-newHandleTable (void)}}
+\label{xmlHandle_8c_08d856527676292b4749947caa04e4d1}
+
+
+Initialize a handle table (private method). 
+
+xml\_\-newHandleTable -- Initialize a handle table (private method)
+
+\begin{Desc}
+\item[Returns:]nothing \end{Desc}
+\hypertarget{xmlHandle_8c_614c66671b635649879784907b198795}{
+\index{xmlHandle.c@{xmlHandle.c}!xml\_\-setHandle@{xml\_\-setHandle}}
+\index{xml\_\-setHandle@{xml\_\-setHandle}!xmlHandle.c@{xmlHandle.c}}
+\subsubsection[{xml\_\-setHandle}]{\setlength{\rightskip}{0pt plus 5cm}handle\_\-t xml\_\-setHandle ({\bf Element} $\ast$ {\em elem})}}
+\label{xmlHandle_8c_614c66671b635649879784907b198795}
+
+
+Assign the \hyperlink{structElement}{Element} a handle\_\-t (private method). 
+
+xml\_\-setHandle -- Assign the \hyperlink{structElement}{Element} a handle\_\-t (private method)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em elem}]A pointer to an \hyperlink{structElement}{Element} to be assigned a handle\_\-t. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A handle\_\-t refering to elem \end{Desc}

@@ -1,0 +1,5 @@
+#!/bin/csh -f
+
+scp $1 tucana:voc/libvoclient/
+scp $1 tucana:vao/voc.svn/libvoclient/
+scp $1 tucana:vao/voc.svn/../rel/1.0/libvoclient/

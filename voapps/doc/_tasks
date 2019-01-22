@@ -1,0 +1,28 @@
+vodirectory	VO Resource discovery (keyword search, resolution, info)
+vodata		Query and Access VO data  	(general engine)
+vocatalog	Query VO catalog services	(SAMP load to overlay)      (1
+voimage		Query VO image services		(SAMP load to display)      (1
+vospectrum	Query VO spectrum services	(SAMP load)     	    (1
+vodss		Load DSS field in display 	(SAMP to ds9/aladin)        (1
+voobslog	Query public observation logs     			    (1
+
+votcnv   	Convert to/from votable format
+votget		Download data access references in a VOTable (w/ selection)
+votsplit	Split a multi-resource votable (opt. output conversion)     (2a
+votjoin		Join multiple votables into a multi-resource table          (2a
+votinfo		Print information about a votable
+
+samp		SAMP utility command (list clients, start hub, etc) 	    (2a
+samp_listener	Listen for SAMP messages 				    (2a
+
+voxmatch	Cross-compare local table an VO data 			    (3
+
+vosput		Put files to a VOSpace		    			    (4
+vosget		Get files from a VOSpace		    		    (4
+vosmove		Move files/nodes between VOSpaces		    	    (4
+voslist		List files/nodes in a VOSpace		    	    	    (4
+vosdelete	Delete files/nodes in a VOSpace		    		    (4
+
+vosesame	Resolve object names to positions
+
+voskybot	List known moving objects in an image 			    (2b

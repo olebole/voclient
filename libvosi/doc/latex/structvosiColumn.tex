@@ -1,0 +1,87 @@
+\hypertarget{structvosiColumn}{
+\section{vosiColumn Struct Reference}
+\label{structvosiColumn}\index{vosiColumn@{vosiColumn}}
+}
+Information about a \hyperlink{structvosiColumn}{vosiColumn}.  
+
+
+{\tt \#include $<$vosiP.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+\hypertarget{structvosiColumn_83164bd2cfa3279787dff02fb56eaa81}{
+char $\ast$ \textbf{name}}
+\label{structvosiColumn_83164bd2cfa3279787dff02fb56eaa81}
+
+\item 
+\hypertarget{structvosiColumn_cace0b0f25f0381c684ef8d8321f219c}{
+char $\ast$ \textbf{description}}
+\label{structvosiColumn_cace0b0f25f0381c684ef8d8321f219c}
+
+\item 
+\hypertarget{structvosiColumn_9223456072b7c519b1cbb00b5833008e}{
+char $\ast$ \textbf{unit}}
+\label{structvosiColumn_9223456072b7c519b1cbb00b5833008e}
+
+\item 
+\hypertarget{structvosiColumn_5f12b211bb8e9418036a709fff8ef7a9}{
+char $\ast$ \textbf{ucd}}
+\label{structvosiColumn_5f12b211bb8e9418036a709fff8ef7a9}
+
+\item 
+\hypertarget{structvosiColumn_31b0747a5b81dd908f74a55e5288a958}{
+char $\ast$ \textbf{utype}}
+\label{structvosiColumn_31b0747a5b81dd908f74a55e5288a958}
+
+\item 
+\hypertarget{structvosiColumn_dea1ce644f2769fcc899de57a5b00f93}{
+char $\ast$ \textbf{datatype}}
+\label{structvosiColumn_dea1ce644f2769fcc899de57a5b00f93}
+
+\item 
+\hypertarget{structvosiColumn_d3b61487b50ca60f612646501e7701e1}{
+int \textbf{flag}}
+\label{structvosiColumn_d3b61487b50ca60f612646501e7701e1}
+
+\item 
+\hypertarget{structvosiColumn_7db7120c5a6dbac1f2790cb8ed9ee4af}{
+int \textbf{std}}
+\label{structvosiColumn_7db7120c5a6dbac1f2790cb8ed9ee4af}
+
+\item 
+\hypertarget{structvosiColumn_9f659facaa2130e3becaa260a56c0f3f}{
+int \textbf{index}}
+\label{structvosiColumn_9f659facaa2130e3becaa260a56c0f3f}
+
+\item 
+\hypertarget{structvosiColumn_c8b5c7bcae629c7a46aa7b8df258bc41}{
+int \textbf{nkeys}}
+\label{structvosiColumn_c8b5c7bcae629c7a46aa7b8df258bc41}
+
+\item 
+\hypertarget{structvosiColumn_4396627b255f313d39f204b076262071}{
+\hyperlink{structvosiForeignKey}{vosiForeignKey} $\ast$ \textbf{keys}}
+\label{structvosiColumn_4396627b255f313d39f204b076262071}
+
+\item 
+\hypertarget{structvosiColumn_bc4dbb90272c755546ddad1f5e91d34d}{
+void $\ast$ \textbf{next}}
+\label{structvosiColumn_bc4dbb90272c755546ddad1f5e91d34d}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Information about a \hyperlink{structvosiColumn}{vosiColumn}. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]string name of the column \item[{\em description}]string description of contents \item[{\em unit}]string unit associated w/ col values \item[{\em ucd}]string UCD describing content \item[{\em utype}]string DM concept of column \item[{\em datatype}]string type of data in column \item[{\em flag}]int traits of column (bitmap) \item[{\em std}]int true if defined by std model \item[{\em index}]int index of structure (0 to n) \item[{\em nkeys}]int number of foreign keys \item[{\em keys}]\hyperlink{structvosiForeignKey}{vosiForeignKey} $\ast$ pointer to foreignKeys \item[{\em next}]void $\ast$ next pointer in linked list \end{description}
+\end{Desc}
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+\hyperlink{vosiP_8h}{vosiP.h}\end{CompactItemize}

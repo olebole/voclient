@@ -1,0 +1,104 @@
+.\" @(#)voclient.1 1.0 Feb-2013 MJF
+.TH VOCLIENT 1 "Feb 2013" "VOClient Package"
+.SH NAME
+voclient \- VO Libraries and Desktop Applications
+.SH SYNOPSIS
+\fBVOClient\fP ....
+
+.SH Command-Line Interface (CLI) Tools
+.in 7
+.I voatlas		
+Query the SkyView Image service for an all-sky image
+.in 7
+.I vocatalog		
+Query VO catalog services for data
+.in 7
+.I vodata		
+query and access VO data services
+.in 7
+.I voimage		
+Query VO image services for data
+.in 7
+.I votiminfo		
+Print/Get information about a FITS file's structure
+.in 7
+.I vosloanspec	
+Query for SDSS spectra
+.in 7
+.I vospectra		
+Query VO spectral services for data
+
+.in 7
+.I voregistry	
+VO Registry search client
+.in 7
+.I vosesame		
+Call the Sesame name resolver service
+.in 7
+.I vosamp		
+Command-line SAMP tool
+
+.in 7
+.I votcnv		
+Convert from VOTable to another format
+.in 7
+.I votget		
+Download URLs or access references in a VOTable
+.in 7
+.I votinfo		
+Get information about a VOTable
+.in 7
+.I votopic		
+Query data resources specified by topic keyword
+.in 7
+.I votpos		
+Extract the main positional columns from a VOTable
+.in 7
+.I votsort		
+Extract the main positional columns from a VOTable
+.in 7
+.I votstat		
+Compute statistics for numeric columns of a VOTable.
+
+
+.SH Programming Interfaces
+.in 7
+.I libsamp
+SAMP interface
+.in 7
+.I libvoclient
+Client-side VO interface
+.in 7
+.I libvotable
+VOTable parser interface
+.in 7
+.I libvoapps
+VO Applications interface
+
+
+.SH Dependency Libraries
+.in 7
+.I libcurl
+SAMP interface
+.in 7
+.I libcfitsio
+SAMP interface
+
+
+.SH EXAMPLES
+.TP 4
+1) Queury for ....
+.nf
+	% voclient .....
+.fi
+
+.SH BUGS
+No known bugs with this release.
+.SH Revision History
+Feb 2013 - First public release
+.SH Author
+Michael Fitzpatrick (fitz@noao.edu), Feb 2013
+.SH "SEE ALSO"
+voatlas, vocatalog, vodata, voimage, votiminfo, voregistry, vosesame, vosloanspec, vospectra, votcnv, votget, votinfo, votopic, votpos, votsort, votstat, vosamp
+
+

@@ -1,0 +1,18 @@
+/**
+ *  SM_METHOD -- Method description.
+ * 
+ *  @brief   Method description.
+ *  @fn      stat = sm_method (int objid, msgParam *pars, int npars)
+ *
+ *  @param   objid       object id handle
+ *  @param   pars        message parameter struct
+ *  @param   npars       number of parameters
+ *  @returns             ERR or number of bytes in return msg
+ */
+int
+sm_method (int objid, msgParam *pars, int npars)
+{
+    return ( OK );
+}
+
+

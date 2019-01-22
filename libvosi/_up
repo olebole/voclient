@@ -1,0 +1,5 @@
+#!/bin/csh -f
+
+scp $1 tucana.tuc.noao.edu:voc/libvosi/
+scp $1 tucana.tuc.noao.edu:vao/voc.svn/libvosi/
+scp $1 tucana.tuc.noao.edu:vao/voc.svn/../rel/1.0/libvosi/
